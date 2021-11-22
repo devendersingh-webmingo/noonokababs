@@ -55,28 +55,7 @@ public class CheckOutCartFragment extends Fragment implements FoodCartPresenter.
 
 
 
-      /*  viewCartRequestList = ViewCartReqSharedPreferenc.readListFromPref(getContext());
-        for (int i = 0; i < viewCartRequestList.size(); i++)
-        {
-             viewCartRequest=viewCartRequestList.get(i);
-        }*/
 
-
-
-     /*   "food_id" : 103,
-                "quantity" : 1,
-                "varient_id": 463,
-                "required_item_id" : "2",
-                "cooking_levels"   : null,
-                "ingredients" :[16,7,17,18],
-        "addons" : [
-        {
-            "id":458,
-                "quantity":2
-        }
-			],
-        "special_request": "Pls Provide Good Food"
-                */
 
         ingredientsArrayList.add("16");
         ingredientsArrayList.add("7");
