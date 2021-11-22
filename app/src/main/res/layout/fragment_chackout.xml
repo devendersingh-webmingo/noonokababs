@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bgcolor"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_address" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Delivery at"
+                    android:textColor="#202020"
+                    android:textSize="15dp" />
+
+                <Spinner
+                    style="@style/selectRelationSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:fontFamily="@font/arciform"
+                    android:gravity="center_vertical"
+
+                    android:popupBackground="#ffffff"
+                    android:textSize="14sp"
+                    tools:listitem="@layout/state_layout" />
+
+
+            </LinearLayout>
+
+            <View
+
+                android:layout_width="match_parent"
+
+                android:layout_height="1dp"
+                android:layout_margin="5sp"
+                android:background="@color/grey" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+
+                android:text="Choose Delivery Type"
+                android:textColor="#2f363c"
+                android:textSize="18dp"
+
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <Spinner
+                    style="@style/selectRelationSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="33dp"
+                    android:layout_weight="0.75"
+                    android:gravity="center_vertical"
+
+                    android:popupBackground="#ffffff"
+                    android:textSize="14sp"
+                    tools:listitem="@layout/state_layout" />
+
+                <Spinner
+                    style="@style/selectRelationSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="33dp"
+                    android:layout_weight="0.75"
+                    android:gravity="center_vertical"
+
+                    android:popupBackground="#ffffff"
+                    android:textSize="14sp"
+                    tools:listitem="@layout/state_layout" />
+
+                <Spinner
+                    style="@style/selectRelationSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="33dp"
+                    android:layout_weight="0.75"
+                    android:gravity="center_vertical"
+
+                    android:popupBackground="#ffffff"
+                    android:textSize="14sp"
+                    tools:listitem="@layout/state_layout" />
+
+
+            </LinearLayout>
+
+            <View
+
+                android:layout_width="match_parent"
+
+                android:layout_height="1dp"
+                android:layout_margin="5sp"
+                android:background="@color/grey" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+
+                android:text="Billing Address"
+                android:textColor="#2f363c"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_address" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Billing at"
+                    android:textColor="#202020"
+                    android:textSize="15dp" />
+
+                <Spinner
+                    style="@style/selectRelationSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:fontFamily="@font/arciform"
+                    android:gravity="center_vertical"
+
+                    android:popupBackground="#ffffff"
+                    android:textSize="14sp"
+                    tools:listitem="@layout/state_layout" />
+
+
+            </LinearLayout>
+
+            <View
+
+                android:layout_width="match_parent"
+
+                android:layout_height="1dp"
+                android:layout_margin="5sp"
+                android:background="@color/grey" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="Choose Branch"
+                android:textColor="#2f363c"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+
+
+                android:id="@+id/recyclerView_ChooseBranch"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="2"
+                tools:listitem="@layout/choosebranch_adapter" />
+
+            <View
+
+                android:layout_width="match_parent"
+
+                android:layout_height="1dp"
+                android:layout_margin="5sp"
+                android:background="@color/grey" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="30dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/robotomedium"
+                        android:lineSpacingExtra="4sp"
+
+                        android:textColor="#2f363c"
+                        android:textStyle="bold"
+                        tools:text="Item Total" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="@font/robotomedium"
+                        android:lineSpacingExtra="4sp"
+
+                        android:textColor="#2f363c"
+                        android:textStyle="bold"
+                        tools:text="$ 210" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="30dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:lineSpacingExtra="4sp"
+
+                        android:textColor="#2f363c"
+                        android:textStyle="bold"
+                        tools:text="Delivery Charge" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:lineSpacingExtra="4sp"
+
+                        android:textColor="#2f363c"
+                        android:textStyle="bold"
+                        tools:text="$ 210" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="30dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/latomedium"
+                        android:lineSpacingExtra="4sp"
+
+                        android:textColor="#2f363c"
+                        android:textStyle="bold"
+                        tools:text="Taxes" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="@font/latomedium"
+                        android:lineSpacingExtra="4sp"
+
+                        android:textColor="#2f363c"
+                        android:textStyle="bold"
+                        tools:text="$ 210" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="30dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/robotomedium"
+                        android:lineSpacingExtra="4sp"
+                        android:textColor="#2f363c"
+
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        tools:text="Grand Total" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="@font/robotomedium"
+                        android:lineSpacingExtra="4sp"
+                        android:textColor="#2f363c"
+
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        tools:text="$ 210" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+
+                android:layout_width="match_parent"
+
+                android:layout_height="1dp"
+                android:layout_margin="5sp"
+                android:background="@color/grey" />
+
+            <TextView
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/latomedium"
+                android:lineSpacingExtra="1sp"
+
+                android:textColor="#e30010"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                tools:text="Orders once placed cannot be cancelled and are non-refundable" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="Choose Branch"
+                android:textColor="#2f363c"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/librefranklinblack"
+                    android:gravity="center"
+                    android:letterSpacing="0.08"
+                    android:lineSpacingExtra="7.8sp"
+                    android:text="Grand Total"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/librefranklinblack"
+                    android:letterSpacing="0.08"
+                    android:lineSpacingExtra="8.7sp"
+                    android:text="$ 200"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+
+                    android:textStyle="bold" />
+
+
+
+
+
+            </LinearLayout>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/awesome"
+                android:gravity="right"
+                android:letterSpacing="0.08"
+                android:lineSpacingExtra="7.8sp"
+                android:text="View Cart"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

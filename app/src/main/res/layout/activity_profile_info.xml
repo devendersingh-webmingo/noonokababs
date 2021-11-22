@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="#CCFFFFFF"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvVerify"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/yellow"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Profile Info"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/ll_Box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvVerify"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_horizontal"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="3.5sp"
+                android:text="Please provide your name &amp; location and an
+optional profile photo "
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+
+                android:orientation="horizontal"
+                tools:ignore="RtlHardcoded">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="8dp">
+
+
+
+
+
+                    <FrameLayout
+                        android:layout_alignParentLeft="true"
+
+                        android:id="@+id/rlProfilePic"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+
+                       >
+                        <de.hdodenhof.circleimageview.CircleImageView
+
+                            android:id="@+id/iv_profile_photo"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/dotted"
+                            android:padding="5dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/user_pic" />
+
+
+                        <LinearLayout
+                            android:id="@+id/OpenGalleryLL"
+                            android:layout_marginTop="15dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="35dp"
+                            android:background="@drawable/circle_black"
+                            android:gravity="center">
+
+
+                            <ImageView
+                                android:rotation="15"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="2dp"
+                                android:src="@drawable/ic_pancil"
+                                app:tint="@color/white" />
+                        </LinearLayout>
+                    </FrameLayout>
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_toRightOf="@id/rlProfilePic"
+                        android:orientation="vertical"
+
+                        android:padding="5dp">
+
+
+                        <EditText
+                            android:id="@+id/NameEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:hint="Type your name here... "
+                            android:textColor="#2f363c"
+                            android:textSize="16dp" />
+
+                        <EditText
+                            android:id="@+id/locationET"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:drawableRight="@drawable/ic_location"
+                            android:hint="Your Location "
+                            android:textColor="#2f363c"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:visibility="gone"
+                android:id="@+id/spin_kit"
+                android:layout_gravity="center"
+
+                style="@style/SpinKitView.Large.Circle"
+                android:foregroundGravity="center"
+                android:layout_width="50dp"
+
+                android:layout_height="50dp"
+                android:layout_marginTop="66dp"
+                app:SpinKit_Color="@color/orange" />
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp"
+
+            >
+
+            <TextView
+                android:id="@+id/donetv"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_click_black_rectangle_with_semicircle_edge"
+
+                android:fontFamily="@font/arciform"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Done"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+
+            <TextView
+                android:id="@+id/skipTv"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/graybutton"
+
+                android:fontFamily="@font/arciform"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Skip"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

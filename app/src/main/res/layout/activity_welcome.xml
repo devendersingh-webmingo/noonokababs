@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:background="#CCFFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_gravity="center"
+        android:gravity="center"
+
+        tools:context=".Activity.Authentication.WelcomeActivity">
+        <TextView
+            android:id="@+id/AgreeandContintue"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@color/yellow"
+            android:layout_alignParentTop="true"
+
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Welcome to Noon O Kabab"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AgreeandContintue"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/logo">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/arciform"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/app_name"
+                android:textColor="@color/fontcolor"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/chain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="50dp"
+                android:fontFamily="@font/arciform"
+                android:gravity="center"
+                android:text="@string/chicago_persian_restaurant"
+                android:textColor="@color/fontcolor"
+                android:textSize="18dp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/bottomlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="161dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/awesome"
+                android:gravity="center"
+                android:textSize="12dp"
+                android:padding="10dp"
+                android:text="@string/Policysrvice"
+                android:textColor="#2f363c"
+               />
+
+            <TextView
+                android:id="@+id/AgreeandContinue"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_click_black_rectangle_with_semicircle_edge"
+
+                android:fontFamily="@font/arciform"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/agree_and_continue"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Fragments.DrawerLayoutFragment.SendfeedbackFragment">
+        <LinearLayout
+            android:background="@color/bgcolor"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="Name"
+                android:textColor="#2f363c"
+               />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:hint=" "
+                android:inputType="text"
+                android:textColor="#585858"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="Email Id"
+                android:textColor="#2f363c"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:hint=" "
+                android:inputType="text"
+                android:textColor="#585858"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+        <EditText
+            android:id="@+id/enterfeedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/allsideborder"
+            android:ems="10"
+            android:fontFamily="@font/librefranklinblack"
+            android:gravity="start|top"
+            android:hint="Write your feedback"
+            android:inputType="textMultiLine"
+            android:lines="10"
+            android:textStyle="normal"
+            android:padding="15dp"
+            android:textColor="@color/text_color"
+            android:textColorHint="#cacaca"
+            android:textSize="14dp" />
+
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:fontFamily="@font/latomedium"
+
+            android:textColor="@color/black"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="Give Star Rating"/>
+
+
+        <com.iarcuschin.simpleratingbar.SimpleRatingBar
+            android:id="@+id/text_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:srb_starSize="13dp"
+
+            android:layout_marginLeft="15dp"
+            app:srb_numberOfStars="5"
+            app:srb_stepSize="0.5"
+            app:srb_starBorderWidth="2"
+            app:srb_borderColor="@color/black"
+            app:srb_fillColor="@color/yellow"
+
+            />
+
+
+        <TextView
+            android:id="@+id/AgreeandContinue"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+
+            android:background="@drawable/btn_click_black_rectangle_with_semicircle_edge"
+            android:fontFamily="@font/robotomedium"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+    </ScrollView>
+
+</layout>

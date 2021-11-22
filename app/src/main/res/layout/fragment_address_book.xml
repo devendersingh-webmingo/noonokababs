@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bgcolor"
+        android:orientation="vertical"
+        tools:context=".Fragments.DrawerLayoutFragment.Address.AddressBookFragment">
+
+        <TextView
+            android:id="@+id/btn_address"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_click_black_rectangle_with_semicircle_edge"
+            android:fontFamily="@font/latomedium"
+            android:gravity="center"
+            android:text="Add New Address"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+
+
+        <TextView
+            android:visibility="gone"
+            android:layout_margin="3dp"
+            android:id="@+id/tvCall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/awesome"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="No Data Found"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/addressRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:itemCount="5"
+            tools:listitem="@layout/custom_address_layout" />
+    </LinearLayout>
+
+
+</layout>

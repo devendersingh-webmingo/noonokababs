@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bgcolor"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            android:padding="5dp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:text="App Notifications"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/tab_indicator_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Turn app notifications on or off here"
+                android:textColor="#585858"
+                android:textSize="15dp"
+                 />
+
+
+
+
+                <LinearLayout
+                    android:layout_marginLeft="20dp"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:text="Mobile Notifications"
+                        android:textColor="@color/orange"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/MobileNotificationCheckBoox"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Text all messages"
+                        android:textColor="#585858"
+
+                        android:checked="false"
+                        android:padding="8dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="20dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:text="Email Notifications"
+                    android:textColor="@color/orange"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/EmailNotificationCheckBoox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Promotions and announcements &amp; food items related."
+                    android:textColor="#585858"
+
+                    android:checked="false"
+                    android:padding="8dp"/>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_marginTop="20dp"
+
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/tab_indicator_gray" />
+
+
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/CancelTV"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/graybutton"
+
+                    android:fontFamily="@font/arciform"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Cancel"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
+
+                <TextView
+                    android:id="@+id/SaveTv"
+
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/btn_click_black_rectangle_with_semicircle_edge"
+
+                    android:fontFamily="@font/arciform"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

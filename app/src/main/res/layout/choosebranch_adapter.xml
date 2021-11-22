@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/backgorund_bottonbar"
+
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/robotomedium"
+            android:lineSpacingExtra="4sp"
+            android:textColor="#E62F363C"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            tools:text="XYZ Resturent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/robotomedium"
+            android:lineSpacingExtra="1.6sp"
+            android:textColor="#CC2F363C"
+            android:textSize="15dp"
+            android:textStyle="normal"
+            tools:text="887 Cypress Rd. Garden Grove, CA 92840 · 9744 Glenlake St. Carson, California, USA" />
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:layout_margin="3dp"
+
+ >
+
+
+    <CheckBox
+        android:id="@+id/filter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="right"
+
+        android:text="22 July 2021" />
+
+
+</LinearLayout>

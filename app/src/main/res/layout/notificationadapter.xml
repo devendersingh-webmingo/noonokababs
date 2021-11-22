@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:padding="5dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="5dp">
+
+
+    <RadioButton
+        android:id="@+id/Male"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:checked="false"
+        android:justificationMode="inter_word"
+        android:padding="10dp"
+        android:text="Your order has been successfully placed. we will deliverd soon.
+22 July 2021" />
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+
+            >
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/allsideborder"
+                android:orientation="horizontal"
+                android:padding="2dp"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/GuestReview_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    android:layout_weight="0.5"
+                    android:background="@drawable/btn_click_black_rectangle_with_semicircle_edge"
+                    android:fontFamily="@font/robotomedium"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Guest Review"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+
+                    android:id="@+id/MediaReview_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+
+                    android:background="@drawable/allsideborder"
+                    android:fontFamily="@font/robotomedium"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Media Review"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <ViewFlipper
+                android:id="@+id/ViewFillper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <include
+                    android:id="@+id/GuestReview"
+                    layout="@layout/guestreviewlayot" />
+
+                <include
+
+                    android:id="@+id/MediaReview"
+                    layout="@layout/mediareview" />
+
+
+            </ViewFlipper>
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+</layout>
