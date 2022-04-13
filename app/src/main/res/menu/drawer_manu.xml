@@ -5,7 +5,7 @@
         android:id="@+id/group1"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/home_Fragment"
+            android:id="@id/DashboardFragment"
             android:icon="@drawable/ic_deshboard"
             android:title="Dashboard" />
         <item
@@ -25,7 +25,7 @@
             android:icon="@drawable/ic_favorites"
             android:title="Favorites" />
         <item
-            android:id="@+id/accountFragment"
+            android:id="@+id/editProfileFragment"
             android:icon="@drawable/ic_account"
             android:title="Account" />
         <item
@@ -46,6 +46,8 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
+
+                    android:visible="false"
                     android:id="@+id/howitworkFragment"
                     android:icon="@drawable/ic_howitwork"
                     android:title="How it work" />
@@ -54,7 +56,7 @@
                 <item
                     android:id="@+id/contactsupportFragment"
                     android:icon="@drawable/iccontactsupport"
-                    android:title="Contact support" />
+                    android:title="Invite Friends" />
                 <item
                     android:id="@+id/sendfeedbackFragment"
                     android:icon="@drawable/ic_sendfeedback"

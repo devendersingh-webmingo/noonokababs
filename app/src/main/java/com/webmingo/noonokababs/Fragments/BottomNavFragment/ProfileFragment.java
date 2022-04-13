@@ -64,7 +64,11 @@ public class ProfileFragment extends Fragment implements DoProfileUpdateDetailsP
         binding.editprofileTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.editProfileFragment);
+             //   navController.navigate(R.id.editProfileFragment);
+                Bundle bundle = new Bundle();
+                bundle.putString("Key", "No");
+                navController.navigate(R.id.editProfileFragment, bundle);
+
 
             }
         });

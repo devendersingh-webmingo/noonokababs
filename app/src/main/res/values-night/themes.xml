@@ -31,5 +31,7 @@
         <item name="itemStrokeColor">@color/drawer_tittle</item>
         <item name="colorPrimary">@color/drawer_tittle</item>
     </style>
-
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/popup_background</item>
+    </style>
 </resources>

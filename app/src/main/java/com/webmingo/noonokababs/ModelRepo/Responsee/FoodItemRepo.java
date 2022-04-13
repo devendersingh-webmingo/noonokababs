@@ -8,9 +8,6 @@ import java.util.List;
 public class FoodItemRepo {
 
 
-
-
-
     @SerializedName("status")
     @Expose
     private Boolean status;
@@ -208,8 +205,6 @@ public class FoodItemRepo {
             }
 
 
-
-
             public static class Datum {
 
                 @SerializedName("id")
@@ -284,9 +279,24 @@ public class FoodItemRepo {
                 @SerializedName("created_at")
                 @Expose
                 private String createdAt;
+
                 @SerializedName("updated_at")
                 @Expose
                 private String updatedAt;
+
+
+                @SerializedName("avg_rating")
+                @Expose
+                private String avg_rating;
+                @SerializedName("total_rating")
+                @Expose
+                private String total_rating;
+
+
+                @SerializedName("rating")
+                @Expose
+                private String rating;
+
                 @SerializedName("deleted_at")
                 @Expose
                 private Object deletedAt;
@@ -296,6 +306,30 @@ public class FoodItemRepo {
                 @SerializedName("get_single_price")
                 @Expose
                 private GetSinglePrice getSinglePrice;
+
+                public String getAvg_rating() {
+                    return avg_rating;
+                }
+
+                public String getRating() {
+                    return rating;
+                }
+
+                public void setRating(String rating) {
+                    this.rating = rating;
+                }
+
+                public void setAvg_rating(String avg_rating) {
+                    this.avg_rating = avg_rating;
+                }
+
+                public String getTotal_rating() {
+                    return total_rating;
+                }
+
+                public void setTotal_rating(String total_rating) {
+                    this.total_rating = total_rating;
+                }
 
                 public Integer getId() {
                     return id;

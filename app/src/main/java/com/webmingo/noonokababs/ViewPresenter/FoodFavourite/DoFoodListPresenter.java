@@ -22,7 +22,57 @@ public class DoFoodListPresenter {
     }
 
 
-    public void DoFoodList(Context context,String Page) {
+    public void DoFoodCategoriesList(Context context, String Key) {
+        Call<FoodItemRepo> loginCall = ApiManager.getApi(context).Categoriesitem(Key);
+        view.showHideProgress(true);
+        loginCall.enqueue(new Callback<FoodItemRepo>() {
+            @Override
+            public void onResponse(Call<FoodItemRepo> call, Response<FoodItemRepo> response) {
+                view.showHideProgress(false);
+
+                if (response.isSuccessful() && response.body() != null && response.code() == 200) {
+                    try {
+                        view.onDoFoodCategoriesSuccess(response.body(), response.message());
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                } else if (response.code() == 500) {
+                    try {
+                        String errorStr = response.errorBody().string();
+                        JSONObject jsonObject = new JSONObject(errorStr);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("message");
+
+                        view.onDoFoodListError(jsonObject1.getString("error"));
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        view.onDoFoodListError(String.valueOf(response.code()));
+                    }
+
+                } else if (response.code() == 401) {
+                    try {
+                        String errorStr = response.errorBody().string();
+                        JSONObject jsonObject = new JSONObject(errorStr);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("message");
+                        view.onDoFoodListError(jsonObject1.getString("error"));
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        view.onDoFoodListError(String.valueOf(response.code()));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FoodItemRepo> call, Throwable t) {
+                view.onDoFoodListFailure(t);
+                view.showHideProgress(false);
+
+            }
+        });
+
+    }
+
+
+    public void DoFoodList(Context context, String Page) {
         Call<FoodItemRepo> loginCall = ApiManager.getApi(context).GetFoodItem(Page);
         view.showHideProgress(true);
         loginCall.enqueue(new Callback<FoodItemRepo>() {
@@ -71,7 +121,8 @@ public class DoFoodListPresenter {
 
     }
 
-    public void DoAddOrRemoveFavourite(Context context,String id) {
+
+    public void DoAddOrRemoveFavourite(Context context, String id) {
         Call<ResponseBody> loginCall = ApiManager.getApi(context).AddorRemoveFavourite(id);
         view.showHideProgress(true);
         loginCall.enqueue(new Callback<ResponseBody>() {
@@ -84,8 +135,7 @@ public class DoFoodListPresenter {
 
                         String errorStr = response.body().string();
                         JSONObject jsonObject = new JSONObject(errorStr);
-                        String message= jsonObject.getString("message");
-
+                        String message = jsonObject.getString("message");
 
 
                         view.onDoAddorRemoveFavouriteSuccess(response.body(), message);
@@ -128,12 +178,17 @@ public class DoFoodListPresenter {
     }
 
 
-
     public interface DoFoodListView {
 
         void onDoFoodListError(String message);
+
         void onDoFoodListSuccess(FoodItemRepo response, String message);
+
+        void onDoFoodCategoriesSuccess(FoodItemRepo response, String message);
+
+
         void onDoAddorRemoveFavouriteSuccess(ResponseBody response, String message);
+
         void showHideProgress(boolean isShow);
 
         void onDoFoodListFailure(Throwable t);

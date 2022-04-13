@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -54,6 +55,9 @@ public class EditProfileFragment extends Fragment implements DoProfileUpdateDeta
     DoProfileUpdateDetailsPresenter profileUpdateDetailsPresenter;
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
+    ImageView mLogo;
+    String key;
+
     public EditProfileFragment() {
     }
 
@@ -73,8 +77,36 @@ public class EditProfileFragment extends Fragment implements DoProfileUpdateDeta
         view = binding.getRoot();
         profileUpdateDetailsPresenter = new DoProfileUpdateDetailsPresenter(this);
         profileUpdateDetailsPresenter.UserProfileinfo(getContext());
+        mLogo = (ImageView) getActivity().findViewById(R.id.profile_Image);
 
         binding.emailET.setText(SharedPrefManager.getInstance(getContext()).GetEmail());
+
+
+      /*  Intent intentReceived = getActivity().getIntent();
+        Bundle data = intentReceived.getExtras();
+        if(data != null){
+            restaurantUsername = data.getString("Restaurant Username");
+        }else{
+            restaurantUsername = "";
+        }*/
+
+
+
+
+        try {
+            if (getArguments().getString("Key") != null) {
+                key = getArguments().getString("Key");
+                if (key.equalsIgnoreCase("No")) {
+                   // binding.adrressLL.setVisibility(View.GONE);
+                    Toast.makeText(getContext(), key + "", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        }catch (Exception e)
+        {
+
+        }
+
 
 
         binding.UpdateProfile.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +135,7 @@ public class EditProfileFragment extends Fragment implements DoProfileUpdateDeta
 
         return binding.getRoot();
     }
+
     public void On_click_OpenGallery() {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(gallery, PICK_IMAGE);
@@ -143,11 +176,11 @@ public class EditProfileFragment extends Fragment implements DoProfileUpdateDeta
 
             imageUri = data.getData();
             binding.ivProfilePhoto.setImageURI(imageUri);
+            mLogo.setImageURI(imageUri);
 
             //circleImageView.setImageURI(imageUri);
             if (path != null && !path.equals("")) {
                 File file = new File(path);
-
 
 
                 uploadImage(file);
@@ -164,7 +197,7 @@ public class EditProfileFragment extends Fragment implements DoProfileUpdateDeta
         MultipartBody.Part image = MultipartBody.Part.createFormData("image", file.getName(), requestFile);
         RequestBody _method = RequestBody.create(MediaType.parse("multipart/form-data"), "put");
 
-        profileUpdateDetailsPresenter.uploadImage(image,_method,getContext());
+        profileUpdateDetailsPresenter.uploadImage(image, _method, getContext());
     }
 
     private void UpdateProfile() {
@@ -223,7 +256,7 @@ public class EditProfileFragment extends Fragment implements DoProfileUpdateDeta
 
             Snacky.builder()
                     .setActivity(getActivity())
-                    .setText("The address field is required.")
+                    .setText("The About Me field is required.")
                     .setTextColor(getResources().getColor(R.color.white))
                     .warning()
                     .show();
@@ -303,15 +336,23 @@ public class EditProfileFragment extends Fragment implements DoProfileUpdateDeta
                 binding.dobET.setText(String.valueOf(response.getData().getUserInfo().getDob()));
             }
 
-            if (response.getData().getUserInfo().getAddress() != null) {
-                binding.addressET.setText(String.valueOf(response.getData().getUserInfo().getAddress()));
+            if (response.getData().getUserInfo().getAboutMe() != null) {
+                binding.addressET.setText(String.valueOf(response.getData().getUserInfo().getAboutMe()));
             }
 
 
             if (response.getData().getUserInfo().getProfilePhoto() != null) {
+
+
+                Glide.with(getContext())
+                        .load(response.getData().getImageBaseUrl() + response.getData().getUserInfo().getProfilePhoto())
+                        .into(mLogo);
+
+
                 Glide.with(getContext())
                         .load(response.getData().getImageBaseUrl() + response.getData().getUserInfo().getProfilePhoto())
                         .into(binding.ivProfilePhoto);
+
             }
 
 
@@ -346,8 +387,7 @@ public class EditProfileFragment extends Fragment implements DoProfileUpdateDeta
 
     @Override
     public void onUploadProfileImageSuccess(UpdateNameAddressRepo response, String message) {
-        if (message.equalsIgnoreCase("ok"))
-        {
+        if (message.equalsIgnoreCase("ok")) {
             Snacky.builder()
                     .setActivity(getActivity())
                     .setText(response.getMessage())

@@ -72,7 +72,7 @@ public class FoodDetailsOfferRepo {
 
             @SerializedName("id")
             @Expose
-            private Integer id;
+            private String id;
             @SerializedName("code")
             @Expose
             private String code;
@@ -90,13 +90,13 @@ public class FoodDetailsOfferRepo {
             private String foodItems;
             @SerializedName("discount")
             @Expose
-            private Integer discount;
+            private String discount;
             @SerializedName("max_discount")
             @Expose
-            private Integer maxDiscount;
+            private String maxDiscount;
             @SerializedName("min_order")
             @Expose
-            private Integer minOrder;
+            private String minOrder;
             @SerializedName("start_date")
             @Expose
             private String startDate;
@@ -108,7 +108,7 @@ public class FoodDetailsOfferRepo {
             private String applyFor;
             @SerializedName("usages")
             @Expose
-            private Integer usages;
+            private String usages;
             @SerializedName("status")
             @Expose
             private String status;
@@ -122,11 +122,11 @@ public class FoodDetailsOfferRepo {
             @Expose
             private String updatedAt;
 
-            public Integer getId() {
+            public String getId() {
                 return id;
             }
 
-            public void setId(Integer id) {
+            public void setId(String id) {
                 this.id = id;
             }
 
@@ -170,27 +170,27 @@ public class FoodDetailsOfferRepo {
                 this.foodItems = foodItems;
             }
 
-            public Integer getDiscount() {
+            public String getDiscount() {
                 return discount;
             }
 
-            public void setDiscount(Integer discount) {
+            public void setDiscount(String discount) {
                 this.discount = discount;
             }
 
-            public Integer getMaxDiscount() {
+            public String getMaxDiscount() {
                 return maxDiscount;
             }
 
-            public void setMaxDiscount(Integer maxDiscount) {
+            public void setMaxDiscount(String maxDiscount) {
                 this.maxDiscount = maxDiscount;
             }
 
-            public Integer getMinOrder() {
+            public String getMinOrder() {
                 return minOrder;
             }
 
-            public void setMinOrder(Integer minOrder) {
+            public void setMinOrder(String minOrder) {
                 this.minOrder = minOrder;
             }
 
@@ -218,11 +218,11 @@ public class FoodDetailsOfferRepo {
                 this.applyFor = applyFor;
             }
 
-            public Integer getUsages() {
+            public String getUsages() {
                 return usages;
             }
 
-            public void setUsages(Integer usages) {
+            public void setUsages(String usages) {
                 this.usages = usages;
             }
 

@@ -2,16 +2,20 @@ package com.webmingo.noonokababs.ViewPresenter.UserAddressBook;
 
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.AddAddressRequest;
+import com.webmingo.noonokababs.ModelRepo.Responsee.GetAddressIDRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.UserAddressBook.CityRepoID;
 import com.webmingo.noonokababs.ModelRepo.Responsee.UserAddressBook.CountryRepoID;
 import com.webmingo.noonokababs.ModelRepo.Responsee.UserAddressBook.AddNewAddressRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.UserAddressBook.GetUserAddressRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.UserAddressBook.StateRepoID;
 import com.webmingo.noonokababs.Rtrofit.ApiManager;
 
 import org.json.JSONObject;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -222,12 +226,118 @@ public class AddUserAddressPresenter {
 
     }
 
+    public void getidAddress(Context context,String id) {
+        Call<GetAddressIDRepo> loginCall = ApiManager.getApi(context).getidAddress(id);
+        view.showHideProgress(true);
+        loginCall.enqueue(new Callback<GetAddressIDRepo>() {
+            @Override
+            public void onResponse(Call<GetAddressIDRepo> call, Response<GetAddressIDRepo> response) {
+                view.showHideProgress(false);
+
+
+                if (response.isSuccessful() && response.body() != null && response.code() == 200) {
+                    try {
+                        view.ongetidAddressSuccess(response.body(), response.message());
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                } else if (response.code() == 500) {
+                    try {
+                        String errorStr = response.errorBody().string();
+                        JSONObject jsonObject = new JSONObject(errorStr);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("message");
+
+                        view.onGetUserAddressError(jsonObject1.getString("error"));
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        view.onGetUserAddressError(String.valueOf(response.code()));
+                    }
+
+                } else if (response.code() == 401) {
+                    try {
+                        String errorStr = response.errorBody().string();
+                        JSONObject jsonObject = new JSONObject(errorStr);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("message");
+                        view.onGetUserAddressError(jsonObject1.getString("error"));
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        view.onGetUserAddressError(String.valueOf(response.code()));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetAddressIDRepo> call, Throwable t) {
+                view.onGetUserAddressFailure(t);
+                view.showHideProgress(false);
+
+            }
+        });
+
+    }
+
+    public void UpdateAddress(Context context, String id ,AddAddressRequest addAddressRequest) {
+        Call<AddNewAddressRepo> loginCall = ApiManager.getApi(context).UpdateAddress(id,addAddressRequest);
+        view.showHideProgress(true);
+        loginCall.enqueue(new Callback<AddNewAddressRepo>() {
+            @Override
+            public void onResponse(Call<AddNewAddressRepo> call, Response<AddNewAddressRepo> response) {
+                view.showHideProgress(false);
+
+                if (response.isSuccessful() && response.body() != null && response.code() == 200) {
+                    try {
+                        view.onUpdateAddressSuccess(response.body(), response.message());
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                } else if (response.code() == 500) {
+                    try {
+                        String errorStr = response.errorBody().string();
+                        JSONObject jsonObject = new JSONObject(errorStr);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("message");
+
+                        view.onGetUserAddressError(jsonObject1.getString("error"));
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        view.onGetUserAddressError(String.valueOf(response.code()));
+                    }
+
+                } else if (response.code() == 401) {
+                    try {
+                        String errorStr = response.errorBody().string();
+                        JSONObject jsonObject = new JSONObject(errorStr);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("message");
+                        view.onGetUserAddressError(jsonObject1.getString("error"));
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        view.onGetUserAddressError(String.valueOf(response.code()));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AddNewAddressRepo> call, Throwable t) {
+                view.onGetUserAddressFailure(t);
+                view.showHideProgress(false);
+
+            }
+        });
+
+    }
+
+
+
     public interface AddUserAddressView {
 
         void onGetUserAddressError(String message);
 
 
         void onAddAddressSuccess(AddNewAddressRepo response, String message);
+        void ongetidAddressSuccess(GetAddressIDRepo response, String message);
+
+        void onUpdateAddressSuccess(AddNewAddressRepo response, String message);
+
+
 
         void onCountrySuccess(CountryRepoID response, String message);
 

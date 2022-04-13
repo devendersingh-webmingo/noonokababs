@@ -33,6 +33,24 @@ public class AddAddressRequest {
     @Expose
     private String set_as_default;
 
+
+    @SerializedName("_method")
+    @Expose
+    private String method;
+
+    public AddAddressRequest(String address, String mobile_number, String country, String state, String city, String pincode, String address_type, String set_as_default, String method) {
+        this.address = address;
+        this.mobile_number = mobile_number;
+        this.country = country;
+        this.state = state;
+        this.city = city;
+        this.pincode = pincode;
+        this.address_type = address_type;
+        this.set_as_default = set_as_default;
+        this.method = method;
+    }
+
+
     public AddAddressRequest(String address, String mobile_number, String country, String state, String city, String pincode, String address_type, String set_as_default) {
 
         this.address = address;

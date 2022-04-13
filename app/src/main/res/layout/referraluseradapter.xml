@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    android:layout_margin="2dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+
+            app:cardCornerRadius="12dp"
+            app:cardElevation="10dp"
+            app:contentPadding="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:gravity="center"
+                        android:id="@+id/LL"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                      >
+
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/ivProfilePic"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/nofound" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/LLL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/LL"
+                        android:gravity="left"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/UserIdTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_toRightOf="@+id/LL"
+                            android:padding="5dp"
+                            android:text="UAMI91262021"
+                            android:fontFamily="@font/robotomedium"
+                            android:textColor="#232323"
+                            android:textSize="13dp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/nameTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_toRightOf="@+id/LL"
+                            android:paddingLeft="5dp"
+                            android:text="User"
+                            android:fontFamily="@font/robotomedium"
+                            android:textColor="#232323"
+                            android:textSize="13dp"
+                             />
+
+
+                        <TextView
+                            android:id="@+id/emailTv"
+                            android:maxLines="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/choosefile"
+                            android:layout_toRightOf="@+id/LL"
+                            android:fontFamily="@font/robotomedium"
+                            android:paddingLeft="5dp"
+                            android:text="usXXXX.com"
+                            android:textColor="#232323"
+                            android:textSize="12dp" />
+                        <TextView
+                            android:fontFamily="@font/robotomedium"
+
+                            android:id="@+id/numberTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/choosefile"
+                            android:layout_toRightOf="@+id/LL"
+                            android:paddingLeft="5dp"
+                            android:text="9898XXXXXX"
+                            android:textColor="#232323"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:visibility="gone"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_toEndOf="@+id/LLL"
+                        android:gravity="right"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/rupessTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_margin="5dp"
+                            android:layout_toRightOf="@+id/LL"
+                            android:padding="5dp"
+                            android:text="\u20B9 0"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="80dp"
+
+                            android:layout_height="30dp"
+                            android:layout_margin="5dp"
+                            app:cardBackgroundColor="@color/orange"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="10dp">
+
+                            <TextView
+                                android:id="@+id/StatusTV"
+                                android:layout_width="match_parent"
+
+                                android:layout_height="match_parent"
+
+                                android:layout_below="@+id/choosefile"
+                                android:layout_gravity="center"
+                                android:layout_toRightOf="@+id/LL"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="Success"
+
+                                android:textColor="@color/white"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>

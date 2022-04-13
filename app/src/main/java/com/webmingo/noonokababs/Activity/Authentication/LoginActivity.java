@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.webmingo.noonokababs.Adapters.CountrySpinnerAdapter;
+import com.webmingo.noonokababs.MainActivity;
 import com.webmingo.noonokababs.Modal.Cuntorymodel;
 import com.webmingo.noonokababs.ModelRepo.Responsee.CountryRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.OTPSendRepo;
@@ -26,7 +27,7 @@ import java.util.List;
 
 import de.mateware.snacky.Snacky;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener, CountryPresenter.CountryView , DoSendOtpCreateUserPresenter.DoSendOtpCreateUserView{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, CountryPresenter.CountryView, DoSendOtpCreateUserPresenter.DoSendOtpCreateUserView {
     ActivityLoginBinding activityLoginBinding;
 
     TextView MoveToSuccess;
@@ -47,9 +48,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void findViewById() {
         MoveToSuccess = findViewById(R.id.MoveToSuccess);
 
-        doSendOtpCreateUserPresenter= new DoSendOtpCreateUserPresenter(this);
+        doSendOtpCreateUserPresenter = new DoSendOtpCreateUserPresenter(this);
         presenter = new CountryPresenter(this);
-        presenter.CountryRepo(this);
+       // presenter.CountryRepo(this);
+        activityLoginBinding.skipTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
 
         //OnClickListeners
         setOnClickListener();
@@ -65,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.MoveToSuccess:
                 //startActivity(new Intent(LoginActivity.this, Succes.class));
                 DORegister();
-            break;
+                break;
         }
     }
 
@@ -84,14 +93,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onDoSendOtpCreateUserSuccess(OTPSendRepo response, String message) {
 
 
+        if (message.equalsIgnoreCase("ok")) {
 
 
-        if (message.equalsIgnoreCase("ok"))
-        {
-
-
-
-         //   Toast.makeText(this, response.getMessage(), Toast.LENGTH_SHORT).show();
+            //   Toast.makeText(this, response.getMessage(), Toast.LENGTH_SHORT).show();
 
 
             Intent intent = new Intent(LoginActivity.this, VerifiyOTPActivity.class);// New activity
@@ -103,8 +108,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
             Toast.makeText(this, response.getData().getOtp() + "", Toast.LENGTH_SHORT).show();
-
-
 
 
         }
@@ -141,9 +144,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             activityLoginBinding.SpinnerCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    activityLoginBinding.etNumber.setText("+"+list.get(position).getPhonecode());
-                    Countryid=list.get(position).getId();
-                    Phonecode=list.get(position).getPhonecode();
+                    activityLoginBinding.etNumber.setText("+" + list.get(position).getPhonecode());
+                    Countryid = list.get(position).getId();
+                    Phonecode = list.get(position).getPhonecode();
                 }
 
                 @Override
@@ -180,26 +183,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void DORegister() {
-        Email=activityLoginBinding.emailET.getText().toString().trim();
+        Email = activityLoginBinding.emailET.getText().toString().trim();
 
 
         if (Email.trim().isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
             Snacky.builder()
                     .setActivity(LoginActivity.this)
-                    .setText("Email or Mobile number field must be required.")
+                    .setText("Email  field must be required.")
                     .setTextColor(getResources().getColor(R.color.white))
                     .warning()
                     .show();
-        }
-        else if (Countryid.equalsIgnoreCase("0"))
-        {
-                Snacky.builder()
-                .setActivity(LoginActivity.this)
-                .setText("The country field is required.")
-                .setTextColor(getResources().getColor(R.color.white))
-                .warning()
-                .show();
-        }else {
+        } /*else if (Countryid.equalsIgnoreCase("0")) {
+            Snacky.builder()
+                    .setActivity(LoginActivity.this)
+                    .setText("The country field is required.")
+                    .setTextColor(getResources().getColor(R.color.white))
+                    .warning()
+                    .show();
+        } */else {
             ShowemailDialog();
 
         }
@@ -229,7 +230,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onClick(View v) {
 
-                doSendOtpCreateUserPresenter.DoSendOtpCreateUser(LoginActivity.this,Countryid,Phonecode,Email);
+                doSendOtpCreateUserPresenter.DoSendOtpCreateUser(LoginActivity.this, "231", "1", Email);
                 alertDialog.dismiss();
             }
         });

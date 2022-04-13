@@ -57,6 +57,32 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
+        activityWelcomeBinding.TermsofService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent in=new Intent(WelcomeActivity.this,PrivacyPolicyActivity.class);
+                in.putExtra("key","TermsofService");
+                startActivity(in);
+
+               // Toast.makeText(WelcomeActivity.this, "TermsofService", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        activityWelcomeBinding.PrivacyPolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent in=new Intent(WelcomeActivity.this,PrivacyPolicyActivity.class);
+                in.putExtra("key","PrivacyPolicy");
+                startActivity(in);
+
+            }
+        });
+
+
+
+
     }
 
     @Override

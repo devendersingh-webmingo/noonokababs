@@ -69,8 +69,10 @@ public class AddressBookFragment extends Fragment implements GetUserAddressPrese
         binding.btnAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.mapsFragment
-                );
+                Bundle bundle = new Bundle();
+                bundle.putString("id", "id");
+                navController.navigate(R.id.mapsFragment, bundle);
+
 
 
             }
@@ -94,7 +96,7 @@ public class AddressBookFragment extends Fragment implements GetUserAddressPrese
     @Override
     public void onGetUserAddressSuccess(GetUserAddressRepo response, String message) {
 
-        Toast.makeText(getContext(), response.getData().getAddressBooks().getData().size() + "", Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(getContext(), response.getData().getAddressBooks().getData().size() + "", Toast.LENGTH_SHORT).show();
 
         if (message.equalsIgnoreCase("ok")) {
             if (response.getData().getAddressBooks().getData().size() > 0) {
@@ -114,13 +116,23 @@ public class AddressBookFragment extends Fragment implements GetUserAddressPrese
     @Override
     public void DeleteAddressSuccess(ResponseBody response, String message) {
 
-        Toast.makeText(getContext(), message+"", Toast.LENGTH_SHORT).show();
         if (message.equalsIgnoreCase("ok"))
         {
             presenter.GetUserAddressList(getContext());
+            Toast.makeText(getContext(), "Address Deleted Sucecssfully.", Toast.LENGTH_LONG).show();
 
         }
 
+    }
+
+    @Override
+    public void SetasDeaultAddressSuccess(ResponseBody response, String message) {
+        if (message.equalsIgnoreCase("ok"))
+        {
+            presenter.GetUserAddressList(getContext());
+            Toast.makeText(getContext(), "This Address Successfully Added As A Default Address.", Toast.LENGTH_LONG).show();
+
+        }
     }
 
     @Override
@@ -148,7 +160,14 @@ public class AddressBookFragment extends Fragment implements GetUserAddressPrese
     public void EditAdapterClickk(GetUserAddressRepo repo, int pos) {
 
 
-        Toast.makeText(getContext(), "Edit", Toast.LENGTH_SHORT).show();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("id", String.valueOf(repo.getData().getAddressBooks().getData().get(pos).getId()));
+       // GetUserAddressRepo getUserAddressRepo=new GetUserAddressRepo();
+       // bundle.putParcelable("",repo.getData().getAddressBooks());
+        navController.navigate(R.id.mapsFragment, bundle);
+
+
 
     }
 
@@ -160,6 +179,11 @@ public class AddressBookFragment extends Fragment implements GetUserAddressPrese
         AlertDialogBox(String.valueOf(repo.getData().getAddressBooks().getData().get(pos).getId()));
     }
 
+    @Override
+    public void SetasDefeultClickk(GetUserAddressRepo repo, int pos) {
+        presenter.SetasDeaultAddress(getContext(), String.valueOf(repo.getData().getAddressBooks().getData().get(pos).getId()));
+
+    }
 
 
     public void AlertDialogBox(String Addressid) {
@@ -197,4 +221,6 @@ public class AddressBookFragment extends Fragment implements GetUserAddressPrese
         // show it
         alertDialog.show();
     }
+
+
 }

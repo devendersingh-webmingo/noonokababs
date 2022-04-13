@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bgcolor"
+        android:orientation="vertical"
+        tools:context=".Fragments.DrawerLayoutFragment.OrderHistoryDetailsFragment">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+
+
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:id="@+id/orderhsitoryLL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/ordernumbertv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:fontFamily="@font/latomedium"
+                    android:justificationMode="inter_word"
+                    android:text="Your  Orders"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/productlistRV"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/orderdetailsadapter" />
+
+
+                <View
+
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="15dp"
+                    android:background="@color/tab_indicator_gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+
+                    android:layout_marginRight="8dp"
+
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:fontFamily="@font/latomedium"
+                            android:gravity="left"
+                            android:text="Order date &amp; Time"
+                            android:textColor="#CC000000"
+                            android:textSize="12dp" />
+
+
+                        <TextView
+                            android:id="@+id/serve_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+
+                            android:fontFamily="@font/latomedium"
+                            android:gravity="left"
+                            android:text="04-Sep-2021"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
+
+                        <TextView
+                            android:id="@+id/Serve_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/latomedium"
+
+                            android:gravity="left"
+                            android:text="12:30 PM"
+                            android:textColor="@color/black"
+                            android:textSize="12dp"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/PartnerLL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_margin="2dp"
+
+                        android:gravity="right"
+                        android:orientation="horizontal"
+
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/partnerinformation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2dp"
+                            android:orientation="vertical"
+
+                            android:padding="5dp"
+
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:fontFamily="@font/robotomedium"
+                                android:gravity="left"
+                                android:text="Partner Information"
+                                android:textColor="@color/black"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:id="@+id/VaccinatedTv"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/robotomedium"
+                                android:gravity="left"
+                                android:text="vaccinated Yes"
+                                android:textColor="#B3000000"
+                                android:textSize="10dp" />
+
+                            <TextView
+
+                                android:id="@+id/PartnerNameTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="15dp"
+                                android:layout_marginTop="4dp"
+                                android:drawableRight="@drawable/ic_call"
+                                android:fontFamily="@font/robotomedium"
+                                android:gravity="left"
+                                android:text="New | 9792315669"
+
+                                android:textColor="#B3000000"
+                                android:textSize="10dp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+
+                            android:layout_margin="3dp"
+                            android:gravity="center"
+
+                            android:orientation="vertical"
+
+                            android:visibility="gone">
+
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/PartnerImage"
+                                android:layout_width="40dp"
+
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/nofound" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/tab_indicator_gray" />
+
+
+                <RelativeLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+
+                    android:layout_marginRight="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/latomedium"
+                        android:text="MRP:"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/mrp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+
+                        android:fontFamily="@font/latomedium"
+                        android:text="$ "
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+
+                    android:layout_marginRight="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/latomedium"
+                        android:text="Pre-Discount:"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+
+                        android:id="@+id/prediscount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+
+                        android:fontFamily="@font/latomedium"
+                        android:text="$ "
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+
+                    android:layout_marginRight="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/latomedium"
+                        android:text="Coupon Discount:"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/coupondiscount"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+
+                        android:fontFamily="@font/latomedium"
+                        android:text="$ "
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+
+                    android:layout_marginRight="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/latomedium"
+                        android:text="Subtotal:"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/subtotal"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+
+                        android:fontFamily="@font/latomedium"
+                        android:text="$ "
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+
+                    android:layout_marginRight="15dp">
+
+                    <TextView
+                        android:id="@+id/taxname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/latomedium"
+                        android:text="SGST TAX (30%):"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/txt"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+
+                        android:fontFamily="@font/latomedium"
+                        android:text="$ "
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+
+                    android:layout_marginRight="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/latomedium"
+                        android:text="Gratuity :"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/Gratuitytv"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+
+                        android:fontFamily="@font/latomedium"
+                        android:text="$ "
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tip_amountRL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/latomedium"
+                        android:text="Tip Amount :"
+
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tip_amount"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+
+                        android:fontFamily="@font/latomedium"
+                        android:text="$ "
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tip_percentRL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/latomedium"
+                        android:text="Tip Percent :"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tip_percent"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+
+                        android:fontFamily="@font/latomedium"
+                        android:text="$ "
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+
+                    android:layout_marginRight="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/latomedium"
+                        android:text="Total:"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/total"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+
+                        android:fontFamily="@font/latomedium"
+                        android:text="$ "
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/tab_indicator_gray" />
+
+
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+
+</layout>
+
+

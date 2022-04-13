@@ -44,6 +44,21 @@ public class FoodCartViewRepo {
 
 
     public class Data {
+        @Override
+        public String toString() {
+            return "Data{" +
+                    "cartDetails=" + cartDetails +
+                    ", mrpTotalAmount='" + mrpTotalAmount + '\'' +
+                    ", preDiscountAmount='" + preDiscountAmount + '\'' +
+                    ", couponDiscountAmount='" + couponDiscountAmount + '\'' +
+                    ", subTotalAmount='" + subTotalAmount + '\'' +
+                    ", taxAmount='" + taxAmount + '\'' +
+                    ", taxPercent='" + taxPercent + '\'' +
+                    ", taxName='" + taxName + '\'' +
+                    ", billingAmount='" + billingAmount + '\'' +
+                    ", total_discount_amount='" + total_discount_amount + '\'' +
+                    '}';
+        }
 
         @SerializedName("cart_details")
         @Expose
@@ -72,6 +87,18 @@ public class FoodCartViewRepo {
         @SerializedName("billing_amount")
         @Expose
         private String billingAmount;
+
+        @SerializedName("total_discount_amount")
+        @Expose
+        private String total_discount_amount;
+
+        public String getTotal_discount_amount() {
+            return total_discount_amount;
+        }
+
+        public void setTotal_discount_amount(String total_discount_amount) {
+            this.total_discount_amount = total_discount_amount;
+        }
 
         public List<CartDetail> getCartDetails() {
             return cartDetails;
@@ -151,12 +178,27 @@ public class FoodCartViewRepo {
             @SerializedName("food")
             @Expose
             private Food food;
+
             @SerializedName("required_item")
             @Expose
-            private Object requiredItem;
+            private RequiredItem requiredItem;
+
+
+
             @SerializedName("cooking_level")
             @Expose
-            private Object cookingLevel;
+            private CookingLevel   cookingLevel;
+
+            @SerializedName("varient")
+            @Expose
+            private Varient varient;
+
+            @SerializedName("quantity")
+            @Expose
+            private String quantity;
+
+
+
             @SerializedName("ingredients")
             @Expose
             private List<Ingredient> ingredients = null;
@@ -175,19 +217,34 @@ public class FoodCartViewRepo {
                 this.food = food;
             }
 
-            public Object getRequiredItem() {
+            public RequiredItem getRequiredItem() {
                 return requiredItem;
             }
 
-            public void setRequiredItem(Object requiredItem) {
+            public void setRequiredItem(RequiredItem requiredItem) {
                 this.requiredItem = requiredItem;
             }
 
-            public Object getCookingLevel() {
+            public Varient getVarient() {
+                return varient;
+            }
+
+            public void setVarient(Varient varient) {
+                this.varient = varient;
+            }
+
+            public String getQuantity() {
+                return quantity;
+            }
+
+            public void setQuantity(String quantity) {
+                this.quantity = quantity;
+            }
+            public CookingLevel  getCookingLevel() {
                 return cookingLevel;
             }
 
-            public void setCookingLevel(Object cookingLevel) {
+            public void setCookingLevel(CookingLevel  cookingLevel) {
                 this.cookingLevel = cookingLevel;
             }
 
@@ -373,6 +430,25 @@ public class FoodCartViewRepo {
                     this.getFood = getFood;
                 }
 
+                @Override
+                public String toString() {
+                    return "Addon{" +
+                            "id=" + id +
+                            ", name='" + name + '\'' +
+                            ", foodId=" + foodId +
+                            ", quantityId=" + quantityId +
+                            ", price='" + price + '\'' +
+                            ", discount=" + discount +
+                            ", finalPrice='" + finalPrice + '\'' +
+                            ", stockQuantity='" + stockQuantity + '\'' +
+                            ", addon='" + addon + '\'' +
+                            ", required=" + required +
+                            ", requiredPrice=" + requiredPrice +
+                            ", createdAt='" + createdAt + '\'' +
+                            ", updatedAt='" + updatedAt + '\'' +
+                            ", getFood=" + getFood +
+                            '}';
+                }
 
                 public class GetFood {
 
@@ -938,6 +1014,356 @@ public class FoodCartViewRepo {
                     this.updatedAt = updatedAt;
                 }
 
+            }
+
+
+            public class RequiredItem {
+
+                @SerializedName("id")
+                @Expose
+                private Integer id;
+                @SerializedName("name")
+                @Expose
+                private String name;
+                @SerializedName("quantity")
+                @Expose
+                private String quantity;
+                @SerializedName("description")
+                @Expose
+                private String description;
+                @SerializedName("status")
+                @Expose
+                private String status;
+                @SerializedName("created_at")
+                @Expose
+                private String createdAt;
+                @SerializedName("updated_at")
+                @Expose
+                private String updatedAt;
+
+                public Integer getId() {
+                    return id;
+                }
+
+                public void setId(Integer id) {
+                    this.id = id;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public String getQuantity() {
+                    return quantity;
+                }
+
+                public void setQuantity(String quantity) {
+                    this.quantity = quantity;
+                }
+
+                public String getDescription() {
+                    return description;
+                }
+
+                public void setDescription(String description) {
+                    this.description = description;
+                }
+
+                public String getStatus() {
+                    return status;
+                }
+
+                public void setStatus(String status) {
+                    this.status = status;
+                }
+
+                public String getCreatedAt() {
+                    return createdAt;
+                }
+
+                public void setCreatedAt(String createdAt) {
+                    this.createdAt = createdAt;
+                }
+
+                public String getUpdatedAt() {
+                    return updatedAt;
+                }
+
+                public void setUpdatedAt(String updatedAt) {
+                    this.updatedAt = updatedAt;
+                }
+
+            }
+
+
+            public class Varient {
+
+                @SerializedName("id")
+                @Expose
+                private Integer id;
+                @SerializedName("name")
+                @Expose
+                private String name;
+                @SerializedName("food_id")
+                @Expose
+                private Integer foodId;
+                @SerializedName("quantity_id")
+                @Expose
+                private Integer quantityId;
+                @SerializedName("price")
+                @Expose
+                private String price;
+                @SerializedName("discount")
+                @Expose
+                private Object discount;
+                @SerializedName("final_price")
+                @Expose
+                private String finalPrice;
+                @SerializedName("stock_quantity")
+                @Expose
+                private String stockQuantity;
+                @SerializedName("addon")
+                @Expose
+                private String addon;
+                @SerializedName("required")
+                @Expose
+                private Object required;
+                @SerializedName("required_price")
+                @Expose
+                private Object requiredPrice;
+                @SerializedName("created_at")
+                @Expose
+                private String createdAt;
+                @SerializedName("updated_at")
+                @Expose
+                private String updatedAt;
+
+                public Integer getId() {
+                    return id;
+                }
+
+                public void setId(Integer id) {
+                    this.id = id;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public Integer getFoodId() {
+                    return foodId;
+                }
+
+                public void setFoodId(Integer foodId) {
+                    this.foodId = foodId;
+                }
+
+                public Integer getQuantityId() {
+                    return quantityId;
+                }
+
+                public void setQuantityId(Integer quantityId) {
+                    this.quantityId = quantityId;
+                }
+
+                public String getPrice() {
+                    return price;
+                }
+
+                public void setPrice(String price) {
+                    this.price = price;
+                }
+
+                public Object getDiscount() {
+                    return discount;
+                }
+
+                public void setDiscount(Object discount) {
+                    this.discount = discount;
+                }
+
+                public String getFinalPrice() {
+                    return finalPrice;
+                }
+
+                public void setFinalPrice(String finalPrice) {
+                    this.finalPrice = finalPrice;
+                }
+
+                public String getStockQuantity() {
+                    return stockQuantity;
+                }
+
+                public void setStockQuantity(String stockQuantity) {
+                    this.stockQuantity = stockQuantity;
+                }
+
+                public String getAddon() {
+                    return addon;
+                }
+
+                public void setAddon(String addon) {
+                    this.addon = addon;
+                }
+
+                public Object getRequired() {
+                    return required;
+                }
+
+                public void setRequired(Object required) {
+                    this.required = required;
+                }
+
+                public Object getRequiredPrice() {
+                    return requiredPrice;
+                }
+
+                public void setRequiredPrice(Object requiredPrice) {
+                    this.requiredPrice = requiredPrice;
+                }
+
+                public String getCreatedAt() {
+                    return createdAt;
+                }
+
+                public void setCreatedAt(String createdAt) {
+                    this.createdAt = createdAt;
+                }
+
+                public String getUpdatedAt() {
+                    return updatedAt;
+                }
+
+                public void setUpdatedAt(String updatedAt) {
+                    this.updatedAt = updatedAt;
+                }
+
+            }
+            public class CookingLevel {
+
+                @SerializedName("id")
+                @Expose
+                private Integer id;
+                @SerializedName("food_id")
+                @Expose
+                private Object foodId;
+                @SerializedName("type")
+                @Expose
+                private String type;
+                @SerializedName("name")
+                @Expose
+                private String name;
+                @SerializedName("price")
+                @Expose
+                private Object price;
+                @SerializedName("status")
+                @Expose
+                private String status;
+                @SerializedName("remark")
+                @Expose
+                private Object remark;
+                @SerializedName("created_at")
+                @Expose
+                private String createdAt;
+                @SerializedName("updated_at")
+                @Expose
+                private String updatedAt;
+
+                public Integer getId() {
+                    return id;
+                }
+
+                public void setId(Integer id) {
+                    this.id = id;
+                }
+
+                public Object getFoodId() {
+                    return foodId;
+                }
+
+                public void setFoodId(Object foodId) {
+                    this.foodId = foodId;
+                }
+
+                public String getType() {
+                    return type;
+                }
+
+                public void setType(String type) {
+                    this.type = type;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public Object getPrice() {
+                    return price;
+                }
+
+                public void setPrice(Object price) {
+                    this.price = price;
+                }
+
+                public String getStatus() {
+                    return status;
+                }
+
+                public void setStatus(String status) {
+                    this.status = status;
+                }
+
+                public Object getRemark() {
+                    return remark;
+                }
+
+                public void setRemark(Object remark) {
+                    this.remark = remark;
+                }
+
+                public String getCreatedAt() {
+                    return createdAt;
+                }
+
+                public void setCreatedAt(String createdAt) {
+                    this.createdAt = createdAt;
+                }
+
+                public String getUpdatedAt() {
+                    return updatedAt;
+                }
+
+                public void setUpdatedAt(String updatedAt) {
+                    this.updatedAt = updatedAt;
+                }
+
+            }
+
+
+            @Override
+            public String toString() {
+                return "CartDetail{" +
+                        "food=" + food +
+                        ", requiredItem=" + requiredItem +
+                        ", cookingLevel=" + cookingLevel +
+                        ", varient=" + varient +
+                        ", quantity='" + quantity + '\'' +
+                        ", ingredients=" + ingredients +
+                        ", specialRequest='" + specialRequest + '\'' +
+                        ", addons=" + addons +
+                        '}';
             }
         }
 

@@ -349,6 +349,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/adrressLL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -371,16 +372,17 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="5dp"
-                        android:text="Address"
+                        android:text="About Me"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                     <EditText
+                        android:background="@drawable/allsideborder"
                         android:id="@+id/addressET"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="80dp"
                         android:layout_marginLeft="5dp"
-                        android:hint="70 Bowman St South Windsor, CT 06074 US"
+                        android:hint=""
                         android:textColor="#585858"
                         android:textSize="13sp"
                         android:textStyle="bold" />

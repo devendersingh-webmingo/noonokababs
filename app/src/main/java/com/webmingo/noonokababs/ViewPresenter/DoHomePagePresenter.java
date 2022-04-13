@@ -3,7 +3,9 @@ package com.webmingo.noonokababs.ViewPresenter;
 
 import android.content.Context;
 
+import com.webmingo.noonokababs.ModelRepo.RequestRepo.ViewCartRequest;
 import com.webmingo.noonokababs.ModelRepo.Responsee.DashboardRepo;
+import com.webmingo.noonokababs.ModelRepo.cart.FoodCartViewRepo;
 import com.webmingo.noonokababs.Rtrofit.ApiManager;
 
 import org.json.JSONObject;
@@ -70,7 +72,58 @@ public class DoHomePagePresenter {
 
     }
 
-  
+
+    public void FoodAddToCart(Context context, ViewCartRequest viewCartRequest) {
+        Call<FoodCartViewRepo> loginCall = ApiManager.getApi(context).FoodCartView(viewCartRequest);
+        view.showHideProgress(true);
+        loginCall.enqueue(new Callback<FoodCartViewRepo>() {
+            @Override
+            public void onResponse(Call<FoodCartViewRepo> call, Response<FoodCartViewRepo> response) {
+                view.showHideProgress(false);
+
+
+                if (response.isSuccessful() && response.body() != null && response.code() == 200) {
+
+                    view.onFoodCartSuccess(response.body(), response.message());
+
+                } /*else {
+                    view.onDoHomePageError(String.valueOf(response.code()));
+
+                }*/
+                     if (response.code() == 500) {
+                    try {
+                        String errorStr = response.errorBody().string();
+                        JSONObject jsonObject = new JSONObject(errorStr);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("message");
+
+                        view.onDoHomePageError(jsonObject1.getString("error"));
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        view.onDoHomePageError(String.valueOf(response.code()));
+                    }
+
+                } else if (response.code() == 401) {
+                    try {
+                        String errorStr = response.errorBody().string();
+                        JSONObject jsonObject = new JSONObject(errorStr);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("message");
+                        view.onDoHomePageError(jsonObject1.getString("error"));
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        view.onDoHomePageError(String.valueOf(response.code()));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FoodCartViewRepo> call, Throwable t) {
+                view.onDoHomePageFailure(t);
+                view.showHideProgress(false);
+
+            }
+        });
+
+    }
 
 
     public interface DoHomePageView {
@@ -83,5 +136,7 @@ public class DoHomePagePresenter {
         void showHideProgress(boolean isShow);
 
         void onDoHomePageFailure(Throwable t);
+
+        void onFoodCartSuccess(FoodCartViewRepo body, String message);
     }
 }

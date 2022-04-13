@@ -16,8 +16,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiManager {
 
 
-    private static final String BASE_URl = "https://miraclesaba.xyz/restaurant/api/";
+//    private static final String BASE_URl = "https://miraclesaba.xyz/restaurant/api/";
 
+    private static final String BASE_URl ="https://miraclesaba.xyz/noon-o-kabab/api/";
     private static Retrofit retrofit = null;
     private static OkHttpClient okHttpClient;
     private static int REQUEST_TIMEOUT = 30;

@@ -13,6 +13,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.rjesture.startupkit.AppTools;
@@ -86,6 +87,10 @@ public class FoodDetailFragment extends Fragment implements DoFoodDetailsPresent
                 Bundle bundle = new Bundle();
                 bundle.putString("id", id);
                 navController.navigate(R.id.addtoCartDetailsFragment, bundle);
+
+
+                Toast.makeText(getContext(), id + "", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -143,30 +148,24 @@ public class FoodDetailFragment extends Fragment implements DoFoodDetailsPresent
             binding.remark.setText(Html.fromHtml(response.getData().getFoodDetail().getRemark()));
             binding.timimg.setText(response.getData().getFoodDetail().getDeliveryTime());
             binding.tvPrice.setText("$" + response.getData().getFoodDetail().getGetVarients().get(0).getPrice());
+            binding.Avergeratingtv.setText( response.getData().getFoodDetail().getTotal_rating());
+            binding.TotalRatingTV.setText(response.getData().getFoodDetail().getRating()+"+ Rating");
 
-
+            binding.textRating.setRating(Float.parseFloat(String.valueOf(response.getData().getFoodDetail().getRating())));
 
 
             Glide.with(getContext())
                     .load(response.getData().getImageBaseUrl() + response.getData().getFoodDetail().getGetGallery().get(0).getImage())
                     .into(binding.foodIV);
-
-
             presenter.DoFoodoffer(getContext(), id);
-
-            if (Integer.valueOf(response.getData().getFoodDetail().getGetVarients().get(0).getStockQuantity())>0)
-            {
+            if (Integer.valueOf(response.getData().getFoodDetail().getGetVarients().get(0).getStockQuantity()) > 0) {
                 binding.nextproduced.setVisibility(View.VISIBLE);
                 binding.outofstockTV.setVisibility(View.GONE);
             }
 
+
         }
-        Snacky.builder()
-                .setActivity(getActivity())
-                .setText(message)
-                .setTextColor(getResources().getColor(R.color.white))
-                .warning()
-                .show();
+
     }
 
     @Override

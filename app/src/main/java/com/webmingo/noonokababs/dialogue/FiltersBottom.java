@@ -81,6 +81,8 @@ public class FiltersBottom extends BottomSheetDialogFragment implements Filterbo
                 args.putString("popular", popular);
                 args.putString("neww", neww);
 
+                args.putString("id", "no");
+
                 safeHealthFragment.setArguments(args);
                 fragmentTransaction.replace(R.id.main, safeHealthFragment);
                 fragmentTransaction.addToBackStack(null);

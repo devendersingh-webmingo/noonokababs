@@ -23,6 +23,7 @@ import com.webmingo.noonokababs.Adapters.FoodFavourite.favouirteFoodItemAdapter;
 import com.webmingo.noonokababs.ModelRepo.Responsee.FoodFavourit.FavouritefoodsRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.FoodItemRepo;
 import com.webmingo.noonokababs.R;
+import com.webmingo.noonokababs.SharedPrefernce.SharedPrefManager;
 import com.webmingo.noonokababs.Utils.util;
 import com.webmingo.noonokababs.ViewPresenter.FoodFavourite.DoFoodListPresenter;
 import com.webmingo.noonokababs.ViewPresenter.FoodFavourite.DoFoodfavouriteListPresenter;
@@ -71,6 +72,13 @@ public class FavoritesFragment extends Fragment implements DoFoodfavouriteListPr
 
         presenter = new DoFoodfavouriteListPresenter(this);
         presenter.DoFoodfavouriteList(getContext());
+        binding.AddFavTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                navController.navigate(R.id.foodFragment);
+            }
+        });
         return binding.getRoot();
     }
 
@@ -192,7 +200,6 @@ public class FavoritesFragment extends Fragment implements DoFoodfavouriteListPr
         Bundle bundle = new Bundle();
         bundle.putString("id", String.valueOf(repo.getData().getFavFoods().getData().get(pos).getId()));
         navController.navigate(R.id.foodDetailFragment, bundle);
-
 
 
     }

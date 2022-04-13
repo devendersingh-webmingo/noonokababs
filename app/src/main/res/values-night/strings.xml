@@ -2,4 +2,9 @@
 <resources>
     <string name="explore_food_items">Explore Food Items</string>
     <string name="_555">$ 555</string>
+    <string name="get_in_touch">Get in Touch</string>
+    <string name="success_msg">Your order has been placed successfully!
+
+Please check your email for more details. For any question and further information, please contact our customer support.</string>
+
 </resources>

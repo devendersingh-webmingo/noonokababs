@@ -31,9 +31,9 @@
                 android:layout_alignParentLeft="true" />
 
 
-            <ImageView
-                android:id="@+id/profile_Image"
+            <de.hdodenhof.circleimageview.CircleImageView
 
+                android:id="@+id/profile_Image"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center"
@@ -44,6 +44,8 @@
                 android:layout_toLeftOf="@+id/switchIV"
                 android:layout_toRightOf="@+id/settingIV"
                 android:src="@drawable/user_pic" />
+
+
 
             <ImageView
 

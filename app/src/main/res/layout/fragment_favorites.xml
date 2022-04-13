@@ -22,7 +22,6 @@
 
             <LinearLayout
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_marginTop="10dp"
 
                 android:layout_width="match_parent"
@@ -31,18 +30,64 @@
                 android:paddingBottom="5dp">
 
 
-                <TextView
+                <androidx.cardview.widget.CardView
                     android:visibility="gone"
-                    android:layout_margin="3dp"
                     android:id="@+id/tvCall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/awesome"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:text="No Data Found"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="25dp"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="5dp"
+                            app:srcCompat="@drawable/nofoodfound"
+                            tools:ignore="VectorDrawableCompat"
+                            app:tint="@color/orange" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+
+                            android:text="No  Favourite Food found!"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+
+
+                        <TextView
+                            android:id="@+id/AddFavTV"
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="30dp"
+                            android:background="@drawable/btn_click_black_rectangle_with_semicircle_edge"
+                            android:backgroundTint="@color/orange"
+                            android:fontFamily="@font/robotoregular"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Add to Favourite"
+                            android:textColor="@color/white"
+                            />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView_food_items"
