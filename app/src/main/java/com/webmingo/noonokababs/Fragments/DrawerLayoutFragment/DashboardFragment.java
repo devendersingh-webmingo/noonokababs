@@ -28,6 +28,7 @@ import com.webmingo.noonokababs.ViewPresenter.OrderHistoryPresenter;
 import com.webmingo.noonokababs.databinding.FragmentAccountBinding;
 
 import de.mateware.snacky.Snacky;
+import okhttp3.ResponseBody;
 
 public class DashboardFragment extends Fragment implements OrderHistoryPresenter.OrderHistoryView, YourRecentOrdersAdapter.YourRecentOrdersClick {
 
@@ -117,6 +118,11 @@ public class DashboardFragment extends Fragment implements OrderHistoryPresenter
     }
 
     @Override
+    public void onCancelorderSuccess(ResponseBody response, String message) {
+
+    }
+
+    @Override
     public void showHideProgress(boolean isShow) {
         if (isShow) {
             AppTools.showRequestDialog(getActivity());
@@ -148,6 +154,16 @@ public class DashboardFragment extends Fragment implements OrderHistoryPresenter
         navController.navigate(R.id.orderHistoryDetailsFragment, bundle);
 
 //        Toast.makeText(getContext(), repo.getData().getOrders().get(pos).getStatus() + "", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void OnClickCancelOrder(AllHistoryRepo repo, int pos) {
+
+
+
+
+
+
     }
 
     @Override

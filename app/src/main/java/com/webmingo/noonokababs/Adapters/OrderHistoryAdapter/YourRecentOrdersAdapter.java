@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,6 +45,22 @@ public class YourRecentOrdersAdapter extends RecyclerView.Adapter<YourRecentOrde
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
 
+
+        if (modelArrayList.getData().getOrders().get(position).getStatus().equalsIgnoreCase("Pending")) {
+            holder.tvcancelOrder.setVisibility(View.VISIBLE);
+            holder.tvcancelOrder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    itemClickListenerr.OnClickCancelOrder(modelArrayList, position);
+
+
+                }
+            });
+
+
+        }
+
+
         holder.OrderidTV.setText("Order:-" + modelArrayList.getData().getOrders().get(position).getOrderId());
 
         holder.DateTV.setText(modelArrayList.getData().getOrders().get(position).getOrderDatetime());
@@ -65,7 +82,7 @@ public class YourRecentOrdersAdapter extends RecyclerView.Adapter<YourRecentOrde
             holder.ratingLL.setVisibility(View.VISIBLE);
 
 
-        }else {
+        } else {
             holder.ratingLL.setVisibility(View.GONE);
         }
 
@@ -105,7 +122,7 @@ public class YourRecentOrdersAdapter extends RecyclerView.Adapter<YourRecentOrde
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
-        TextView OrderidTV, DateTV, nameTV, RemarkTv, amounTV, quentityTv, totalamounttv, statustv;
+        TextView OrderidTV, DateTV, nameTV, RemarkTv, amounTV, quentityTv, totalamounttv, statustv, tvcancelOrder;
         ImageView productIV;
         LinearLayout moredetailsLL, ratingLL;
 
@@ -113,7 +130,7 @@ public class YourRecentOrdersAdapter extends RecyclerView.Adapter<YourRecentOrde
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             OrderidTV = itemView.findViewById(R.id.OrderidTV);
-
+            tvcancelOrder = itemView.findViewById(R.id.tvcancelOrder);
             DateTV = itemView.findViewById(R.id.DateTV);
             nameTV = itemView.findViewById(R.id.nameTV);
             RemarkTv = itemView.findViewById(R.id.RemarkTv);
@@ -133,6 +150,9 @@ public class YourRecentOrdersAdapter extends RecyclerView.Adapter<YourRecentOrde
 
 
         void OnClickItemOrderdetails(AllHistoryRepo repo, int pos);
+
+        void OnClickCancelOrder(AllHistoryRepo repo, int pos);
+
 
         void OnClickItemRating(AllHistoryRepo repo, int pos);
 

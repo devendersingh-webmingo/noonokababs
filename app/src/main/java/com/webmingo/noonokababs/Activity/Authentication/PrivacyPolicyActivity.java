@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rjesture.startupkit.AppTools;
+import com.webmingo.noonokababs.ModelRepo.Responsee.RefoundPolicyRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.TermCondition;
 import com.webmingo.noonokababs.R;
 import com.webmingo.noonokababs.ViewPresenter.DoTermConditionPresenter;
@@ -98,6 +99,11 @@ public class PrivacyPolicyActivity extends AppCompatActivity implements DoTermCo
 
         }
 
+
+    }
+
+    @Override
+    public void onDoRefoundPolicySuccess(RefoundPolicyRepo response, String message) {
 
     }
 

@@ -10,6 +10,7 @@
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/drawable/circle_black.xml" value="0.1675" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/drawable/dotted.xml" value="0.1675" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/drawable/graybutton.xml" value="0.1675" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.1965" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/drawable/ic_checked.xml" value="0.1675" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/drawable/ic_searchicon.xml" value="0.1675" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/drawable/linedotted.xml" value="0.1675" />
@@ -17,15 +18,16 @@
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/drawable/shape.xml" value="0.14375" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/drawable/yellowcircle.xml" value="0.1675" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/activity_check_out.xml" value="0.16" />
-        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/activity_main.xml" value="0.18854166666666666" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/activity_privacy_policy.xml" value="0.33" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/activity_success.xml" value="0.15885416666666666" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/activity_verifiy_o_t_p.xml" value="0.15885416666666666" />
-        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/activity_welcome.xml" value="0.5" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/activity_welcome.xml" value="0.22" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/alertdialog.xml" value="0.2" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/alertdialoglogin.xml" value="0.22" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/bottomsheetmap.xml" value="0.15885416666666666" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/cancelorderalertbox.xml" value="0.2" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/cartprice.xml" value="0.1875" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/changepasswordbottom.xml" value="0.2" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/choosebranch_adapter.xml" value="0.1" />
@@ -34,7 +36,9 @@
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/dialog_add_to_cart.xml" value="0.12552083333333333" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/dialog_success.xml" value="0.14" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/editemaillayout.xml" value="0.2" />
-        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fooditemadapter.xml" value="0.1875" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/explore_food_items.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/explorecategories.xml" value="0.33" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fooditemadapter.xml" value="0.25" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_account.xml" value="0.25" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_add_cart.xml" value="0.14" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_address_book.xml" value="0.18854166666666666" />
@@ -44,16 +48,19 @@
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_contactsupport.xml" value="0.25" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_edit_profile.xml" value="0.33" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_favorites.xml" value="0.20416666666666666" />
-        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_food.xml" value="0.1875" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_food.xml" value="0.22" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_food_detail.xml" value="0.18325434439178515" />
-        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_maps.xml" value="0.16510416666666666" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_order_history_details.xml" value="0.25" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_orderhistory.xml" value="0.1875" />
-        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_profile.xml" value="0.18854166666666666" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_privacy_policy.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_profile.xml" value="0.16" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_refund_policy.xml" value="0.1265625" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_reviews.xml" value="0.22" />
-        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_sendfeedback.xml" value="0.18854166666666666" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_sendfeedback.xml" value="0.2" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_support.xml" value="0.2" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/fragment_terms_conditions.xml" value="0.14" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/guestreviewlayot.xml" value="0.1546875" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/guestreviewsadapter.xml" value="0.18854166666666666" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/header_layout.xml" value="0.18854166666666666" />
@@ -62,11 +69,11 @@
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/layoutstriplayout.xml" value="0.14" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/mediareview.xml" value="0.15885416666666666" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/mediareviewsadapter.xml" value="0.25" />
-        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/orderhistoryitem.xml" value="0.159375" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/orderhistoryitem.xml" value="0.25" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/productadonselistcart_adapter.xml" value="0.18854166666666666" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/layout/productlistcart_adapter.xml" value="0.25" />
         <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/menu/drawer_manu.xml" value="0.18854166666666666" />
-        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/menu/main.xml" value="0.15677083333333333" />
+        <entry key="..\:/Android sourcecode/webmingo/NoonOKababs/app/src/main/res/menu/main.xml" value="0.5" />
       </map>
     </option>
   </component>

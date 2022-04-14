@@ -35,8 +35,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
                 if (!util.isNetworkConnected(WelcomeActivity.this)) {
-
-
                     Snacky.builder()
                             .setActivity(WelcomeActivity.this)
                             .setText("No Internet, Reconnect and Retry !")

@@ -228,9 +228,27 @@ public class FoodItemRepo {
                 @SerializedName("remark")
                 @Expose
                 private String remark;
+
+
+
                 @SerializedName("meta_title")
                 @Expose
                 private String metaTitle;
+
+
+
+                @SerializedName("in_stock")
+                @Expose
+                private String in_stock;
+
+                public String getIn_stock() {
+                    return in_stock;
+                }
+
+                public void setIn_stock(String in_stock) {
+                    this.in_stock = in_stock;
+                }
+
                 @SerializedName("keyword")
                 @Expose
                 private String keyword;

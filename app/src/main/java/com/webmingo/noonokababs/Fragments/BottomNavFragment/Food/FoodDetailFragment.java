@@ -158,7 +158,14 @@ public class FoodDetailFragment extends Fragment implements DoFoodDetailsPresent
                     .load(response.getData().getImageBaseUrl() + response.getData().getFoodDetail().getGetGallery().get(0).getImage())
                     .into(binding.foodIV);
             presenter.DoFoodoffer(getContext(), id);
-            if (Integer.valueOf(response.getData().getFoodDetail().getGetVarients().get(0).getStockQuantity()) > 0) {
+
+
+
+
+            Toast.makeText(getContext(), response.getData().getFoodDetail().getIn_stock()+" ", Toast.LENGTH_SHORT).show();
+            if (response.getData().getFoodDetail().getIn_stock().equalsIgnoreCase("Yes")) {
+
+
                 binding.nextproduced.setVisibility(View.VISIBLE);
                 binding.outofstockTV.setVisibility(View.GONE);
             }

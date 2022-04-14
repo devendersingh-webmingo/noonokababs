@@ -154,9 +154,25 @@ public class FoodDetailsRepo {
             @SerializedName("mandatory")
             @Expose
             private Object mandatory;
+
+
             @SerializedName("created_at")
             @Expose
             private String createdAt;
+
+
+            @SerializedName("in_stock")
+            @Expose
+            private String in_stock;
+
+            public String getIn_stock() {
+                return in_stock;
+            }
+
+            public void setIn_stock(String in_stock) {
+                this.in_stock = in_stock;
+            }
+
             @SerializedName("updated_at")
             @Expose
             private String updatedAt;

@@ -95,15 +95,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         presenter = new DoLogoutPresenter(this);
         switchIV = navHeader.findViewById(R.id.switchIV);
         username = navHeader.findViewById(R.id.nav_username);
-        profile_Image= navHeader.findViewById(R.id.profile_Image);
+        profile_Image = navHeader.findViewById(R.id.profile_Image);
         relative_cart = findViewById(R.id.relative_cart);
         presenter.DoName(MainActivity.this);
         switchIV.setOnClickListener(this);
         relative_cart.setOnClickListener(this);
     }
+
     @Override
     public void onBackPressed() {
-
 
 
         int fragmentsInStack = getSupportFragmentManager().getBackStackEntryCount();
@@ -162,9 +162,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
               }*/
         else {
 
-          super.onBackPressed();
+            super.onBackPressed();
 
-           // navController.getGraph().getLabel()
+            // navController.getGraph().getLabel()
 
             //navController.toString();
 
@@ -233,7 +233,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         R.id.contactsupportFragment,
                         R.id.legalFragment,
                         R.id.sendfeedbackFragment,
-                        R.id.reviewsFragment})
+                        R.id.reviewsFragment,
+                        R.id.termsConditionsFragment,
+                        R.id.RefundPolicy
+
+
+
+                })
                 .setDrawerLayout(drawer)
                 .build();
         NavigationUI.setupWithNavController(navigationView, navController);
@@ -266,6 +272,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         || destination.getId() == R.id.chackoutFragment
                         || destination.getId() == R.id.DashboardFragment
                         || destination.getId() == R.id.orderHistoryDetailsFragment
+                        || destination.getId() == R.id.termsConditionsFragment
 
 
                 ) {
@@ -317,7 +324,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             prefsEditor.remove("viewCartRequest");
             prefsEditor.apply();
 
-
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
 /*
 
             SharedPreferences mPrefs = getActivity().getPreferences(MODE_PRIVATE);
@@ -336,8 +344,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editor.apply();
 */
 
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
+
         }
 
     }

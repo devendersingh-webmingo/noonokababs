@@ -113,7 +113,7 @@
     <fragment
         android:id="@+id/sendfeedbackFragment"
         android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.SendfeedbackFragment"
-        android:label="Send feedback"
+        android:label="Privacy Policy"
         tools:layout="@layout/fragment_sendfeedback" />
     <fragment
         android:id="@+id/legalFragment"
@@ -213,6 +213,17 @@
         android:id="@+id/activitylogin"
         android:name="com.webmingo.noonokababs.Activity.Authentication.LoginActivity"
         />
+    <fragment
+        tools:layout="@layout/fragment_terms_conditions"
+
+        android:id="@+id/termsConditionsFragment"
+        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Policy.TermsConditionsFragment"
+        android:label="Terms &amp; Conditions" />
+    <fragment
+        tools:layout="@layout/fragment_refund_policy"
+        android:id="@+id/RefundPolicy"
+        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Policy.RefundPolicyFragment"
+        android:label="Refund Policy" />
 
 
 </navigation>

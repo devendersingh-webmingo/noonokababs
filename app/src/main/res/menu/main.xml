@@ -19,12 +19,12 @@
         android:title="FOOD"
         android:menuCategory="secondary"/>
 
-
+<!--
     <item
         android:id="@id/menuFragment"
         android:icon="@drawable/ic_menu"
         android:title="MENU"
-        android:menuCategory="secondary"/>
+        android:menuCategory="secondary"/>-->
     <item
         android:id="@id/profileFragment"
         android:icon="@drawable/ic_profil"

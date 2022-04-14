@@ -1,4 +1,4 @@
-package com.webmingo.noonokababs.Fragments.DrawerLayoutFragment;
+package com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Policy;
 
 import android.os.Bundle;
 
@@ -10,42 +10,42 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.rjesture.startupkit.AppTools;
 import com.webmingo.noonokababs.ModelRepo.Responsee.RefoundPolicyRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.TermCondition;
 import com.webmingo.noonokababs.R;
-import com.webmingo.noonokababs.SharedPrefernce.SharedPrefManager;
-import com.webmingo.noonokababs.ViewPresenter.DoProfileUpdateDetailsPresenter;
 import com.webmingo.noonokababs.ViewPresenter.DoTermConditionPresenter;
-import com.webmingo.noonokababs.databinding.FragmentSendfeedbackBinding;
+import com.webmingo.noonokababs.databinding.FragmentTermsConditionsBinding;
 
 import de.mateware.snacky.Snacky;
 
-public class SendfeedbackFragment extends Fragment implements DoTermConditionPresenter.DoTermConditionView {
-
-
-    FragmentSendfeedbackBinding binding;
+public class TermsConditionsFragment extends Fragment implements DoTermConditionPresenter.DoTermConditionView {
+    FragmentTermsConditionsBinding binding;
     private View view;
     DoTermConditionPresenter presenter;
 
-
-    public SendfeedbackFragment() {
+    public TermsConditionsFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sendfeedback, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_terms_conditions, container, false);
         view = binding.getRoot();
-        presenter = new DoTermConditionPresenter(this);
-        presenter.DopolicyVerify(getContext());
+        presenter=new DoTermConditionPresenter(this);
+        presenter.DoTermConditionVerify(getContext());
+
+
 
 
         return binding.getRoot();
@@ -84,11 +84,11 @@ public class SendfeedbackFragment extends Fragment implements DoTermConditionPre
     public void showHideProgress(boolean isShow) {
         if (isShow) {
             AppTools.showRequestDialog(getActivity());
-            binding.LLSendFeedback.setVisibility(View.GONE);
+            binding.LLTermsCondition.setVisibility(View.GONE);
 
         } else {
             AppTools.hideDialog();
-            binding.LLSendFeedback.setVisibility(View.VISIBLE);
+            binding.LLTermsCondition.setVisibility(View.VISIBLE);
 
         }
 

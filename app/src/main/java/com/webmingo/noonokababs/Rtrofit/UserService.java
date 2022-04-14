@@ -32,6 +32,7 @@ import com.webmingo.noonokababs.ModelRepo.Responsee.OTPSendRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.OTPVerificationRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.ReferralRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.ReferredUserListingRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.RefoundPolicyRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.SearchCategoriesRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.SearchRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.Stripee.ConnectionTokenRepo;
@@ -421,6 +422,11 @@ public interface UserService {
     Call<TermCondition> Termconditions(
 
     );
+    @GET("home/refund/policy")
+    Call<RefoundPolicyRepo> RefoundPolicy(
+
+    );
+
 
 
     @GET("home/policy")
@@ -455,6 +461,18 @@ public interface UserService {
     );
 
 
+
+    @GET("user/deactivate/account")
+    Call<ResponseBody> DeactivateAccount(
+    );
+
+    @FormUrlEncoded
+    @POST("user/cancel/order")
+    Call<ResponseBody> Cancelorder(
+            @Field("order_id") String order_id,
+            @Field("reason") String reason
+
+    );
     //review
     //  https://miraclesaba.xyz/restaurant/api/user/card/{card_id}
 }

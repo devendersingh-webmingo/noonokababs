@@ -180,11 +180,12 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/googleconnectedTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginBottom="10dp"
-                        android:text="Not connected"
+                        android:text="Not Connected"
                         android:textColor="#585858"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -199,6 +200,7 @@
 
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -246,6 +248,7 @@
 
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -257,6 +260,7 @@
                 android:textStyle="bold" />
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -306,6 +310,7 @@
 
 
             <TextView
+                android:id="@+id/deactivateAccountTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"

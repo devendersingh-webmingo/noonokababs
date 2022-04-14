@@ -59,19 +59,34 @@
                     android:title="Invite Friends" />
                 <item
                     android:id="@+id/sendfeedbackFragment"
-                    android:icon="@drawable/ic_sendfeedback"
-                    android:title="Send feedback" />
+                    android:icon="@drawable/ic_legal"
+                    android:title="Privacy Policy" />
+
+                <item
+                    android:id="@+id/termsConditionsFragment"
+                    android:icon="@drawable/ic_legal"
+                    android:title="Terms &amp; Conditions " />
+
+                <item
+                    android:id="@+id/RefundPolicy"
+                    android:icon="@drawable/ic_legal"
+                    android:title="Refund Policy" />
+
+
                 <item
                     android:id="@+id/reviewsFragment"
                     android:icon="@drawable/ic_sendfeedback"
                     android:title="Reviews " />
+<!--
 
                 <item
+                    android:visible="false"
                     android:id="@+id/legalFragment"
                     android:checkable="false"
                     android:checked="false"
                     android:icon="@drawable/ic_legal"
                     android:title="Legal" />
+-->
 
 
             </group>

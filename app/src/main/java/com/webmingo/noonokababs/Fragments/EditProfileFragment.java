@@ -317,6 +317,11 @@ public class EditProfileFragment extends Fragment implements DoProfileUpdateDeta
     }
 
     @Override
+    public void onDoDeactivateAccountSuccess(ResponseBody response, String message) {
+
+    }
+
+    @Override
     public void onDoUserProfileinfoSuccess(UserProfileinfo response, String message) {
 
 

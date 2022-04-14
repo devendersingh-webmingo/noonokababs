@@ -123,9 +123,10 @@ public class DoProfileUpdateDetailsPresenter {
         });
 
     }
-    public void uploadImage(MultipartBody.Part image, RequestBody _method, Context context){
+
+    public void uploadImage(MultipartBody.Part image, RequestBody _method, Context context) {
         view.showHideProgress(true);
-        Call<UpdateNameAddressRepo> call = ApiManager.getApi(context).uploadPic(image,_method);
+        Call<UpdateNameAddressRepo> call = ApiManager.getApi(context).uploadPic(image, _method);
         call.enqueue(new Callback<UpdateNameAddressRepo>() {
             @Override
             public void onResponse(Call<UpdateNameAddressRepo> call, Response<UpdateNameAddressRepo> response) {
@@ -156,7 +157,7 @@ public class DoProfileUpdateDetailsPresenter {
 
                 if (response.isSuccessful() && response.body() != null && response.code() == 200) {
                     try {
-                        view.onUploadProfileImageSuccess(response.body(),response.message());
+                        view.onUploadProfileImageSuccess(response.body(), response.message());
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
@@ -185,7 +186,6 @@ public class DoProfileUpdateDetailsPresenter {
                 }
 
 
-
             }
 
             @Override
@@ -197,13 +197,69 @@ public class DoProfileUpdateDetailsPresenter {
         });
 
     }
+
+
+    public void DeactivateAccount(Context context) {
+        Call<ResponseBody> loginCall = ApiManager.getApi(context).DeactivateAccount();
+        view.showHideProgress(true);
+        loginCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                view.showHideProgress(false);
+
+                if (response.isSuccessful() && response.body() != null && response.code() == 200) {
+                    try {
+                        view.onDoDeactivateAccountSuccess(response.body(), response.message());
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                } else if (response.code() == 500) {
+                    try {
+                        String errorStr = response.errorBody().string();
+                        JSONObject jsonObject = new JSONObject(errorStr);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("message");
+
+                        view.onProfileUpdateDetailsError(jsonObject1.getString("error"));
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        view.onProfileUpdateDetailsError(String.valueOf(response.code()));
+                    }
+
+                } else if (response.code() == 401) {
+                    try {
+                        String errorStr = response.errorBody().string();
+                        JSONObject jsonObject = new JSONObject(errorStr);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("message");
+                        view.onProfileUpdateDetailsError(jsonObject1.getString("error"));
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        view.onProfileUpdateDetailsError(String.valueOf(response.code()));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                view.onProfileUpdateDetailsFailure(t);
+                view.showHideProgress(false);
+
+            }
+        });
+
+    }
+
+
     public interface DoProfileUpdateDetailsView {
 
         void onProfileUpdateDetailsError(String message);
 
 
         void onDoProfileUpdateDetailsSuccess(ResponseBody response, String message);
+
+        void onDoDeactivateAccountSuccess(ResponseBody response, String message);
+
         void onDoUserProfileinfoSuccess(UserProfileinfo response, String message);
+
         void onUploadProfileImageSuccess(UpdateNameAddressRepo response, String message);
 
 
