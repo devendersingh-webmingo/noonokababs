@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/LLTermsCondition"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical"
+        tools:context=".Fragments.DrawerLayoutFragment.SendfeedbackFragment">
+        <!--
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:justificationMode="inter_word"
+                  android:fontFamily="@font/latomedium"
+                  android:textColor="@color/text_color"
+                  android:layout_marginTop="40dp"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginRight="15dp"
+                  android:text="For immediate help, Customer support to address your issue."/>
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:justificationMode="inter_word"
+                  android:fontFamily="@font/latomedium"
+                  android:textColor="@color/text_color"
+                  android:layout_marginTop="05dp"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginRight="15dp"
+                  android:text="This form is for feedback on the mobile app only"/>
+
+              <EditText
+                  android:id="@+id/enterfeedback"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginTop="30dp"
+                  android:layout_marginRight="15dp"
+                  android:background="@drawable/allsideborder"
+                  android:ems="10"
+                  android:fontFamily="@font/librefranklinblack"
+                  android:gravity="start|top"
+                  android:hint="Write your feedback"
+                  android:inputType="textMultiLine"
+                  android:lines="10"
+                  android:textStyle="normal"
+                  android:padding="15dp"
+                  android:textColor="@color/text_color"
+                  android:textColorHint="#cacaca"
+                  android:textSize="14dp" />
+
+              <TextView
+                  android:id="@+id/AgreeandContinue"
+                  android:layout_width="match_parent"
+                  android:layout_height="50dp"
+                  android:layout_gravity="bottom"
+                  android:layout_marginTop="150dp"
+                  android:layout_marginRight="15dp"
+                  android:layout_marginLeft="15dp"
+
+                  android:background="@drawable/btn_click_black_rectangle_with_semicircle_edge"
+                  android:fontFamily="@font/arciform"
+                  android:gravity="center"
+                  android:padding="5dp"
+                  android:text="Send"
+                  android:textColor="@color/white"
+                  android:textSize="18dp" />
+        -->
+
+        <TextView
+
+            android:id="@+id/headingtv"
+            android:drawablePadding="10dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="04/08/1998 By William Rice"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/titletv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="04/08/1998 By William Rice"
+            android:textColor="#101010"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:layout_margin="4dp"
+            android:justificationMode="inter_word"
+            android:scrollbars="vertical"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedolorm reminusto doeiusmod tempor incidition ulla mco laboris nisi ut aliquip ex ea commo condorico consectetur adipiscing elitut aliquip. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedolorm reminusto doeiusmod tempor incidition ulla mco laboris nisi ut aliquip ex ea commo condorico consectetur adipiscing elitut aliquip. Lorem ipsum dolor sit amet consectetur adipiscing elit."
+            android:textColor="#101010"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+</layout>
