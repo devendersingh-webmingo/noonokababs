@@ -40,6 +40,19 @@ public class ExploreFoodItemAdapter extends RecyclerView.Adapter<ExploreFoodItem
 
 
 
+
+
+        if (modelArrayList.getData().getFoodItems().get(position).getIn_stock().equalsIgnoreCase("No")) {
+
+
+            holder.outofstockIV.setVisibility(View.VISIBLE);
+
+
+
+        }
+
+
+
         holder.tv_title.setText(modelArrayList.getData().getFoodItems().get(position).getName());
 
         holder.tv_description.setText(modelArrayList.getData().getFoodItems().get(position).getDescription());
@@ -82,14 +95,17 @@ public class ExploreFoodItemAdapter extends RecyclerView.Adapter<ExploreFoodItem
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView, IV_corss;
+        ImageView imageView, IV_corss,outofstockIV;
         TextView tv_title, tv_description, tvPrice, tvCutPrice, tv_discount;
         LinearLayout clickRL;
 
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
+
             imageView = itemView.findViewById(R.id.imageView);
+
+            outofstockIV = itemView.findViewById(R.id.outofstockIV);
             tv_title = itemView.findViewById(R.id.tv_title);
             tv_description = itemView.findViewById(R.id.tv_description);
             tvPrice = itemView.findViewById(R.id.tvPrice);

@@ -32,6 +32,7 @@
 
 
             <TextView
+                android:id="@+id/titleTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -44,6 +45,8 @@
 
 
             <TextView
+                android:id="@+id/SubtitleTv"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -51,11 +54,13 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="Newspaper Name: Chicago Tribune"
-                android:textColor="@color/black"
+                android:textColor="#E6000000"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/Descriptiontv"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -64,19 +69,19 @@
 
                 android:justificationMode="inter_word"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedolorm reminusto doeiusmod tempor incidition ulla mco laboris nisi ut aliquip ex ea commo condorico consectetur adipiscing elitut aliquip. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedolorm reminusto doeiusmod tempor incidition ulla mco laboris nisi ut aliquip ex ea commo condorico consectetur adipiscing elitut aliquip. Lorem ipsum dolor sit amet consectetur adipiscing elit."
-                android:textColor="#101010"
+                android:textColor="#CC101010"
                 android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/clientnamedateTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:gravity="center"
-                android:textStyle="bold"
 
                 android:text="04/08/1998 By William Rice"
-                android:textColor="#101010"
+                android:textColor="#E6101010"
                 android:textSize="15dp" />
 
 

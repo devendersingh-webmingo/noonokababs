@@ -1,21 +1,45 @@
 package com.webmingo.noonokababs.Rtrofit;
 
 
+import com.webmingo.noonokababs.ModelRepo.FooddetailRateRepo;
+import com.webmingo.noonokababs.ModelRepo.Orderhistory.AllHistoryRepo;
+import com.webmingo.noonokababs.ModelRepo.Orderhistory.HistoryDetailsRepo;
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.AddAddressRequest;
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.AddCartRequest;
+import com.webmingo.noonokababs.ModelRepo.RequestRepo.CreateOrderReq;
+import com.webmingo.noonokababs.ModelRepo.RequestRepo.OrderReviewReq;
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.ProfileUpdateReq;
+import com.webmingo.noonokababs.ModelRepo.RequestRepo.SupportReq;
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.ViewCartRequest;
 import com.webmingo.noonokababs.ModelRepo.Responsee.CardPayentRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.CheckOut.BillingAddressRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.CheckOut.BranchsRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.CheckOut.CreateOrderRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.CheckOut.DeliveryTypes;
+import com.webmingo.noonokababs.ModelRepo.Responsee.CheckOut.GetTipAmountRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.CheckOut.GetTipPercentListings;
+import com.webmingo.noonokababs.ModelRepo.Responsee.CheckOut.ScheduleDateRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.CheckOut.ShippingAddressRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.CheckOut.TimeSlotsRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.CountryRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.DashboardRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.FoodFavourit.FavouritefoodsRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.FoodFavourit.FoodDetailsOfferRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.FoodFavourit.FoodDetailsRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.FoodItemRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.GetAddressIDRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.MediaRespo.GuestReviewRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.MediaRespo.MediaReviewRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.OTPSendRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.OTPVerificationRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.ReferralRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.ReferredUserListingRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.RefoundPolicyRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.SearchCategoriesRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.SearchRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.Stripee.ConnectionTokenRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.SupportRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.TermCondition;
 import com.webmingo.noonokababs.ModelRepo.Responsee.UpdateNameAddressRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.UserAddressBook.AddNewAddressRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.UserAddressBook.CityRepoID;
@@ -24,6 +48,7 @@ import com.webmingo.noonokababs.ModelRepo.Responsee.UserAddressBook.GetUserAddre
 import com.webmingo.noonokababs.ModelRepo.Responsee.UserAddressBook.StateRepoID;
 import com.webmingo.noonokababs.ModelRepo.Responsee.UserProfileinfo;
 import com.webmingo.noonokababs.ModelRepo.cart.AddToCartDetailsRepo;
+import com.webmingo.noonokababs.ModelRepo.cart.CouponRepo;
 import com.webmingo.noonokababs.ModelRepo.cart.FoodCartViewRepo;
 
 import okhttp3.MultipartBody;
@@ -36,7 +61,6 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
-import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
@@ -54,6 +78,7 @@ public interface UserService {
      * Date Created: 29/09/2021
      * Date Released:
      * Created by Devender Singh
+     * Contact 8287018255
      */
 
     @GET("countries")
@@ -77,7 +102,9 @@ public interface UserService {
     @FormUrlEncoded
     @POST("user/verify/otp")
     Call<OTPVerificationRepo> DoVerifyOtp(
-            @Field("otp") String otp
+            @Field("otp") String otp,
+            @Field("device_type") String Android
+
     );
 
     @FormUrlEncoded
@@ -96,7 +123,7 @@ public interface UserService {
             @Part("_method") RequestBody _method
     );
 
-    @GET("user/logout")
+    @GET("user/logout/Android")
     Call<ResponseBody> DoLogout(
 
 
@@ -108,10 +135,16 @@ public interface UserService {
             @Body ProfileUpdateReq profileUpdateReq
     );
 
+
     @FormUrlEncoded
     @POST("all/food-items")
     Call<FoodItemRepo> GetFoodItem(
-            @Field("page") String page
+            @Field("page") String page,
+            @Field("rating_hight_to_low") String rating_hight_to_low,
+            @Field("sort_by") String latest,
+            @Field("search") String search
+
+
     );
 
 
@@ -168,7 +201,26 @@ public interface UserService {
 
     );
 
+    @GET("schedule/dates")
+    Call<ScheduleDateRepo> GetScheduleDateList(
 
+    );
+
+    @GET("time/slots/{dateid}")
+    Call<TimeSlotsRepo> GetTimeSlotsList(
+            @Path("dateid") String dateid
+    );
+
+
+    @GET("user/single/address-book/{address_id}")
+    Call<GetAddressIDRepo> getidAddress(
+            @Path("address_id") String address_id
+    );
+
+    @GET("user/my/address-book/{address_id}")
+    Call<ResponseBody> SetasDeaultAddress(
+            @Path("address_id") String address_id
+    );
 
 
     /*
@@ -185,6 +237,16 @@ public interface UserService {
     @GET("user/card")
     Call<CardPayentRepo> GetCardDetails(
     );
+
+
+    @GET("delivery/types")
+    Call<DeliveryTypes> GetDeliveryTypes(
+    );
+
+/*
+    @POST("create/stripe/connection-token")
+    Call<ConnectionTokenRepo> GetConnectionToken(
+    );*/
 
 
     @FormUrlEncoded
@@ -218,7 +280,15 @@ public interface UserService {
             @Body AddAddressRequest addAddressRequest
     );
 
-   // https://miraclesaba.xyz/restaurant/api/user/my/address-book/{address_id}
+    @POST("user/my/address-book/{Key}")
+    Call<AddNewAddressRepo> UpdateAddress(
+            @Path("Key") String Key,
+            @Body AddAddressRequest addAddressRequest
+
+    );
+
+
+    // https://miraclesaba.xyz/restaurant/api/user/my/address-book/{address_id}
 
     @DELETE("user/my/address-book/{address_id}")
     Call<ResponseBody> DoDeleteaddress(@Path("address_id") String TempCart_Id);
@@ -251,7 +321,6 @@ public interface UserService {
     );
 
 
-
     @FormUrlEncoded
     @POST("food-items/search")
     Call<SearchRepo> SearchRepo(
@@ -259,11 +328,172 @@ public interface UserService {
     );
 
 
-
-
     @POST("food/view/cart")
     Call<FoodCartViewRepo> FoodCartView(
             @Body ViewCartRequest viewCartRequest
     );
+
+
+    @FormUrlEncoded
+    @POST("user/apply/coupon")
+    Call<CouponRepo> CouponApply(
+            @Field("coupon_code") String coupon_code,
+            @Field("order_amount") String order_amount
+
+    );
+
+    @FormUrlEncoded
+    @POST("user/remove/coupon")
+    Call<ResponseBody> CouponRemove(
+
+            @Field("coupon_id") String coupon_id
+    );
+
+    @POST("servicable/branchs")
+    Call<BranchsRepo> GetBranchsList(
+    );
+
+
+    @GET("user/billing/address")
+    Call<BillingAddressRepo> BillingAddresList(
+    );
+
+
+    @GET("user/shipping/address")
+    Call<ShippingAddressRepo> ShippingAddresList(
+    );
+
+
+    @POST("all/food-items/{Key}")
+    Call<FoodItemRepo> Categoriesitem(
+            @Path("Key") String Key
+    );
+
+    @FormUrlEncoded
+    @POST("user/order/give/ratings")
+    Call<ResponseBody> GiveRatingOnOrder(
+            @Field("order_id") String order_id,
+            @Field("rating") String rating,
+            @Field("feedback") String feedback
+
+    );
+
+
+    @GET("user/order/history/{type}")
+    Call<AllHistoryRepo> AllHistory(
+            @Path("type") String type
+    );
+
+
+    @GET("user/order/detail/{Order_id}")
+    Call<HistoryDetailsRepo> HistoryDetails(
+            @Path("Order_id") String type
+    );
+
+
+    @POST("user/create/order")
+    Call<CreateOrderRepo> CreateOrder(
+            @Body CreateOrderReq createOrderReq
+    );
+
+
+    @POST("support/send-query")
+    Call<SupportRepo> support(
+            @Body SupportReq supportReq
+    );
+
+
+    @FormUrlEncoded
+    @POST("stripe/create-payment-intent")
+    Call<ConnectionTokenRepo> GetConnectionToken(
+            @Field("amount") String amount
+
+    );
+
+
+    @GET("tip/percents")
+    Call<GetTipPercentListings> GetTipPercentListings(
+    );
+
+
+    @FormUrlEncoded
+    @POST("get/tip/amount")
+    Call<GetTipAmountRepo> GetTipAmount(
+            @Field("amount") String amount,
+            @Field("percent") String percent
+
+    );
+
+
+    @GET("home/term")
+    Call<TermCondition> Termconditions(
+
+    );
+
+    @GET("home/refund/policy")
+    Call<RefoundPolicyRepo> RefoundPolicy(
+
+    );
+
+
+    @GET("home/policy")
+    Call<TermCondition> Policyconditions(
+
+    );
+
+
+    //Refferee
+    @GET("user/referral/content")
+    Call<ReferralRepo> ReferralContentAPI();
+
+    @GET("user/referred/users")
+    Call<ReferredUserListingRepo> ReferredUserListingAPI();
+
+
+    @GET("home/media/review")
+    Call<MediaReviewRepo> MediaReview();
+
+
+    @GET("home/guest/review")
+    Call<GuestReviewRepo> GuestReview();
+
+
+    @FormUrlEncoded
+    @POST("user/update/password")
+    Call<ResponseBody> UpdatePassword(
+            @Field("old_passowrd") String old_passowrd,
+            @Field("password") String password,
+            @Field("password_confirmation") String password_confirmation,
+            @Field("_method") String _method
+    );
+
+
+    @GET("user/deactivate/account")
+    Call<ResponseBody> DeactivateAccount(
+    );
+
+    @FormUrlEncoded
+    @POST("user/cancel/order")
+    Call<ResponseBody> Cancelorder(
+            @Field("order_id") String order_id,
+            @Field("reason") String reason
+
+    );
+
+
+    @GET("user/food-detail/for-rate/{Order_id}")
+    Call<FooddetailRateRepo> FooddetailRate(
+            @Path("Order_id") String type
+    );
+
+    @POST("user/give/rate-review/{Order_id}")
+    Call<ResponseBody> OrderReviewReq(
+            @Path("Order_id") String Order_id,
+            @Body OrderReviewReq createOrderReq
+
+    );
+
+
+    //review
     //  https://miraclesaba.xyz/restaurant/api/user/card/{card_id}
 }

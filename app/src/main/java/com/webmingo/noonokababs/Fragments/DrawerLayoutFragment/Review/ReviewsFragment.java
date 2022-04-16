@@ -15,15 +15,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.webmingo.noonokababs.Adapters.MediaViewAdapter;
+import com.rjesture.startupkit.AppTools;
+import com.webmingo.noonokababs.Adapters.Reviews.MediaViewAdapter;
+import com.webmingo.noonokababs.Adapters.Reviews.GuestReviewslistAdapter;
+import com.webmingo.noonokababs.ModelRepo.Responsee.MediaRespo.GuestReviewRepo;
+import com.webmingo.noonokababs.ModelRepo.Responsee.MediaRespo.MediaReviewRepo;
 import com.webmingo.noonokababs.R;
+import com.webmingo.noonokababs.ViewPresenter.ReviewPresenter;
 import com.webmingo.noonokababs.databinding.FragmentReviewsBinding;
 
-public class ReviewsFragment extends Fragment implements View.OnClickListener {
+import de.mateware.snacky.Snacky;
+
+public class ReviewsFragment extends Fragment implements View.OnClickListener, ReviewPresenter.DoReviewView {
     FragmentReviewsBinding binding;
     private View view;
     NavController navController;
+    ReviewPresenter reviewPresenter;
 
     public ReviewsFragment() {
         // Required empty public constructor
@@ -44,13 +53,15 @@ public class ReviewsFragment extends Fragment implements View.OnClickListener {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_reviews, container, false);
         view = binding.getRoot();
-        binding.GuestReview.writeReview.setOnClickListener(new View.OnClickListener() {
+        reviewPresenter = new ReviewPresenter(this);
+        reviewPresenter.GuestReview(getContext());
+       /* binding.GuestReview.writeReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                navController.navigate(R.id.writeReviewFragment);
+                //  navController.navigate(R.id.writeReviewFragment);
             }
-        });
+        });*/
         binding.GuestReviewTV.setOnClickListener(this);
 
         binding.MediaReviewTV.setOnClickListener(this);
@@ -64,16 +75,18 @@ public class ReviewsFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
 
             case R.id.GuestReview_TV:
+                reviewPresenter.GuestReview(getContext());
                 binding.GuestReviewTV.setTextColor(getActivity().getResources().getColor(R.color.white));
                 binding.GuestReviewTV.setBackground(getActivity().getResources().getDrawable(R.drawable.btn_click_black_rectangle_with_semicircle_edge));
                 binding.MediaReviewTV.setTextColor(getActivity().getResources().getColor(R.color.black));
                 binding.MediaReviewTV.setBackground(getActivity().getResources().getDrawable(R.drawable.allsideborder));
                 binding.ViewFillper.setDisplayedChild(0);
-
                 binding.MediaReview.MediaReviewRC.setVisibility(View.GONE);
                 break;
 
             case R.id.MediaReview_TV:
+
+                reviewPresenter.MediaReview(getContext());
 
                 binding.MediaReviewTV.setTextColor(getActivity().getResources().getColor(R.color.white));
                 binding.MediaReviewTV.setBackground(getActivity().getResources().getDrawable(R.drawable.btn_click_black_rectangle_with_semicircle_edge));
@@ -85,17 +98,93 @@ public class ReviewsFragment extends Fragment implements View.OnClickListener {
                 binding.MediaReview.MediaReviewRC.setVisibility(View.VISIBLE);
 
 
-                MediaViewAdapter  mediaViewAdapter = new MediaViewAdapter(getContext());
-                RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-
-                binding.MediaReview.MediaReviewRC.setLayoutManager(mLayoutManager1);
-                binding.MediaReview.MediaReviewRC.setItemAnimator(new DefaultItemAnimator());
-                binding.MediaReview.MediaReviewRC.setAdapter(mediaViewAdapter);
 
                 break;
 
 
         }
 
+    }
+
+    @Override
+    public void onDoReviewError(String message) {
+        Snacky.builder()
+                .setActivity(getActivity())
+                .setText(message)
+                .setTextColor(getResources().getColor(R.color.white))
+                .warning()
+                .show();
+    }
+
+    @Override
+    public void onDoMediaReviewSuccess(MediaReviewRepo response, String message) {
+      //  Toast.makeText(getContext(), message + "", Toast.LENGTH_SHORT).show();
+
+        if (message.equalsIgnoreCase("ok")) {
+
+            if (response.getData().getReviews().size() > 0) {
+
+
+                MediaViewAdapter mediaViewAdapter = new MediaViewAdapter(response,getContext());
+                RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+
+                binding.MediaReview.MediaReviewRC.setLayoutManager(mLayoutManager1);
+                binding.MediaReview.MediaReviewRC.setItemAnimator(new DefaultItemAnimator());
+                binding.MediaReview.MediaReviewRC.setAdapter(mediaViewAdapter);
+
+
+
+
+
+
+            }
+        }
+
+
+
+
+    }
+
+    @Override
+    public void onDoGuestReviewSuccess(GuestReviewRepo response, String message) {
+      //  Toast.makeText(getContext(), message + "", Toast.LENGTH_SHORT).show();
+
+
+        if (message.equalsIgnoreCase("ok")) {
+
+            if (response.getData().getTestimonials().size() > 0) {
+
+                GuestReviewslistAdapter gameAdapter = new GuestReviewslistAdapter(response, getContext());
+                RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+                binding.GuestReview.MediaReviewRC.setLayoutManager(mLayoutManager1);
+                binding.GuestReview.MediaReviewRC.setItemAnimator(new DefaultItemAnimator());
+                binding.GuestReview.MediaReviewRC.setAdapter(gameAdapter);
+
+            }
+        }
+    }
+
+    @Override
+    public void showHideProgress(boolean isShow) {
+        if (isShow) {
+            AppTools.showRequestDialog(getActivity());
+
+
+        } else {
+            AppTools.hideDialog();
+            //  binding.rearrelUILL.setVisibility(View.VISIBLE);
+
+
+        }
+    }
+
+    @Override
+    public void onDoReviewFailure(Throwable t) {
+        Snacky.builder()
+                .setActivity(getActivity())
+                .setText(t.getLocalizedMessage())
+                .setTextColor(getResources().getColor(R.color.white))
+                .warning()
+                .show();
     }
 }

@@ -23,7 +23,7 @@ public class DoOTPVerifyPresenter {
 
 
     public void DoOTPVerify(Context context,String otp) {
-        Call<OTPVerificationRepo> loginCall = ApiManager.getApi(context).DoVerifyOtp(otp);
+        Call<OTPVerificationRepo> loginCall = ApiManager.getApi(context).DoVerifyOtp(otp,"Android");
         view.showHideProgress(true);
         loginCall.enqueue(new Callback<OTPVerificationRepo>() {
             @Override

@@ -13,6 +13,12 @@ public class User_Data {
 
     }
 
+    public User_Data(String email, String userName, String phoneNo) {
+        this.email = email;
+        UserName = userName;
+        PhoneNo = phoneNo;
+    }
+
     public User_Data() {
     }
 

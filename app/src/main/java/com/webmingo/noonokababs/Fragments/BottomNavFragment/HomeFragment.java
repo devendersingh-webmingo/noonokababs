@@ -1,5 +1,9 @@
 package com.webmingo.noonokababs.Fragments.BottomNavFragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,17 +25,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.rjesture.startupkit.AppTools;
 import com.webmingo.noonokababs.Adapters.ExploreCategoriesAdapter;
 import com.webmingo.noonokababs.Adapters.ExploreFoodItemAdapter;
 import com.webmingo.noonokababs.Fragments.SearchFragment;
+import com.webmingo.noonokababs.MainActivity;
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.ViewCartRequest;
 import com.webmingo.noonokababs.ModelRepo.Responsee.DashboardRepo;
+import com.webmingo.noonokababs.ModelRepo.cart.FoodCartViewRepo;
 import com.webmingo.noonokababs.R;
+import com.webmingo.noonokababs.SharedPrefernce.SharedPrefManager;
 import com.webmingo.noonokababs.SharedPrefernce.ViewCartReqSharedPreferenc;
 import com.webmingo.noonokababs.ViewPresenter.DoHomePagePresenter;
 import com.webmingo.noonokababs.databinding.FragmentHomeBinding;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -76,7 +86,54 @@ public class HomeFragment extends Fragment implements DoHomePagePresenter.DoHome
         presenter.DoAddPaymentList(getContext());
         ViewCartRequestList = ViewCartReqSharedPreferenc.readListFromPref(getContext());
 
-        if (ViewCartRequestList != null) {
+        SharedPreferences mPrefs = getActivity().getPreferences(MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = mPrefs.getString("viewCartRequest", "");
+        ViewCartRequest viewCartRequest1 = gson.fromJson(json, ViewCartRequest.class);
+        // Log.e("viewCartRequest1",viewCartRequest1.getCart().toString());
+        if (viewCartRequest1 != null) {
+            binding.ll.setVisibility(View.VISIBLE);
+            presenter.FoodAddToCart(getContext(), viewCartRequest1);
+
+        }
+
+
+
+/*
+        SharedPreferences mPrefs = getActivity().getPreferences(MODE_PRIVATE);
+        String json = mPrefs.getString("viewCartRequest", "");
+        List<ViewCartRequest> arrayItems;
+        if (json != null) {
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<ViewCartRequest>>(){}.getType();
+            arrayItems = gson.fromJson(json, type);
+
+            if (arrayItems.size() >0) {
+                binding.ll.setVisibility(View.VISIBLE);
+                presenter.FoodAddToCart(getContext(), viewCartRequest1);
+
+            }
+        }*/
+
+
+
+
+     /*   Gson gson = new Gson();
+        ViewCartRequest viewCartRequest1 = gson.fromJson(json, ViewCartRequest.class);
+        // Log.e("viewCartRequest1",viewCartRequest1.getCart().toString());
+        if (viewCartRequest1 != null) {
+            binding.ll.setVisibility(View.VISIBLE);
+            presenter.FoodAddToCart(getContext(), viewCartRequest1);
+
+        }
+*/
+
+
+
+
+
+
+      /*  if (ViewCartRequestList != null) {
             Toast.makeText(getContext(), ViewCartRequestList.size() + "", Toast.LENGTH_SHORT).show();
 
             if (ViewCartRequestList.size() > 0) {
@@ -89,7 +146,7 @@ public class HomeFragment extends Fragment implements DoHomePagePresenter.DoHome
 
             }
         }
-
+*/
     /*    if (ViewCartRequestList == null)
             ViewCartRequestList = new ArrayList<>();*/
 
@@ -170,8 +227,11 @@ public class HomeFragment extends Fragment implements DoHomePagePresenter.DoHome
 
         if (message.equalsIgnoreCase("ok")) {
 
+            if (SharedPrefManager.getInstance(getContext()).isLoggedIn()) {
+                Getbless(response.getData().getUserInfo().getName());
 
-            Getbless(response.getData().getUserInfo().getName());
+            }
+
 
             if (response.getData().getCategories().size() > 0) {
                 ExploreCategoriesAdapter(response);
@@ -190,9 +250,12 @@ public class HomeFragment extends Fragment implements DoHomePagePresenter.DoHome
 
         if (isShow) {
             AppTools.showRequestDialog(getActivity());
+            binding.HomePageRL.setVisibility(View.GONE);
 
         } else {
             AppTools.hideDialog();
+
+            binding.HomePageRL.setVisibility(View.VISIBLE);
 
         }
 
@@ -210,13 +273,27 @@ public class HomeFragment extends Fragment implements DoHomePagePresenter.DoHome
     }
 
     @Override
+    public void onFoodCartSuccess(FoodCartViewRepo body, String message) {
+        if (message.equalsIgnoreCase("ok")) {
+            binding.itemidTV.setText(String.valueOf(body.getData().getCartDetails().size()) + " ITEM");
+            binding.pricetv.setText("$ " + body.getData().getBillingAmount());
+        }
+
+
+    }
+
+    @Override
     public void ExploreCategoriesClickk(DashboardRepo repo, int pos) {
 
      /*   Bundle bundle = new Bundle();
         bundle.putString("id", String.valueOf(repo.getData().getCategories().get(pos).getId()));
         navController.navigate(R.id.foodDetailFragment,bundle);*/
 
-        Toast.makeText(getContext(), repo.getData().getCategories().get(pos).getName() + "", Toast.LENGTH_SHORT).show();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", String.valueOf(repo.getData().getCategories().get(pos).getId()));
+        navController.navigate(R.id.foodFragment, bundle);
+
+
     }
 
     @Override
@@ -225,8 +302,9 @@ public class HomeFragment extends Fragment implements DoHomePagePresenter.DoHome
      /*   Bundle bundle = new Bundle();
         bundle.putString("id", String.valueOf(repo.getData().getCategories().get(pos).getId()));
         navController.navigate(R.id.foodDetailFragment,bundle);*/
-
-        Toast.makeText(getContext(), repo.getData().getFoodItems().get(pos).getName() + "", Toast.LENGTH_SHORT).show();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", String.valueOf(repo.getData().getFoodItems().get(pos).getId()));
+        navController.navigate(R.id.foodDetailFragment, bundle);
 
     }
 

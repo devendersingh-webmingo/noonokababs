@@ -8,7 +8,6 @@ import java.util.List;
 public class FoodDetailsRepo {
 
 
-
     @SerializedName("status")
     @Expose
     private Boolean status;
@@ -126,9 +125,25 @@ public class FoodDetailsRepo {
             private String deliveryTime;
             @SerializedName("promotional")
             @Expose
+
+
             private String promotional;
             @SerializedName("levels")
             @Expose
+
+            private String avg_rating;
+            @SerializedName("avg_rating")
+            @Expose
+            private String total_rating;
+            @SerializedName("total_rating")
+            @Expose
+
+
+            private String rating;
+            @SerializedName("rating")
+            @Expose
+
+
             private Object levels;
             @SerializedName("ingredients")
             @Expose
@@ -139,9 +154,25 @@ public class FoodDetailsRepo {
             @SerializedName("mandatory")
             @Expose
             private Object mandatory;
+
+
             @SerializedName("created_at")
             @Expose
             private String createdAt;
+
+
+            @SerializedName("in_stock")
+            @Expose
+            private String in_stock;
+
+            public String getIn_stock() {
+                return in_stock;
+            }
+
+            public void setIn_stock(String in_stock) {
+                this.in_stock = in_stock;
+            }
+
             @SerializedName("updated_at")
             @Expose
             private String updatedAt;
@@ -161,12 +192,37 @@ public class FoodDetailsRepo {
             @Expose
             private Object getSubCategory;
 
+            public String getAvg_rating() {
+                return avg_rating;
+            }
+
+            public void setAvg_rating(String avg_rating) {
+                this.avg_rating = avg_rating;
+            }
+
+            public String getTotal_rating() {
+                return total_rating;
+            }
+
+
+            public String getRating() {
+                return rating;
+            }
+
+            public void setRating(String rating) {
+                this.rating = rating;
+            }
+
+            public void setTotal_rating(String total_rating) {
+                this.total_rating = total_rating;
+            }
+
             public Integer getId() {
                 return id;
             }
 
             public void setId(Integer id) {
-                this.id = id;
+                this.id  = id;
             }
 
             public Integer getTypeId() {

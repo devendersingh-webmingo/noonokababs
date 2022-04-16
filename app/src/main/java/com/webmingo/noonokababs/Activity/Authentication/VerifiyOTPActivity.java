@@ -15,6 +15,7 @@ import com.webmingo.noonokababs.ModelRepo.Responsee.OTPSendRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.OTPVerificationRepo;
 import com.webmingo.noonokababs.R;
 import com.webmingo.noonokababs.SharedPrefernce.SharedPrefManager;
+import com.webmingo.noonokababs.SharedPrefernce.User_Data;
 import com.webmingo.noonokababs.ViewPresenter.DoOTPVerifyPresenter;
 import com.webmingo.noonokababs.ViewPresenter.DoSendOtpCreateUserPresenter;
 import com.webmingo.noonokababs.databinding.ActivityVerifiyOTPBinding;
@@ -74,7 +75,7 @@ public class VerifiyOTPActivity extends AppCompatActivity implements DoSendOtpCr
             @Override
             public void onClick(View v) {
 
-                presenter.DoSendOtpCreateUser(VerifiyOTPActivity.this, Countryid, Phonecode, Email);
+                presenter.DoSendOtpCreateUser(VerifiyOTPActivity.this, "231", "1", Email);
             }
         });
 
@@ -94,13 +95,13 @@ public class VerifiyOTPActivity extends AppCompatActivity implements DoSendOtpCr
     @Override
     public void onDoOTPVerifySuccess(OTPVerificationRepo response, String message) {
 
-
+/*
         Snacky.builder()
                 .setActivity(VerifiyOTPActivity.this)
                 .setText(message)
                 .setTextColor(getResources().getColor(R.color.white))
                 .success()
-                .show();
+                .show();*/
 
         if (message.equalsIgnoreCase("ok")) {
 
@@ -111,6 +112,10 @@ public class VerifiyOTPActivity extends AppCompatActivity implements DoSendOtpCr
                     .SetEmail(response.getData().getUser().getEmail());
 
             showDialog(response.getData().getUser().getName());
+            User_Data user_data = new User_Data(response.getData().getUser().getEmail(), response.getData().getUser().getName(), response.getData().getUser().getMobileNumber());
+            SharedPrefManager.getInstance(getApplicationContext())
+                    .UserDetails(user_data);
+
 
         }
 

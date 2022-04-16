@@ -54,12 +54,15 @@ public class AddToCartDetailsRepo {
         @SerializedName("varient")
         @Expose
         private Varient varient;
+
+
         @SerializedName("required_items")
         @Expose
         private List<RequiredItem> requiredItems = null;
+
         @SerializedName("cooking_levels")
         @Expose
-        private List<Object> cookingLevels = null;
+        private List<CookingLevel> cookingLevels = null;
         @SerializedName("ingredients")
         @Expose
         private List<Ingredient> ingredients = null;
@@ -102,11 +105,11 @@ public class AddToCartDetailsRepo {
             this.requiredItems = requiredItems;
         }
 
-        public List<Object> getCookingLevels() {
+        public List<CookingLevel> getCookingLevels() {
             return cookingLevels;
         }
 
-        public void setCookingLevels(List<Object> cookingLevels) {
+        public void setCookingLevels(List<CookingLevel> cookingLevels) {
             this.cookingLevels = cookingLevels;
         }
 
@@ -135,6 +138,108 @@ public class AddToCartDetailsRepo {
         }
 
 
+        public class CookingLevel {
+
+            @SerializedName("id")
+            @Expose
+            private Integer id;
+            @SerializedName("food_id")
+            @Expose
+            private Object foodId;
+            @SerializedName("type")
+            @Expose
+            private String type;
+            @SerializedName("name")
+            @Expose
+            private String name;
+            @SerializedName("price")
+            @Expose
+            private Object price;
+            @SerializedName("status")
+            @Expose
+            private String status;
+            @SerializedName("remark")
+            @Expose
+            private Object remark;
+            @SerializedName("created_at")
+            @Expose
+            private String createdAt;
+            @SerializedName("updated_at")
+            @Expose
+            private String updatedAt;
+
+            public Integer getId() {
+                return id;
+            }
+
+            public void setId(Integer id) {
+                this.id = id;
+            }
+
+            public Object getFoodId() {
+                return foodId;
+            }
+
+            public void setFoodId(Object foodId) {
+                this.foodId = foodId;
+            }
+
+            public String getType() {
+                return type;
+            }
+
+            public void setType(String type) {
+                this.type = type;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public Object getPrice() {
+                return price;
+            }
+
+            public void setPrice(Object price) {
+                this.price = price;
+            }
+
+            public String getStatus() {
+                return status;
+            }
+
+            public void setStatus(String status) {
+                this.status = status;
+            }
+
+            public Object getRemark() {
+                return remark;
+            }
+
+            public void setRemark(Object remark) {
+                this.remark = remark;
+            }
+
+            public String getCreatedAt() {
+                return createdAt;
+            }
+
+            public void setCreatedAt(String createdAt) {
+                this.createdAt = createdAt;
+            }
+
+            public String getUpdatedAt() {
+                return updatedAt;
+            }
+
+            public void setUpdatedAt(String updatedAt) {
+                this.updatedAt = updatedAt;
+            }
+        }
         public class Food {
 
             @SerializedName("id")
@@ -561,6 +666,7 @@ public class AddToCartDetailsRepo {
             }
 
         }
+
 
         public class AllVarient {
 

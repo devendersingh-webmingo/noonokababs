@@ -2,65 +2,174 @@ package com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Review;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.iarcuschin.simpleratingbar.SimpleRatingBar;
+import com.irozon.sneaker.Sneaker;
+import com.rjesture.startupkit.AppTools;
 import com.webmingo.noonokababs.R;
+import com.webmingo.noonokababs.ViewPresenter.RatingReviewsPresenter;
+import com.webmingo.noonokababs.databinding.FragmentWriteReviewBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link WriteReviewFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class WriteReviewFragment extends Fragment {
+import okhttp3.ResponseBody;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class WriteReviewFragment extends Fragment implements RatingReviewsPresenter.RatingReviewsView {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    String id = "no", comment, ratingg;
+
+    FragmentWriteReviewBinding binding;
+
+    private View view;
+    NavController navController;
+    RatingReviewsPresenter presenter;
+
 
     public WriteReviewFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment WriteReviewFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static WriteReviewFragment newInstance(String param1, String param2) {
-        WriteReviewFragment fragment = new WriteReviewFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_write_review, container, false);
+
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_write_review, container, false);
+        view = binding.getRoot();
+
+        presenter = new RatingReviewsPresenter(this);
+
+
+        if (getArguments().getString("id") != null) {
+            id = getArguments().getString("id");
+
+
+            //  Toast.makeText(getContext(), id, Toast.LENGTH_SHORT).show();
+
+        } else {
+            //Toast.makeText(getContext(), id, Toast.LENGTH_SHORT).show();
+        }
+
+
+        binding.textRating.setOnRatingBarChangeListener(new SimpleRatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(SimpleRatingBar simpleRatingBar, float rating, boolean fromUser) {
+
+                char first = String.valueOf(rating).charAt(0);
+                ratingg = String.valueOf(first);
+
+                // Toast.makeText(getContext(), ratingg, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.SubmitTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RatingData();
+            }
+        });
+
+        return binding.getRoot();
+
+
+    }
+
+    public void RatingData() {
+
+        if (ratingg == null) {
+/*
+
+            Snacky.builder()
+                    .setActivity(getActivity())
+                    .setText("Please Give Rating")
+                    .setTextColor(getResources().getColor(R.color.white))
+                    .warning()
+                    .show();
+*/
+
+
+            Sneaker.with(getActivity())
+                    .setTitle("Please Give Rating")
+                    .setMessage("")
+                    .sneakWarning();
+
+          /*  Sneaker.with(this)
+                    .setTitle("Please Give Rating")
+                    .setMessage("")
+                    .sneakError();*/
+        } else {
+
+
+            presenter.RatingReview(getContext(), id, ratingg, binding.descTv.getText().toString());
+
+            /*
+            AppTools.showRequestDialog(this);
+
+            ReviewRequest reviewRequest = new ReviewRequest(id, comment, ratingg);
+            presenter.AddReview(this, reviewRequest);*/
+
+        }
+
+    }
+
+    @Override
+    public void onRatingReviewError(String message) {
+
+        Sneaker.with(getActivity())
+                .setTitle(message)
+                .setMessage("")
+                .sneakWarning();
+    }
+
+    @Override
+    public void onRatingReviewSuccess(ResponseBody response, String message) {
+
+
+        if (message.equalsIgnoreCase("ok")) {
+            Toast.makeText(getContext(), "Your Rating And Review Successfully Submitted.", Toast.LENGTH_LONG).show();
+
+
+            navController.navigate(R.id.orderhistoryFragment);
+
+
+        }
+
+
+    }
+
+    @Override
+    public void showHideProgress(boolean isShow) {
+        if (isShow) {
+            AppTools.showRequestDialog(getActivity());
+
+        } else {
+            AppTools.hideDialog();
+
+        }
+    }
+
+    @Override
+    public void onRatingReviewFailure(Throwable t) {
+        Sneaker.with(getActivity())
+                .setTitle(t.getLocalizedMessage())
+                .setMessage("")
+                .sneakWarning();
     }
 }

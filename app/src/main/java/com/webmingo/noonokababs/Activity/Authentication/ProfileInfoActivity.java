@@ -115,8 +115,7 @@ public class ProfileInfoActivity extends AppCompatActivity implements DoAddressN
                 File file = new File(path);
 
 
-
-              uploadImage(file);
+                uploadImage(file);
 
 
             }
@@ -130,7 +129,7 @@ public class ProfileInfoActivity extends AppCompatActivity implements DoAddressN
         MultipartBody.Part image = MultipartBody.Part.createFormData("image", file.getName(), requestFile);
         RequestBody _method = RequestBody.create(MediaType.parse("multipart/form-data"), "put");
 
-        presenter.uploadImage(image,_method, ProfileInfoActivity.this);
+        presenter.uploadImage(image, _method, ProfileInfoActivity.this);
     }
 
     public void On_click_OpenGallery() {
@@ -234,6 +233,7 @@ public class ProfileInfoActivity extends AppCompatActivity implements DoAddressN
 
     public void showDialog() {
         TextView initiTv, pleasewaitTv;
+
 
         Dialog dialog = new Dialog(ProfileInfoActivity.this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
         dialog.setContentView(R.layout.activity_splesh_screen);

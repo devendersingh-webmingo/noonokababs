@@ -42,9 +42,17 @@ public class AddressBookAdapter extends RecyclerView.Adapter<AddressBookAdapter.
 
         holder.productName.setText(modelArrayList.getData().getAddressBooks().getData().get(position).getType());
 
-        if (modelArrayList.getData().getAddressBooks().getData().get(position).getSetAsDefault().equalsIgnoreCase("Yes")) {
+        if (modelArrayList.getData().getAddressBooks().getData().get(position).getSetAsDefault().equalsIgnoreCase("No")) {
             holder.SetasDefeult_TV.setVisibility(View.VISIBLE);
         }
+
+        holder.SetasDefeult_TV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClickListenerr.SetasDefeultClickk(modelArrayList, position);
+            }
+        });
+
 
 
         holder.EditTV.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +99,8 @@ public class AddressBookAdapter extends RecyclerView.Adapter<AddressBookAdapter.
         void EditAdapterClickk(GetUserAddressRepo repo, int pos);
 
         void RemoveAdapterClickk(GetUserAddressRepo repo, int pos);
+        void SetasDefeultClickk(GetUserAddressRepo repo, int pos);
+
 
 
     }

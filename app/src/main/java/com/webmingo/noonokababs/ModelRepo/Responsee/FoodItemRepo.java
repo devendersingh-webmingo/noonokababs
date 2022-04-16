@@ -8,9 +8,6 @@ import java.util.List;
 public class FoodItemRepo {
 
 
-
-
-
     @SerializedName("status")
     @Expose
     private Boolean status;
@@ -122,6 +119,24 @@ public class FoodItemRepo {
                 return data;
             }
 
+            @Override
+            public String toString() {
+                return "FoodItems{" +
+                        "currentPage=" + currentPage +
+                        ", data=" + data +
+                        ", firstPageUrl='" + firstPageUrl + '\'' +
+                        ", from=" + from +
+                        ", lastPage=" + lastPage +
+                        ", lastPageUrl='" + lastPageUrl + '\'' +
+                        ", nextPageUrl='" + nextPageUrl + '\'' +
+                        ", path='" + path + '\'' +
+                        ", perPage=" + perPage +
+                        ", prevPageUrl='" + prevPageUrl + '\'' +
+                        ", to=" + to +
+                        ", total=" + total +
+                        '}';
+            }
+
             public void setData(List<Datum> data) {
                 this.data = data;
             }
@@ -208,9 +223,44 @@ public class FoodItemRepo {
             }
 
 
-
-
             public static class Datum {
+                @Override
+                public String toString() {
+                    return "Datum{" +
+                            "id=" + id +
+                            ", typeId=" + typeId +
+                            ", categoryId=" + categoryId +
+                            ", subCategoryId=" + subCategoryId +
+                            ", name='" + name + '\'' +
+                            ", slug='" + slug + '\'' +
+                            ", remark='" + remark + '\'' +
+                            ", metaTitle='" + metaTitle + '\'' +
+                            ", in_stock='" + in_stock + '\'' +
+                            ", keyword='" + keyword + '\'' +
+                            ", description='" + description + '\'' +
+                            ", stock='" + stock + '\'' +
+                            ", inventory='" + inventory + '\'' +
+                            ", cod='" + cod + '\'' +
+                            ", homeDelivery='" + homeDelivery + '\'' +
+                            ", takeaway='" + takeaway + '\'' +
+                            ", status='" + status + '\'' +
+                            ", favourite=" + favourite +
+                            ", deliveryTime='" + deliveryTime + '\'' +
+                            ", promotional='" + promotional + '\'' +
+                            ", levels=" + levels +
+                            ", ingredients='" + ingredients + '\'' +
+                            ", addons=" + addons +
+                            ", mandatory='" + mandatory + '\'' +
+                            ", createdAt='" + createdAt + '\'' +
+                            ", updatedAt='" + updatedAt + '\'' +
+                            ", avg_rating='" + avg_rating + '\'' +
+                            ", total_rating='" + total_rating + '\'' +
+                            ", rating='" + rating + '\'' +
+                            ", deletedAt=" + deletedAt +
+                            ", getGallery=" + getGallery +
+                            ", getSinglePrice=" + getSinglePrice +
+                            '}';
+                }
 
                 @SerializedName("id")
                 @Expose
@@ -233,9 +283,27 @@ public class FoodItemRepo {
                 @SerializedName("remark")
                 @Expose
                 private String remark;
+
+
+
                 @SerializedName("meta_title")
                 @Expose
                 private String metaTitle;
+
+
+
+                @SerializedName("in_stock")
+                @Expose
+                private String in_stock;
+
+                public String getIn_stock() {
+                    return in_stock;
+                }
+
+                public void setIn_stock(String in_stock) {
+                    this.in_stock = in_stock;
+                }
+
                 @SerializedName("keyword")
                 @Expose
                 private String keyword;
@@ -284,9 +352,24 @@ public class FoodItemRepo {
                 @SerializedName("created_at")
                 @Expose
                 private String createdAt;
+
                 @SerializedName("updated_at")
                 @Expose
                 private String updatedAt;
+
+
+                @SerializedName("avg_rating")
+                @Expose
+                private String avg_rating;
+                @SerializedName("total_rating")
+                @Expose
+                private String total_rating;
+
+
+                @SerializedName("rating")
+                @Expose
+                private String rating;
+
                 @SerializedName("deleted_at")
                 @Expose
                 private Object deletedAt;
@@ -296,6 +379,30 @@ public class FoodItemRepo {
                 @SerializedName("get_single_price")
                 @Expose
                 private GetSinglePrice getSinglePrice;
+
+                public String getAvg_rating() {
+                    return avg_rating;
+                }
+
+                public String getRating() {
+                    return rating;
+                }
+
+                public void setRating(String rating) {
+                    this.rating = rating;
+                }
+
+                public void setAvg_rating(String avg_rating) {
+                    this.avg_rating = avg_rating;
+                }
+
+                public String getTotal_rating() {
+                    return total_rating;
+                }
+
+                public void setTotal_rating(String total_rating) {
+                    this.total_rating = total_rating;
+                }
 
                 public Integer getId() {
                     return id;

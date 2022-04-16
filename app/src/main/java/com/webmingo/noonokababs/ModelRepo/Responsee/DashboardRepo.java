@@ -336,9 +336,26 @@ public class DashboardRepo {
             @SerializedName("updated_at")
             @Expose
             private String updatedAt;
+
+
             @SerializedName("deleted_at")
             @Expose
             private String deletedAt;
+
+
+            @SerializedName("in_stock")
+            @Expose
+            private String in_stock;
+
+
+            public String getIn_stock() {
+                return in_stock;
+            }
+
+            public void setIn_stock(String in_stock) {
+                this.in_stock = in_stock;
+            }
+
             @SerializedName("get_gallery")
             @Expose
             private List<GetGallery> getGallery = null;
@@ -876,7 +893,7 @@ public class DashboardRepo {
             private String userStatus;
             @SerializedName("wallet_amount")
             @Expose
-            private Integer walletAmount;
+            private String walletAmount;
             @SerializedName("sender_amount")
             @Expose
             private Integer senderAmount;
@@ -1145,11 +1162,11 @@ public class DashboardRepo {
                 this.userStatus = userStatus;
             }
 
-            public Integer getWalletAmount() {
+            public String getWalletAmount() {
                 return walletAmount;
             }
 
-            public void setWalletAmount(Integer walletAmount) {
+            public void setWalletAmount(String walletAmount) {
                 this.walletAmount = walletAmount;
             }
 

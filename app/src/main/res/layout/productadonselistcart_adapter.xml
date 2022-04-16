@@ -8,6 +8,7 @@
     android:orientation="vertical"
     app:ignore="NamespaceTypo">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,21 +22,22 @@
             android:orientation="vertical">
 
             <RadioButton
-                android:id="@+id/reuiredRB"
+                android:id="@+id/AddonseRB"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:checked="true"
-                android:text="Chicken Biryani"
+                android:text=" "
                 android:textColor="#000000"
                 android:theme="@style/checkBoxStyle" />
 
             <TextView
+                android:paddingLeft="5dp"
                 android:id="@+id/addonseTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:fontFamily="@font/latomedium"
-                android:textSize="13dp"
+                android:textSize="11dp"
                 android:text="One skewer of choice rib eye and a skewer of marinated chicken breast... more"
                 android:textColor="#CC000000" />
         </LinearLayout>
@@ -63,8 +65,8 @@
 
                 <ImageView
                     android:id="@+id/Decrease"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:background="#244494"
                     android:padding="5dp"
@@ -88,8 +90,8 @@
                 <ImageView
                     android:id="@+id/Increase"
 
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:background="#244494"
                     android:padding="5dp"

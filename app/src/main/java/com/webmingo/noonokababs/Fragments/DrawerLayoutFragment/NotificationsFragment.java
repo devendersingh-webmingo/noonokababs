@@ -42,13 +42,13 @@ public class NotificationsFragment extends Fragment {
 
 
 
-        NotificationAdapter gameAdapter = new NotificationAdapter(getContext());
+       /* NotificationAdapter gameAdapter = new NotificationAdapter(getContext());
 
         RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
 
         binding.recyclerViewNotifcation.setLayoutManager(mLayoutManager1);
         binding.recyclerViewNotifcation.setItemAnimator(new DefaultItemAnimator());
-        binding.recyclerViewNotifcation.setAdapter(gameAdapter);
+        binding.recyclerViewNotifcation.setAdapter(gameAdapter);*/
 
         return binding.getRoot();
 

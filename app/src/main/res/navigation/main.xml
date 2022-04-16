@@ -59,9 +59,13 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/orderhistoryFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.OrderhistoryFragment"
-        android:label="Order history"
-        tools:layout="@layout/fragment_orderhistory" />
+        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.OrderHistory.OrderhistoryFragment"
+        android:label="Order History"
+        tools:layout="@layout/fragment_orderhistory" >
+        <action
+            android:id="@+id/action_orderhistoryFragment_to_orderHistoryDetailsFragment"
+            app:destination="@id/orderHistoryDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.Food.FavoritesFragment"
@@ -72,9 +76,9 @@
             app:destination="@id/foodDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/accountFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.AccountFragment"
-        android:label="Account"
+        android:id="@+id/DashboardFragment"
+        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.DashboardFragment"
+        android:label="Dashboard "
         tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/addressBookFragment"
@@ -104,12 +108,12 @@
     <fragment
         android:id="@+id/contactsupportFragment"
         android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.ContactsupportFragment"
-        android:label="Contact support"
+        android:label="Invite Friends"
         tools:layout="@layout/fragment_contactsupport" />
     <fragment
         android:id="@+id/sendfeedbackFragment"
         android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.SendfeedbackFragment"
-        android:label="Send feedback"
+        android:label="Privacy Policy"
         tools:layout="@layout/fragment_sendfeedback" />
     <fragment
         android:id="@+id/legalFragment"
@@ -119,7 +123,7 @@
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.webmingo.noonokababs.Fragments.EditProfileFragment"
-        android:label="EditProfileFragment"
+        android:label="Edit Profile"
         tools:layout="@layout/fragment_edit_profile" />
     <fragment
         android:id="@+id/reviewsFragment"
@@ -132,7 +136,7 @@
     </fragment>
     <fragment
         android:id="@+id/writeReviewFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Review.WriteReviewFragment"
+        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.OrderHistory.OrderReviewFragment"
         android:label="Write Your Review"
         tools:layout="@layout/fragment_write_review" />
     <fragment
@@ -171,11 +175,55 @@
         android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.Cart.AddtoCartDetailsFragment"
         android:label=" "
         tools:layout="@layout/fragment_addto_cart_details"
-        />
+        >
+        <action
+            android:id="@+id/action_addtoCartDetailsFragment_to_chackoutFragment"
+            app:destination="@id/chackoutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/checkOutCartFragment"
         android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.Cart.CheckOutCartFragment"
         android:label="Checkout"
         tools:layout="@layout/fragment_check_out_cart"
         />
+    <fragment
+        android:id="@+id/chackoutFragment"
+        android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.Cart.ChackoutFragment"
+        android:label="Checkout"
+        tools:layout="@layout/fragment_chackout"
+        >
+        <action
+            android:id="@+id/action_chackoutFragment_to_StripePyamentGetway"
+            app:destination="@id/StripePyamentGetway" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_order_history_details"
+
+        android:id="@+id/orderHistoryDetailsFragment"
+        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.OrderHistory.OrderHistoryDetailsFragment"
+        android:label="Order History Details" />
+
+    <activity
+        tools:layout="@layout/activity_check_out"
+        android:id="@+id/StripePyamentGetway"
+        android:name="com.webmingo.noonokababs.Activity.StripePaymentGetway"
+        android:label="Payment" />
+    <activity
+        tools:layout="@layout/activity_login"
+        android:id="@+id/activitylogin"
+        android:name="com.webmingo.noonokababs.Activity.Authentication.LoginActivity"
+        />
+    <fragment
+        tools:layout="@layout/fragment_terms_conditions"
+
+        android:id="@+id/termsConditionsFragment"
+        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Policy.TermsConditionsFragment"
+        android:label="Terms &amp; Conditions" />
+    <fragment
+        tools:layout="@layout/fragment_refund_policy"
+        android:id="@+id/RefundPolicy"
+        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Policy.RefundPolicyFragment"
+        android:label="Refund Policy" />
+
+
 </navigation>

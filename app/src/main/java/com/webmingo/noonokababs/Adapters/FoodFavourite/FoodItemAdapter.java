@@ -24,15 +24,17 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.webmingo.noonokababs.ModelRepo.Responsee.FoodItemRepo;
 import com.webmingo.noonokababs.R;
+import com.webmingo.noonokababs.SharedPrefernce.SharedPrefManager;
+import com.webmingo.noonokababs.dialogue.CustomDialog;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.myViewHolder> {
 
-  //  FoodItemRepo modelArrayList;
-    
-    ArrayList<FoodItemRepo.Data.FoodItems.Datum>modelArrayList;
+    //  FoodItemRepo modelArrayList;
+
+    ArrayList<FoodItemRepo.Data.FoodItems.Datum> modelArrayList;
     FoodItemRepo foodItemRepo;
     Context context;
     private FoodItemClick itemClickListenerr;
@@ -42,7 +44,7 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.myView
         this.modelArrayList = modelArrayList;
         this.context = context;
         this.itemClickListenerr = itemClickListenerr;
-        this.foodItemRepo=foodItemRepo;
+        this.foodItemRepo = foodItemRepo;
     }
 
     @NonNull
@@ -54,13 +56,23 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.myView
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
-        if (modelArrayList.get(position) .getRemark()!= null) {
+        if (modelArrayList.get(position).getRemark() != null) {
             holder.tv_descriptionp.setText(Html.fromHtml(modelArrayList.get(position).getRemark()));
 
 
         }
         holder.listfoodTV.setText(modelArrayList.get(position).getDescription());
+
+        holder.text_rating.setText(modelArrayList.get(position).getRating());
+
         holder.tvPrice.setText("$ " + modelArrayList.get(position).getGetSinglePrice().getPrice());
+
+
+        if (modelArrayList.get(position).getIn_stock().equalsIgnoreCase("No")) {
+            holder.outofstockIV.setVisibility(View.VISIBLE);
+        }
+
+
         if (modelArrayList.get(position).getGetGallery().size() > 0) {
             RequestOptions requestOptions = new RequestOptions();
 
@@ -108,9 +120,18 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.myView
             @Override
             public void onClick(View v) {
 
-                itemClickListenerr.FoodItemFavouriteClick(modelArrayList, position);
-                holder.favouriteRemoveIV.setVisibility(View.VISIBLE);
-                holder.favouriteIV.setVisibility(View.GONE);
+
+                if (SharedPrefManager.getInstance(context).isLoggedIn()) {
+
+                    itemClickListenerr.FoodItemFavouriteClick(modelArrayList, position);
+                    holder.favouriteRemoveIV.setVisibility(View.VISIBLE);
+                    holder.favouriteIV.setVisibility(View.GONE);
+                } else {
+                    CustomDialog logindialog = new CustomDialog(context);
+                    logindialog.setLoginDialog();
+
+                }
+
 
             }
         });
@@ -119,9 +140,17 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.myView
             public void onClick(View v) {
 
 
-                itemClickListenerr.FoodItemFavouriteClick(modelArrayList, position);
-                holder.favouriteRemoveIV.setVisibility(View.GONE);
-                holder.favouriteIV.setVisibility(View.VISIBLE);
+                if (SharedPrefManager.getInstance(context).isLoggedIn()) {
+
+                    itemClickListenerr.FoodItemFavouriteClick(modelArrayList, position);
+                    holder.favouriteRemoveIV.setVisibility(View.GONE);
+                    holder.favouriteIV.setVisibility(View.VISIBLE);
+                } else {
+                    CustomDialog logindialog = new CustomDialog(context);
+                    logindialog.setLoginDialog();
+
+                }
+
 
             }
         });
@@ -137,8 +166,8 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.myView
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_descriptionp, tvPrice, foodname_TV, listfoodTV;
-        ImageView food_IV, favouriteIV, favouriteRemoveIV;
+        TextView tv_descriptionp, tvPrice, foodname_TV, listfoodTV, text_rating;
+        ImageView food_IV, favouriteIV, favouriteRemoveIV, outofstockIV;
         LinearLayout cardView;
 
 
@@ -151,7 +180,9 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.myView
             food_IV = itemView.findViewById(R.id.food_IV);
             listfoodTV = itemView.findViewById(R.id.listfoodTV);
             cardView = itemView.findViewById(R.id.cardView);
+            outofstockIV = itemView.findViewById(R.id.outofstockIV);
             favouriteRemoveIV = itemView.findViewById(R.id.favouriteRemoveIV);
+            text_rating = itemView.findViewById(R.id.text_rating);
 
 
         }
@@ -160,8 +191,8 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.myView
     public interface FoodItemClick {
 
 
-        void FoodItemClick(ArrayList<FoodItemRepo.Data.FoodItems.Datum>modelArrayList, int pos);
+        void FoodItemClick(ArrayList<FoodItemRepo.Data.FoodItems.Datum> modelArrayList, int pos);
 
-        void FoodItemFavouriteClick(    ArrayList<FoodItemRepo.Data.FoodItems.Datum>modelArrayList, int pos);
+        void FoodItemFavouriteClick(ArrayList<FoodItemRepo.Data.FoodItems.Datum> modelArrayList, int pos);
     }
 }

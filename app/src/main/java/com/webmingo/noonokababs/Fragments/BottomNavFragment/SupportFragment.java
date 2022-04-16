@@ -1,66 +1,182 @@
 package com.webmingo.noonokababs.Fragments.BottomNavFragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+
+import com.irozon.sneaker.Sneaker;
+import com.rjesture.startupkit.AppTools;
+import com.webmingo.noonokababs.ModelRepo.RequestRepo.SupportReq;
+import com.webmingo.noonokababs.ModelRepo.Responsee.SupportRepo;
 import com.webmingo.noonokababs.R;
+import com.webmingo.noonokababs.ViewPresenter.DoSupportPresenter;
+import com.webmingo.noonokababs.databinding.FragmentSupportBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SupportFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class SupportFragment extends Fragment {
+import de.mateware.snacky.Snacky;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class SupportFragment extends Fragment implements DoSupportPresenter.DoSupportView {
+    DoSupportPresenter presenter;
+    FragmentSupportBinding binding;
+    private View view;
+    String name, email, phone, subject, message;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public SupportFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SupportFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SupportFragment newInstance(String param1, String param2) {
-        SupportFragment fragment = new SupportFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_support, container, false);
+
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_support, container, false);
+        view = binding.getRoot();
+        presenter = new DoSupportPresenter(this);
+
+        binding.SubmitSupport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Supportdata();
+
+            }
+        });
+
+
+        return binding.getRoot();
+
+
+    }
+
+    private void Supportdata() {
+        name = binding.etPostName.getText().toString().trim();
+        email = binding.etPostEmail.getText().toString().trim();
+        phone = binding.etPostPhone.getText().toString().trim();
+        subject = binding.etPostSubject.getText().toString().trim();
+        message = binding.ACTV.getText().toString().trim();
+
+
+        if (name.isEmpty()) {
+
+            Snacky.builder()
+                    .setActivity(getActivity())
+                    .setText(" The name field is required. \n")
+                    .setTextColor(getResources().getColor(R.color.white))
+                    .warning()
+                    .show();
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Snacky.builder()
+                    .setActivity(getActivity())
+                    .setText(" The email field is required. \n")
+                    .setTextColor(getResources().getColor(R.color.white))
+                    .warning()
+                    .show();
+        } else if (phone.isEmpty()) {
+            Snacky.builder()
+                    .setActivity(getActivity())
+                    .setText(" The Phone Number  field is required. \n")
+                    .setTextColor(getResources().getColor(R.color.white))
+                    .warning()
+                    .show();
+
+        } else if (subject.isEmpty()) {
+            Snacky.builder()
+                    .setActivity(getActivity())
+                    .setText("The subject field is required. \n")
+                    .setTextColor(getResources().getColor(R.color.white))
+                    .warning()
+                    .show();
+
+        } else if (message.isEmpty()) {
+            Snacky.builder()
+                    .setActivity(getActivity())
+                    .setText("The message field is required. ")
+                    .setTextColor(getResources().getColor(R.color.white))
+                    .warning()
+                    .show();
+
+        } else {
+            SupportReq supportReq = new SupportReq(name, email, phone, subject, message);
+            presenter.SearchFoodItem(getContext(), supportReq);
+
+        }
+
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+    }
+
+    @Override
+    public void onDoSupportError(String message) {
+
+
+        Snacky.builder()
+                .setActivity(getActivity())
+                .setText(message)
+                .setTextColor(getResources().getColor(R.color.white))
+                .warning()
+                .show();
+
+
+    }
+
+    @Override
+    public void onDoSupportSuccess(SupportRepo response, String message) {
+        if (message.equalsIgnoreCase("ok")) {
+            Toast.makeText(getContext(), response.getMessage() + "", Toast.LENGTH_LONG).show();
+            Sneaker.with(getActivity())
+                    .setTitle(response.getMessage())
+                    .setMessage("")
+                    .sneakSuccess();
+
+            binding.etPostName.setText("");
+            binding.etPostEmail.setText("");
+            binding.etPostPhone.setText("");
+            binding.etPostSubject.setText("");
+            binding.ACTV.setText("");
+
+
+        }
+
+    }
+
+    @Override
+    public void showHideProgress(boolean isShow) {
+        if (isShow) {
+            AppTools.showRequestDialog(getActivity());
+
+        } else {
+            AppTools.hideDialog();
+
+        }
+    }
+
+    @Override
+    public void onDoSupportFailure(Throwable t) {
+        Snacky.builder()
+                .setActivity(getActivity())
+                .setText(t.getLocalizedMessage())
+                .setTextColor(getResources().getColor(R.color.white))
+                .warning()
+                .show();
     }
 }

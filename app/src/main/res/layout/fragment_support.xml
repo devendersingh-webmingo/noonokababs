@@ -1,14 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+
+<androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
+    android:background="@color/bgcolor"
     android:layout_height="match_parent"
     tools:context=".Fragments.BottomNavFragment.SupportFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/awesome"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/get_in_touch"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="25dp" />
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="15dp"
+            android:background="@color/orange"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="30dp">
+
+
+            <EditText
+                android:id="@+id/etPostName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/allsideborder"
+                android:fontFamily="@font/latomedium"
+                android:hint="Name"
+                android:textColor="@color/black"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+
+                />
+
+
+            <EditText
+                android:id="@+id/etPostEmail"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/etPostName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/allsideborder"
+                android:fontFamily="@font/latomedium"
+                android:hint="Email ID"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black" />
+
+
+            <EditText
+                android:id="@+id/etPostPhone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/etPostEmail"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/allsideborder"
+                android:fontFamily="@font/latomedium"
+                android:hint="Phone Number"
+                android:inputType="number"
+                android:maxLength="10"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <EditText
+                android:id="@+id/etPostSubject"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/etPostPhone"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/allsideborder"
+                android:fontFamily="@font/latomedium"
+                android:hint="Subject"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+
+                />
+
+            <AutoCompleteTextView
+                android:id="@+id/ACTV"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/allsideborder"
+                android:fontFamily="@font/latomedium"
+                android:inputType="text"
+                android:hint="type here.."
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                 />
+
+            <TextView
+                android:id="@+id/SubmitSupport"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="30dp"
+                android:background="@drawable/btn_click_black_rectangle_with_semicircle_edge"
+                android:fontFamily="@font/latomedium"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text=" Submit"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+</layout>

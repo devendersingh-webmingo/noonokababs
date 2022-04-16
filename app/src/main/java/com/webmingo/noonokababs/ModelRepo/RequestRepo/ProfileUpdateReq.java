@@ -15,7 +15,7 @@ public class ProfileUpdateReq {
     @SerializedName("mobile_number")
     @Expose
     private String mobileNumber;
-    @SerializedName("address")
+    @SerializedName("about_me")
     @Expose
     private String adress;
     @SerializedName("dob")

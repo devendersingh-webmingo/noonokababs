@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:toggle="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="5dp"
     android:orientation="vertical">
 
@@ -27,46 +27,59 @@
                 android:checked="true"
                 android:text="Chicken Biryani"
                 android:textColor="#000000"
-                android:textSize="18dp"
+                android:textSize="15dp"
                 android:textStyle="bold"
                 android:theme="@style/checkBoxStyle" />
 
             <TextView
                 android:id="@+id/addonseTv"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:fontFamily="@font/latomedium"
                 android:text="One skewer of choice rib eye and a....more"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+
+
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_gravity="right"
+
+            android:layout_marginLeft="3dp"
 
             android:layout_weight="0.30"
             android:gravity="right"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/Remove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
 
-            <LinearLayout
+                android:text="Remove"
+                android:textColor="#F60F0F"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <!--<LinearLayout
                 android:id="@+id/quentityTvLL"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="right"
                 android:gravity="right"
-                android:orientation="horizontal"
-                android:padding="8dp">
+                android:orientation="horizontal">
 
 
                 <ImageView
                     android:id="@+id/Decrease"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:background="#244494"
                     android:padding="5dp"
@@ -89,20 +102,62 @@
                 <ImageView
                     android:id="@+id/Increase"
 
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:background="#244494"
                     android:padding="5dp"
                     android:src="@drawable/ic_plus"
-                    app:tint="@color/white"
-                    />
+                    app:tint="@color/white" />
+            </LinearLayout>-->
+            <LinearLayout
+                android:id="@+id/quentityTvLL"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/Decrease"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="#244494"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_minus"
+                    toggle:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/quentityTv"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/backgorund_bottonbar"
+                    android:fontFamily="@font/awesome"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#99171212"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/Increase"
+
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="#244494"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_plus"
+                    app:tint="@color/white" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:orientation="horizontal">
 
 
@@ -139,12 +194,63 @@
         </LinearLayout>
     </LinearLayout>
 
-
-    <LinearLayout
-        android:layout_margin="3dp"
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/required_itemTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:text="cooking_levelcooking_level"
+        android:textColor="@color/black"
+        android:textSize="14dp" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/cooking_levelTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:text="cooking_levelcooking_level"
+        android:textColor="@color/black"
+        android:textSize="14dp" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/extraingredientsLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
         android:orientation="vertical">
+        <TextView
+            android:id="@+id/EXTRATv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Extra Ingredients"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/EXTRAlistRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            tools:itemCount="2"
+            tools:listitem="@layout/extraingredients" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:orientation="vertical">
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/AddonTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Addon Food items"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16dp" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productlistRV"
             android:layout_width="match_parent"
@@ -152,6 +258,16 @@
             android:layout_margin="5dp"
             tools:itemCount="2"
             tools:listitem="@layout/productadonselistcart_adapter" />
+
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="@color/tab_indicator_gray" />
+
     </LinearLayout>
 
 

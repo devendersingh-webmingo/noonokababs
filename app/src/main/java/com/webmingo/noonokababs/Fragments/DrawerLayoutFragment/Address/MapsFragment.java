@@ -18,6 +18,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,8 +52,11 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.rjesture.startupkit.AppTools;
+import com.webmingo.noonokababs.Activity.Authentication.WelcomeActivity;
+import com.webmingo.noonokababs.Activity.SpleshScreen;
 import com.webmingo.noonokababs.Adapters.SearchAdapter;
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.AddAddressRequest;
+import com.webmingo.noonokababs.ModelRepo.Responsee.GetAddressIDRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.UserAddressBook.AddNewAddressRepo;
 import com.webmingo.noonokababs.ModelRepo.Responsee.UserAddressBook.CityRepoID;
 import com.webmingo.noonokababs.ModelRepo.Responsee.UserAddressBook.CountryRepoID;
@@ -65,6 +69,7 @@ import java.io.IOException;
 import java.util.List;
 
 import de.mateware.snacky.Snacky;
+import okhttp3.ResponseBody;
 
 public class MapsFragment extends Fragment implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
@@ -85,7 +90,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
     FloatingActionButton fab_home_my_location;
 
     CardView card_home_details;
-    TextView addressTV, confirm_location_proceed;
+    TextView confirm_location_proceed;
 
     String streetAddress, city, state, country, postalCode, knownName;
     String CountryCode;
@@ -94,17 +99,16 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
 
     String Addreesstype, setasdefault, Yeskey;
 
-    String cityid,stateid,countryid;
-
+    String cityid, stateid, countryid;
 
 
     AddUserAddressPresenter presenter;
 
-    EditText numberET;
+    EditText numberET, addressTV;
 
     NavController navController;
 
-
+    String id, number;
 
   /*  private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -124,28 +128,82 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
                              @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_maps, container, false);
-        setui(view);
         fab_home_my_location = view.findViewById(R.id.fab_home_my_location);
         card_home_details = view.findViewById(R.id.card_home_details);
         presenter = new AddUserAddressPresenter(this);
         addressTV = view.findViewById(R.id.addressTV);
+        addressTV.setEnabled(false);
         Billing = view.findViewById(R.id.Billing);
         Yes = view.findViewById(R.id.Yes);
         No = view.findViewById(R.id.No);
         numberET = view.findViewById(R.id.numberET);
         Shipping = view.findViewById(R.id.Shipping);
+
         confirm_location_proceed = view.findViewById(R.id.confirm_location_proceed);
+        setui(view);
+
+
+        if (getArguments().getString("id") != null) {
+            id = getArguments().getString("id");
+
+
+            if (id.equalsIgnoreCase("id")) {
+                Toast.makeText(getContext(), id, Toast.LENGTH_SHORT).show();
+
+            } else if (id.equalsIgnoreCase("CheckoutpageShipping")) {
+
+                Toast.makeText(getContext(), id, Toast.LENGTH_SHORT).show();
+                Billing.setVisibility(View.GONE);
+                Shipping.setVisibility(View.VISIBLE);
+                Shipping.setChecked(true);
+
+
+            } else if (id.equalsIgnoreCase("CheckoutpageBilling")) {
+
+
+                Billing.setVisibility(View.VISIBLE);
+                Shipping.setVisibility(View.GONE);
+                Billing.setChecked(true);
+
+
+
+
+                Toast.makeText(getContext(), id, Toast.LENGTH_SHORT).show();
+            } else {
+
+                Toast.makeText(getContext(), id, Toast.LENGTH_SHORT).show();
+
+
+                new Handler().postDelayed(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                presenter.getidAddress(getContext(), id);
+                            }
+                        }, 3000);
+
+            }
+//            presenter.DoFoodDetails(getContext(), id);
+
+
+        }
+
         confirm_location_proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                if (CountryCode != null) {
+                    presenter.GetCountryID(getContext(), CountryCode);
+                } else {
+                    AddAddressRequest addAddressRequest = new AddAddressRequest(streetAddress, number, countryid, stateid, cityid, postalCode, Addreesstype, setasdefault, "PATCH");
+                    presenter.UpdateAddress(getContext(), id, addAddressRequest);
+                }
 
-                Toast.makeText(getContext(), CountryCode + "", Toast.LENGTH_SHORT).show();
 
-                presenter.GetCountryID(getContext(), CountryCode);
-
-
-                Log.e("taggg",  "\n" + "\n" + city + "\n" + state + "\n" + country );
+                /*AddAddressRequest addAddressRequest = new AddAddressRequest(streetAddress, number, countryid, stateid, cityid, postalCode, Addreesstype, setasdefault, "PATCH");
+                presenter.UpdateAddress(getContext(), id, addAddressRequest);
+*/
+                Log.e("taggg", "\n" + "\n" + city + "\n" + state + "\n" + country);
 
             }
         });
@@ -260,7 +318,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
                 //DestinationAdreess=streetAddress;
                 //Config.getInstance().setDname(streetAddress);
                 // placeBean.setLatitude(String.valueOf(place.getLatLng().latitude));
-                Toast.makeText(getContext(), streetAddress, Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(getContext(), streetAddress, Toast.LENGTH_SHORT).show();
                 // placeBean.setLongitude(String.valueOf(place.getLatLng().longi
                 mMap.addMarker(new MarkerOptions()
                         .position(latLng)
@@ -392,15 +450,14 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
                 //DestinationAdreess=streetAddress;
                 //Config.getInstance().setDname(streetAddress);
                 // placeBean.setLatitude(String.valueOf(place.getLatLng().latitude));
-                Toast.makeText(getContext(), CountryCode, Toast.LENGTH_SHORT).show();
+
+                //     Toast.makeText(getContext(), CountryCode, Toast.LENGTH_SHORT).show();
                 addressTV.setText(streetAddress);
                 // placeBean.setLongitude(String.valueOf(place.getLatLng().longi
                 mMap.addMarker(new MarkerOptions()
                         .position(latLng)
                         .title("Destination Address !!").snippet(streetAddress).icon(icon)
                         .draggable(true)
-
-
                 );
             }
         } catch (IOException e) {
@@ -454,9 +511,24 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
     public void onAddAddressSuccess(AddNewAddressRepo response, String message) {
 
 
-        if (message.equalsIgnoreCase("ok"))
-        {
-            navController.navigate(R.id.addressBookFragment);
+        if (message.equalsIgnoreCase("ok")) {
+
+            if (id.equalsIgnoreCase("CheckoutpageShipping")) {
+                navController.navigate(R.id.chackoutFragment);
+                Toast.makeText(getContext(), response.getMessage() + "", Toast.LENGTH_LONG).show();
+
+            } else if (id.equalsIgnoreCase("CheckoutpageBilling")) {
+                navController.navigate(R.id.chackoutFragment);
+                Toast.makeText(getContext(), response.getMessage() + "", Toast.LENGTH_LONG).show();
+
+
+            } else {
+
+                navController.navigate(R.id.addressBookFragment);
+                Toast.makeText(getContext(), response.getMessage() + "", Toast.LENGTH_LONG).show();
+            }
+
+
         }
 
 /*
@@ -474,22 +546,86 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
     }
 
     @Override
-    public void onCountrySuccess(CountryRepoID response, String message) {
-        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+    public void ongetidAddressSuccess(GetAddressIDRepo repo, String message) {
+
+
+        //    Toast.makeText(getContext(), repo.getData().getAddress().getAddress() + "", Toast.LENGTH_SHORT).show();
 
 
         if (message.equalsIgnoreCase("ok")) {
-            countryid= String.valueOf(response.getData().getCountry().getId());
-            if (state.equalsIgnoreCase("null"))
-            {
 
-                Toast.makeText(getContext(), "State name is not getting", Toast.LENGTH_LONG).show();
 
-            }else {
-                presenter.GetStateID(getContext(), state);
+            confirm_location_proceed.setText("Update Address");
+            addressTV.setText(repo.getData().getAddress().getAddress());
+            addressTV.setEnabled(true);
+            streetAddress = repo.getData().getAddress().getAddress();
+            numberET.setText(repo.getData().getAddress().getMobileNumber());
+            number = repo.getData().getAddress().getMobileNumber();
+            cityid = String.valueOf(repo.getData().getAddress().getCityId());
+            stateid = String.valueOf(repo.getData().getAddress().getStateId());
+            countryid = String.valueOf(repo.getData().getAddress().getCountryId());
+            postalCode = String.valueOf(repo.getData().getAddress().getPincode());
+            Addreesstype = repo.getData().getAddress().getType();
+            setasdefault = repo.getData().getAddress().getSetAsDefault();
+
+
+            if (Addreesstype.equalsIgnoreCase("Billing")) {
+
+                Billing.setChecked(true);
+                Shipping.setChecked(false);
+
+            } else if (Addreesstype.equalsIgnoreCase("Shipping")) {
+                Billing.setChecked(false);
+                Shipping.setChecked(true);
 
             }
 
+            if (setasdefault.equalsIgnoreCase("Yes")) {
+
+                Yes.setChecked(true);
+                No.setChecked(false);
+
+            } else if (setasdefault.equalsIgnoreCase("No")) {
+                Yes.setChecked(false);
+                No.setChecked(true);
+
+            }
+
+
+        }
+
+    }
+
+    @Override
+    public void onUpdateAddressSuccess(AddNewAddressRepo response, String message) {
+
+
+        if (message.equalsIgnoreCase("ok")) {
+            navController.navigate(R.id.addressBookFragment);
+
+            Toast.makeText(getContext(), response.getMessage() + "", Toast.LENGTH_LONG).show();
+
+
+        }
+
+
+    }
+
+    @Override
+    public void onCountrySuccess(CountryRepoID response, String message) {
+        //  Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
+
+        if (message.equalsIgnoreCase("ok")) {
+            countryid = String.valueOf(response.getData().getCountry().getId());
+            if (state.equalsIgnoreCase("null")) {
+
+                //  Toast.makeText(getContext(), "State name is not getting", Toast.LENGTH_LONG).show();
+
+            } else {
+                presenter.GetStateID(getContext(), state);
+
+            }
 
 
         }
@@ -498,21 +634,18 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
     @Override
     public void onStateSuccess(StateRepoID response, String message) {
         if (message.equalsIgnoreCase("ok")) {
-            stateid= String.valueOf(response.getData().getState().getId());
+            stateid = String.valueOf(response.getData().getState().getId());
 
-            Toast.makeText(getContext(), response.getData().getState().getId() + "", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getContext(), response.getData().getState().getId() + "", Toast.LENGTH_SHORT).show();
 
-            if (city.equalsIgnoreCase("null"))
-            {
+            if (city.equalsIgnoreCase("null")) {
 
                 Toast.makeText(getContext(), "City name is not getting", Toast.LENGTH_LONG).show();
 
-            }else {
+            } else {
                 presenter.GetCityID(getContext(), city);
 
             }
-
-
 
 
         }
@@ -522,7 +655,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
     public void onCitySuccess(CityRepoID response, String message) {
         if (message.equalsIgnoreCase("ok")) {
 
-            cityid= String.valueOf(response.getData().getCity().getId());
+            cityid = String.valueOf(response.getData().getCity().getId());
 
             AddNewAddrees();
 
@@ -554,7 +687,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
 
     public void AddNewAddrees() {
 
-        String number=numberET.getText().toString().trim();
+        number = numberET.getText().toString().trim();
         if (Billing.isChecked()) {
 
             Addreesstype = "Billing";
@@ -573,8 +706,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
 
         }
 
-        if (number.isEmpty())
-        {
+        if (number.isEmpty()) {
             Snacky.builder()
                     .setActivity(getActivity())
                     .setText("Enter Contact Number")
@@ -582,24 +714,53 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
                     .warning()
                     .show();
 
-        }else if (cityid.equalsIgnoreCase("null"))
-        {
+        } else if (cityid.equalsIgnoreCase("null")) {
             Toast.makeText(getContext(), "City name is not getting", Toast.LENGTH_SHORT).show();
-        }
-        else if (stateid.equalsIgnoreCase("null"))
-        {
+        } else if (stateid.equalsIgnoreCase("null")) {
             Toast.makeText(getContext(), "state name is not getting", Toast.LENGTH_SHORT).show();
-        }else if (countryid.equalsIgnoreCase("null"))
-        {
+        } else if (countryid.equalsIgnoreCase("null")) {
             Toast.makeText(getContext(), "country name is not getting", Toast.LENGTH_SHORT).show();
-        }else {
-            AddAddressRequest addAddressRequest=new AddAddressRequest(streetAddress,number,countryid,stateid,cityid,postalCode,Addreesstype,setasdefault);
-            presenter.AddNewAddress(getContext(),addAddressRequest);
+        } else {
+
+
+            if (id.equalsIgnoreCase("id")) {
+
+                AddAddressRequest addAddressRequest = new AddAddressRequest(streetAddress, number, countryid, stateid, cityid, postalCode, Addreesstype, setasdefault);
+                presenter.AddNewAddress(getContext(), addAddressRequest);
+
+
+            } else if (id.equalsIgnoreCase("CheckoutpageShipping")) {
+                AddAddressRequest addAddressRequest = new AddAddressRequest(streetAddress, number, countryid, stateid, cityid, postalCode, Addreesstype, setasdefault);
+                presenter.AddNewAddress(getContext(), addAddressRequest);
+
+            } else if (id.equalsIgnoreCase("CheckoutpageBilling")) {
+                AddAddressRequest addAddressRequest = new AddAddressRequest(streetAddress, number, countryid, stateid, cityid, postalCode, Addreesstype, setasdefault);
+                presenter.AddNewAddress(getContext(), addAddressRequest);
+
+
+            } else {
+
+
+                AddAddressRequest addAddressRequest = new AddAddressRequest(streetAddress, number, countryid, stateid, cityid, postalCode, Addreesstype, setasdefault, "PATCH");
+                presenter.UpdateAddress(getContext(), id, addAddressRequest);
+
+            }
+
+/*
+
+            if (!id.equalsIgnoreCase("id")) {
+                AddAddressRequest addAddressRequest = new AddAddressRequest(streetAddress, number, countryid, stateid, cityid, postalCode, Addreesstype, setasdefault, "PATCH");
+                presenter.UpdateAddress(getContext(), id, addAddressRequest);
+            } else {
+
+                //  Toast.makeText(getContext(), CountryCode + "", Toast.LENGTH_SHORT).show();
+                AddAddressRequest addAddressRequest = new AddAddressRequest(streetAddress, number, countryid, stateid, cityid, postalCode, Addreesstype, setasdefault);
+                presenter.AddNewAddress(getContext(), addAddressRequest);
+            }
+*/
+
+
         }
-
-
-
-        Toast.makeText(getContext(), postalCode, Toast.LENGTH_SHORT).show();
 
 
     }

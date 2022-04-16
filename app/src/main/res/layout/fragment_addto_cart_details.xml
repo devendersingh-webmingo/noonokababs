@@ -16,6 +16,7 @@
         tools:context=".Fragments.BottomNavFragment.Cart.AddtoCartDetailsFragment">
 
         <RelativeLayout
+            android:id="@+id/Add_to_cartRL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -231,6 +232,37 @@
 
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/LunchSpecialRV"
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="5dp"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                    tools:itemCount="5"
+                                    tools:listitem="@layout/requiredadapter_cart" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/CookingLL"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+
+                                <TextView
+                                    android:id="@+id/CookingTv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginTop="6dp"
+                                    android:fontFamily="@font/latomedium"
+                                    android:text="COOKING LEVEL (MEAT) (required)"
+                                    android:textColor="#99170101"
+                                    android:textSize="17dp"
+                                    android:textStyle="bold" />
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/CookingRV"
 
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"

@@ -20,9 +20,11 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,11 +35,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
 import com.rjesture.startupkit.AppTools;
 import com.webmingo.noonokababs.Activity.Authentication.LoginActivity;
 import com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.NotificationsFragment;
+import com.webmingo.noonokababs.ModelRepo.RequestRepo.ViewCartRequest;
 import com.webmingo.noonokababs.ModelRepo.Responsee.DashboardRepo;
 import com.webmingo.noonokababs.SharedPrefernce.SharedPrefManager;
 import com.webmingo.noonokababs.SharedPrefernce.ViewCartReqSharedPreferenc;
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private View navHeader, navDrawer;
     TextView username, usergmail, text_cart_Count;
-    ImageView img_discount, profile_Image, img_search;
+    ImageView img_discount, img_search;
     Boolean backhome = false;
     RelativeLayout relative, img_cart;
     private Context context;
@@ -65,11 +70,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private View view;
     Boolean CheckedLogin;
     int cartCount;
-
     ImageView switchIV;
     DoLogoutPresenter presenter;
 
     RelativeLayout relative_cart;
+
+    ImageView profile_Image;
+
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,17 +88,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         toolbar.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         SetBottomBarNavigationView();
         navHeader = navigationView.getHeaderView(0);
-
-
         initview();
-
     }
 
     private void initview() {
         presenter = new DoLogoutPresenter(this);
         switchIV = navHeader.findViewById(R.id.switchIV);
         username = navHeader.findViewById(R.id.nav_username);
-        relative_cart= findViewById(R.id.relative_cart);
+        profile_Image = navHeader.findViewById(R.id.profile_Image);
+        relative_cart = findViewById(R.id.relative_cart);
         presenter.DoName(MainActivity.this);
         switchIV.setOnClickListener(this);
         relative_cart.setOnClickListener(this);
@@ -98,9 +104,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
+
+
+        int fragmentsInStack = getSupportFragmentManager().getBackStackEntryCount();
+
+        ///Toast.makeText(context, String.valueOf(getSupportFragmentManager().getBackStackEntryCount())+"", Toast.LENGTH_SHORT).show();
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }
+        }/*else if (bottomNavigationView.getSelectedItemId()==R.id.home_Fragment)
+        {
+            if (backhome ==true ){
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+                backhome =false;
+            }else{
+                super.onBackPressed();
+
+            }
+        }*/
         /*else {
             if (bottomNavigationView.getSelectedItemId()==R.id.home_Fragment){
                 if (backhome ==true ){
@@ -143,6 +164,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             super.onBackPressed();
 
+            // navController.getGraph().getLabel()
+
+            //navController.toString();
+
+          /*  R.id.home_Fragment;
+            int fragmentsInStack = getSupportFragmentManager().getBackStackEntryCount();
+            Fragment fr = getSupportFragmentManager().findFragmentById(R.id.main);
+            String fragmentName = fr.getClass().getSimpleName();
+            Toast.makeText(this, fragmentName + "", Toast.LENGTH_SHORT).show();*/
+
         }
     }
 
@@ -158,8 +189,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.relative_cart:
 
                 navController.navigate(R.id.notificationsFragment);
-
-
 
 
                 break;
@@ -188,18 +217,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         navigationView = findViewById(R.id.navigationView);
         bottomNavigationView = findViewById(R.id.bottomNavigation);
         navController = Navigation.findNavController(this, R.id.main);
-        appBarConfiguration = new AppBarConfiguration.Builder(new int[]{R.id.home_Fragment, R.id.supportFragment, R.id.foodFragment, R.id.menuFragment, R.id.profileFragment, R.id.notificationsFragment,
-                R.id.orderhistoryFragment,
-                R.id.favoritesFragment,
-                R.id.accountFragment,
-                R.id.addressBookFragment,
-                R.id.paymentsFragment,
-                R.id.howitworkFragment,
-                R.id.contactsupportFragment,
-                R.id.legalFragment,
-                R.id.sendfeedbackFragment,
+        appBarConfiguration = new AppBarConfiguration.Builder(
+                new int[]{R.id.home_Fragment,
+                        R.id.supportFragment,
+                        R.id.DashboardFragment,
+                        R.id.foodFragment,
+                        R.id.menuFragment,
+                        R.id.profileFragment,
+                        R.id.notificationsFragment,
+                        R.id.orderhistoryFragment,
+                        R.id.favoritesFragment,
+                        R.id.addressBookFragment,
+                        R.id.paymentsFragment,
+                        R.id.howitworkFragment,
+                        R.id.contactsupportFragment,
+                        R.id.legalFragment,
+                        R.id.sendfeedbackFragment,
+                        R.id.reviewsFragment,
+                        R.id.termsConditionsFragment,
+                        R.id.RefundPolicy
 
-                R.id.reviewsFragment})
+
+
+                })
                 .setDrawerLayout(drawer)
                 .build();
         NavigationUI.setupWithNavController(navigationView, navController);
@@ -211,11 +251,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-
                 if (destination.getId() == R.id.notificationsFragment
                         || destination.getId() == R.id.orderhistoryFragment
                         || destination.getId() == R.id.favoritesFragment
-                        || destination.getId() == R.id.accountFragment
+                        || destination.getId() == R.id.editProfileFragment
                         || destination.getId() == R.id.addressBookFragment
                         || destination.getId() == R.id.paymentsFragment
                         || destination.getId() == R.id.howitworkFragment
@@ -229,10 +268,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         || destination.getId() == R.id.mapsFragment
                         || destination.getId() == R.id.foodDetailFragment
                         || destination.getId() == R.id.addtoCartDetailsFragment
+                        || destination.getId() == R.id.checkOutCartFragment
+                        || destination.getId() == R.id.chackoutFragment
+                        || destination.getId() == R.id.DashboardFragment
+                        || destination.getId() == R.id.orderHistoryDetailsFragment
+                        || destination.getId() == R.id.termsConditionsFragment
 
 
                 ) {
-
 
                     bottomNavigationView.setVisibility(View.GONE);
                 } /*else if (destination.getId() == R.id.address || destination.getId() == R.id.My_address || destination.getId() == R.id.ChangePassword || destination.getId() == R.id.ChangeEmail) {
@@ -242,6 +285,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     /*img_discount.setVisibility(View.VISIBLE);
                     bottomNavigationView.setVisibility(View.VISIBLE);
                     img_search.setVisibility(View.GONE);*/
+
                     bottomNavigationView.setVisibility(View.VISIBLE);
                 }
 
@@ -273,10 +317,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (message.equalsIgnoreCase("ok")) {
             Toast.makeText(this, "User Logout Successfully.", Toast.LENGTH_SHORT).show();
             SharedPrefManager.getInstance(this).logout();
-            ViewCartReqSharedPreferenc.ViewCartReqClear(this);
+            // ViewCartReqSharedPreferenc.ViewCartReqClear(this);
+
+            SharedPreferences mPrefs = MainActivity.this.getPreferences(MODE_PRIVATE);
+            SharedPreferences.Editor prefsEditor = mPrefs.edit();
+            prefsEditor.remove("viewCartRequest");
+            prefsEditor.apply();
 
             startActivity(new Intent(this, LoginActivity.class));
             finish();
+/*
+
+            SharedPreferences mPrefs = getActivity().getPreferences(MODE_PRIVATE);
+            SharedPreferences.Editor prefsEditor = mPrefs.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(viewCartRequest);
+            prefsEditor.putString("viewCartRequest", json);
+            prefsEditor.commit();
+*/
+
+
+
+        /*    SharedPreferences sharedPreferences = context.getSharedPreferences("viewCartRequest", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.apply();
+*/
+
+
         }
 
     }
@@ -299,7 +367,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             username.setText(response.getData().getUserInfo().getName());
 
-
+            if (response.getData().getUserInfo().getProfilePhoto() != null) {
+                Glide.with(this)
+                        .load(response.getData().getImageBaseUrl() + response.getData().getUserInfo().getProfilePhoto())
+                        .into(profile_Image);
+            }
         }
     }
 

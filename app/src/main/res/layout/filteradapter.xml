@@ -6,14 +6,16 @@
     android:layout_height="30dp"
     android:layout_margin="3dp"
 
- >
+    >
 
 
     <CheckBox
         android:id="@+id/filter"
         android:layout_width="match_parent"
+
         android:layout_height="match_parent"
         android:gravity="right"
+        android:buttonTint="@color/nav"
 
         android:text="22 July 2021" />
 
