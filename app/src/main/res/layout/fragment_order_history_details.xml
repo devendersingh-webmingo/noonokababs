@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:background="@color/bgcolor"
         android:orientation="vertical"
-        tools:context=".Fragments.DrawerLayoutFragment.OrderHistoryDetailsFragment">
+        tools:context=".Fragments.DrawerLayoutFragment.OrderHistory.OrderHistoryDetailsFragment">
 
 
         <androidx.core.widget.NestedScrollView
@@ -69,51 +69,86 @@
 
                     android:orientation="horizontal">
 
-
                     <LinearLayout
-
+                        android:id="@+id/RestaurantLL"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
 
-                        android:orientation="vertical">
 
-                        <TextView
+                        >
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:fontFamily="@font/latomedium"
-                            android:gravity="left"
-                            android:text="Order date &amp; Time"
-                            android:textColor="#CC000000"
-                            android:textSize="12dp" />
+                            android:layout_margin="2dp"
+                            android:orientation="vertical"
+
+                            android:padding="5dp"
+
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:fontFamily="@font/robotomedium"
+                                android:gravity="left"
+                                android:text="Restaurant Information"
+                                android:textColor="@color/black"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:id="@+id/RestaurantnameTv"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/robotomedium"
+                                android:gravity="left"
+                                android:text="Restaurant name"
+                                android:textColor="#B3000000"
+                                android:textSize="10dp" />
+
+                            <TextView
+
+                                android:id="@+id/RestaurantContacttv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="15dp"
+                                android:layout_marginTop="4dp"
+                                android:drawableRight="@drawable/ic_call"
+                                android:fontFamily="@font/robotomedium"
+                                android:gravity="left"
+                                android:text=""
+
+                                android:textColor="#B3000000"
+                                android:textSize="10dp" />
 
 
-                        <TextView
-                            android:id="@+id/serve_date"
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+
+                            android:layout_margin="3dp"
+                            android:gravity="center"
+
+                            android:orientation="vertical"
+
+                            android:visibility="gone">
 
 
-                            android:fontFamily="@font/latomedium"
-                            android:gravity="left"
-                            android:text="04-Sep-2021"
-                            android:textColor="@color/black"
-                            android:textSize="12dp" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/PartnerImage"
+                                android:layout_width="40dp"
 
-
-                        <TextView
-                            android:id="@+id/Serve_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/latomedium"
-
-                            android:gravity="left"
-                            android:text="12:30 PM"
-                            android:textColor="@color/black"
-                            android:textSize="12dp"
-                            android:visibility="gone" />
-
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/nofound" />
+                        </LinearLayout>
                     </LinearLayout>
 
 
@@ -121,7 +156,6 @@
                         android:id="@+id/PartnerLL"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
                         android:layout_margin="2dp"
 
                         android:gravity="right"
@@ -131,14 +165,16 @@
 
                         <LinearLayout
                             android:id="@+id/partnerinformation"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:orientation="vertical"
-
                             android:padding="5dp"
 
-                            android:visibility="gone">
+                            android:visibility="gone"
+
+                            >
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -192,7 +228,6 @@
 
 
                             <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/PartnerImage"
                                 android:layout_width="40dp"
 
                                 android:layout_height="40dp"
@@ -202,6 +237,121 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+                <View
+
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="15dp"
+                    android:background="@color/tab_indicator_gray" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+
+                    android:layout_marginRight="8dp"
+
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:fontFamily="@font/robotomedium"
+                            android:gravity="left"
+                            android:text="Order date &amp; Time"
+                            android:textColor="#CC000000"
+                            android:textSize="12dp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/serve_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+
+                            android:fontFamily="@font/latomedium"
+                            android:gravity="left"
+                            android:text="04-Sep-2021"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+
+
+                        <TextView
+                            android:id="@+id/Serve_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/latomedium"
+
+                            android:gravity="left"
+                            android:text="12:30 PM"
+                            android:textColor="@color/black"
+                            android:textSize="12dp"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_margin="2dp"
+                        android:gravity="right"
+
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:fontFamily="@font/latomedium"
+                            android:gravity="left"
+                            android:text="Delivery  date &amp; Time"
+                            android:textColor="#CC000000"
+                            android:textSize="12dp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/Deliverydatetv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+
+                            android:fontFamily="@font/latomedium"
+                            android:gravity="left"
+                            android:text="04-Sep-2021"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/DeliveryTypeTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/latomedium"
+                    android:gravity="left"
+
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
 
                 <View
                     android:layout_width="match_parent"

@@ -59,7 +59,7 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/orderhistoryFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.OrderhistoryFragment"
+        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.OrderHistory.OrderhistoryFragment"
         android:label="Order History"
         tools:layout="@layout/fragment_orderhistory" >
         <action
@@ -136,7 +136,7 @@
     </fragment>
     <fragment
         android:id="@+id/writeReviewFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Review.WriteReviewFragment"
+        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.OrderHistory.OrderReviewFragment"
         android:label="Write Your Review"
         tools:layout="@layout/fragment_write_review" />
     <fragment
@@ -200,7 +200,7 @@
         tools:layout="@layout/fragment_order_history_details"
 
         android:id="@+id/orderHistoryDetailsFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.OrderHistoryDetailsFragment"
+        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.OrderHistory.OrderHistoryDetailsFragment"
         android:label="Order History Details" />
 
     <activity

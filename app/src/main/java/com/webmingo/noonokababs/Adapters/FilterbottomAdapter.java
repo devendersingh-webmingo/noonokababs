@@ -24,6 +24,10 @@ public class FilterbottomAdapter extends RecyclerView.Adapter<FilterbottomAdapte
     Context context;
     private CheckBoxListener itemClickListenerr;
 
+
+    private static CheckBox lastChecked = null;
+    private static int lastCheckedPos = 0;
+
     public FilterbottomAdapter(ArrayList<Filtermodel> arrayList, Context context,CheckBoxListener itemClickListenerr) {
         this.arrayList = arrayList;
         this.context = context;
@@ -50,15 +54,25 @@ public class FilterbottomAdapter extends RecyclerView.Adapter<FilterbottomAdapte
 
         holder.filter.setText(arrayList.get(position).getValue());
 
+        //for default check in first item
+
+      /*  if(position == 0 && arrayList.get(0).isSelected() && holder.checkBox.isChecked())
+        {
+            lastChecked = holder.checkBox;
+            lastCheckedPos = 0;
+        }*/
+
         holder.filter.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 itemClickListenerr.CheckedClick(String.valueOf(arrayList.get(position).getKey()), position, isChecked);
 
+                notifyDataSetChanged();
 
             }
         });
+
     }
 
     @Override

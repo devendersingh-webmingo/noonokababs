@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,8 +56,11 @@ public class FoodFragment extends Fragment implements DoFoodListPresenter.DoFood
     int scrolling_page = 1;
     FoodItemAdapter foodItemAdapter;
     Bundle extras;
-    String rating_hight_to_low, price_low_to_high, popular, neww;
+    String rating_hight_to_low = "", sort_by = "", search = "";
+
+
     String id = "no";
+    Boolean searchbar = false;
 
 
     public FoodFragment() {
@@ -92,10 +97,12 @@ public class FoodFragment extends Fragment implements DoFoodListPresenter.DoFood
 
             if (id.equalsIgnoreCase("no")) {
                 rating_hight_to_low = getArguments().getString("rating_hight_to_low");
-                price_low_to_high = getArguments().getString("price_low_to_high");
-                popular = getArguments().getString("popular");
-                neww = getArguments().getString("neww");
-                Toast.makeText(getContext(), id, Toast.LENGTH_SHORT).show();
+                sort_by = getArguments().getString("sort_by");
+
+                presenter.DoFoodList(getContext(), String.valueOf(scrolling_page), rating_hight_to_low, sort_by, search);
+                // Log.e("DoFoodListDoFoodList", "rating_hight_to_low=" + rating_hight_to_low + "popular=" + popular + "latest" + latest);
+
+
             } else {
                 Toast.makeText(getContext(), id, Toast.LENGTH_SHORT).show();
 
@@ -104,7 +111,10 @@ public class FoodFragment extends Fragment implements DoFoodListPresenter.DoFood
 
             }
         } else {
-            presenter.DoFoodList(getContext(), String.valueOf(scrolling_page));
+
+
+            presenter.DoFoodList(getContext(), String.valueOf(scrolling_page), rating_hight_to_low, sort_by, search);
+
 
         }
         isLoading = true;
@@ -131,6 +141,54 @@ public class FoodFragment extends Fragment implements DoFoodListPresenter.DoFood
 
             }
         });
+
+
+        binding.serchFoodTv.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+                search = s.toString();
+
+                searchbar = true;
+                rating_hight_to_low = "";
+                sort_by = "";
+                presenter.DoFoodList(getContext(), String.valueOf(scrolling_page), rating_hight_to_low, sort_by, search);
+
+                Toast.makeText(getContext(), search + "", Toast.LENGTH_SHORT).show();
+
+
+/*
+
+                if (key.equalsIgnoreCase("Home"))
+                {
+                    String text = s.toString();
+                    presenter.DoSearchList(getContext(), text);
+                    binding.recyclerView.setVisibility(View.GONE);
+
+                }else {
+
+                    String text = s.toString();
+                    presenter.SearchFoodItem(getContext(), text);
+                    binding.recyclerView.setVisibility(View.GONE);
+                }
+
+*/
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
         binding.serchFoodTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,6 +198,7 @@ public class FoodFragment extends Fragment implements DoFoodListPresenter.DoFood
                 Bundle bundle = new Bundle();
                 bundle.putString("Key", "Food");
                 navController.navigate(R.id.searchFragment, bundle);
+
 
 
 
@@ -181,7 +240,12 @@ public class FoodFragment extends Fragment implements DoFoodListPresenter.DoFood
         if (message.equalsIgnoreCase("ok")) {
 
             if (response.getData().getFoodItems().getData().size() > 0) {
+
+                Log.e("onDoFoodListSuccess", String.valueOf(response.getData().getFoodItems().getData().size()));
+
                 setup_cart_items(response);
+
+                searchbar = false;
 
 
 
@@ -352,7 +416,9 @@ public class FoodFragment extends Fragment implements DoFoodListPresenter.DoFood
     }
 
     @Override
+
     public void showHideProgress(boolean isShow) {
+
         if (isShow) {
             AppTools.showRequestDialog(getActivity());
 
@@ -360,6 +426,21 @@ public class FoodFragment extends Fragment implements DoFoodListPresenter.DoFood
             AppTools.hideDialog();
 
         }
+        /*
+
+        if (searchbar) {
+
+        } else {
+
+
+            if (isShow) {
+                AppTools.showRequestDialog(getActivity());
+
+            } else {
+                AppTools.hideDialog();
+
+            }
+        }*/
 
     }
 
@@ -432,7 +513,10 @@ public class FoodFragment extends Fragment implements DoFoodListPresenter.DoFood
                     if (isScrolling && (currrentitem + scrolloutiem == totalitem)) {
                         scrolling_page += 1;
 
-                        presenter.DoFoodList(getContext(), String.valueOf(scrolling_page));
+
+                        // presenter.DoFoodList(getContext(), String.valueOf(scrolling_page), rating_hight_to_low, latest, popular);
+                        presenter.DoFoodList(getContext(), String.valueOf(scrolling_page), rating_hight_to_low, sort_by, search);
+
                         foodItemAdapter.notifyDataSetChanged();
                         ;
 

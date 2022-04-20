@@ -102,15 +102,16 @@ public class DashboardFragment extends Fragment implements OrderHistoryPresenter
 
         if (message.equalsIgnoreCase("ok")) {
             if (response.getData().getOrders().size() > 0) {
-                Toast.makeText(getContext(), response.getData().getOrders().size()+"", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), response.getData().getOrders().size() + "", Toast.LENGTH_SHORT).show();
 
                 YourRecentOrdersAdapter yourRecentOrdersAdapter = new YourRecentOrdersAdapter(response, getContext(), this);
                 RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
                 binding.recentOrdersAdapter.setLayoutManager(mLayoutManager1);
                 binding.recentOrdersAdapter.setItemAnimator(new DefaultItemAnimator());
                 binding.recentOrdersAdapter.setAdapter(yourRecentOrdersAdapter);
-
-
+            } else {
+                binding.DashboardPageLL.setVisibility(View.GONE);
+                binding.tvCall.setVisibility(View.VISIBLE);
             }
 
 
@@ -158,10 +159,6 @@ public class DashboardFragment extends Fragment implements OrderHistoryPresenter
 
     @Override
     public void OnClickCancelOrder(AllHistoryRepo repo, int pos) {
-
-
-
-
 
 
     }

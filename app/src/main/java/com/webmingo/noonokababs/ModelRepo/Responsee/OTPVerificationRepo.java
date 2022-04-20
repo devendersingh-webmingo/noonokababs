@@ -77,7 +77,6 @@ public class OTPVerificationRepo {
         }
 
 
-
         public class User {
 
             @SerializedName("id")
@@ -172,7 +171,7 @@ public class OTPVerificationRepo {
             private String userStatus;
             @SerializedName("wallet_amount")
             @Expose
-            private Integer walletAmount;
+            private String walletAmount;
             @SerializedName("sender_amount")
             @Expose
             private Integer senderAmount;
@@ -435,11 +434,11 @@ public class OTPVerificationRepo {
                 this.userStatus = userStatus;
             }
 
-            public Integer getWalletAmount() {
+            public String getWalletAmount() {
                 return walletAmount;
             }
 
-            public void setWalletAmount(Integer walletAmount) {
+            public void setWalletAmount(String walletAmount) {
                 this.walletAmount = walletAmount;
             }
 

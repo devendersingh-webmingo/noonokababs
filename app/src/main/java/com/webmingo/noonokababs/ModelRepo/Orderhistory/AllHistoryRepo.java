@@ -65,6 +65,7 @@ public class AllHistoryRepo {
         public void setOrders(List<Order> orders) {
             this.orders = orders;
         }
+
         public class Order {
 
             @SerializedName("id")
@@ -91,6 +92,32 @@ public class AllHistoryRepo {
             @SerializedName("rated")
             @Expose
             private String rated;
+
+
+            @SerializedName("payment_status")
+            @Expose
+            private String payment_status;
+
+            @SerializedName("payment_method")
+            @Expose
+            private String payment_method;
+
+            public String getPayment_status() {
+                return payment_status;
+            }
+
+            public void setPayment_status(String payment_status) {
+                this.payment_status = payment_status;
+            }
+
+            public String getPayment_method() {
+                return payment_method;
+            }
+
+            public void setPayment_method(String payment_method) {
+                this.payment_method = payment_method;
+            }
+
             @SerializedName("p_amount_summery")
             @Expose
             private PAmountSummery pAmountSummery;
@@ -102,7 +129,6 @@ public class AllHistoryRepo {
             public void setId(Integer id) {
                 this.id = id;
             }
-
 
 
             public Float getOfferAmount() {
@@ -265,74 +291,74 @@ public class AllHistoryRepo {
                     this.ingredients = ingredients;
                 }
 
-               /* public Addons getAddons() {
-                    return addons;
-                }
+                /* public Addons getAddons() {
+                     return addons;
+                 }
 
-                public void setAddons(Addons addons) {
-                    this.addons = addons;
-                }
-                public class Addons {
+                 public void setAddons(Addons addons) {
+                     this.addons = addons;
+                 }
+                 public class Addons {
 
-                    @SerializedName("id")
-                    @Expose
-                    private Integer id;
-                    @SerializedName("quantity")
-                    @Expose
-                    private Integer quantity;
-                    @SerializedName("price")
-                    @Expose
-                    private String price;
-                    @SerializedName("image")
-                    @Expose
-                    private String image;
-                    @SerializedName("remark")
-                    @Expose
-                    private String remark;
+                     @SerializedName("id")
+                     @Expose
+                     private Integer id;
+                     @SerializedName("quantity")
+                     @Expose
+                     private Integer quantity;
+                     @SerializedName("price")
+                     @Expose
+                     private String price;
+                     @SerializedName("image")
+                     @Expose
+                     private String image;
+                     @SerializedName("remark")
+                     @Expose
+                     private String remark;
 
-                    public Integer getId() {
-                        return id;
-                    }
+                     public Integer getId() {
+                         return id;
+                     }
 
-                    public void setId(Integer id) {
-                        this.id = id;
-                    }
+                     public void setId(Integer id) {
+                         this.id = id;
+                     }
 
-                    public Integer getQuantity() {
-                        return quantity;
-                    }
+                     public Integer getQuantity() {
+                         return quantity;
+                     }
 
-                    public void setQuantity(Integer quantity) {
-                        this.quantity = quantity;
-                    }
+                     public void setQuantity(Integer quantity) {
+                         this.quantity = quantity;
+                     }
 
-                    public String getPrice() {
-                        return price;
-                    }
+                     public String getPrice() {
+                         return price;
+                     }
 
-                    public void setPrice(String price) {
-                        this.price = price;
-                    }
+                     public void setPrice(String price) {
+                         this.price = price;
+                     }
 
-                    public String getImage() {
-                        return image;
-                    }
+                     public String getImage() {
+                         return image;
+                     }
 
-                    public void setImage(String image) {
-                        this.image = image;
-                    }
+                     public void setImage(String image) {
+                         this.image = image;
+                     }
 
-                    public String getRemark() {
-                        return remark;
-                    }
+                     public String getRemark() {
+                         return remark;
+                     }
 
-                    public void setRemark(String remark) {
-                        this.remark = remark;
-                    }
+                     public void setRemark(String remark) {
+                         this.remark = remark;
+                     }
 
-                }
+                 }
 
-          */      public class Ingredient {
+           */      public class Ingredient {
 
                     @SerializedName("id")
                     @Expose

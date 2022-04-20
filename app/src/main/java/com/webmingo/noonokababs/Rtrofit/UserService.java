@@ -1,11 +1,13 @@
 package com.webmingo.noonokababs.Rtrofit;
 
 
+import com.webmingo.noonokababs.ModelRepo.FooddetailRateRepo;
 import com.webmingo.noonokababs.ModelRepo.Orderhistory.AllHistoryRepo;
 import com.webmingo.noonokababs.ModelRepo.Orderhistory.HistoryDetailsRepo;
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.AddAddressRequest;
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.AddCartRequest;
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.CreateOrderReq;
+import com.webmingo.noonokababs.ModelRepo.RequestRepo.OrderReviewReq;
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.ProfileUpdateReq;
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.SupportReq;
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.ViewCartRequest;
@@ -137,7 +139,12 @@ public interface UserService {
     @FormUrlEncoded
     @POST("all/food-items")
     Call<FoodItemRepo> GetFoodItem(
-            @Field("page") String page
+            @Field("page") String page,
+            @Field("rating_hight_to_low") String rating_hight_to_low,
+            @Field("sort_by") String latest,
+            @Field("search") String search
+
+
     );
 
 
@@ -422,11 +429,11 @@ public interface UserService {
     Call<TermCondition> Termconditions(
 
     );
+
     @GET("home/refund/policy")
     Call<RefoundPolicyRepo> RefoundPolicy(
 
     );
-
 
 
     @GET("home/policy")
@@ -461,7 +468,6 @@ public interface UserService {
     );
 
 
-
     @GET("user/deactivate/account")
     Call<ResponseBody> DeactivateAccount(
     );
@@ -473,6 +479,21 @@ public interface UserService {
             @Field("reason") String reason
 
     );
+
+
+    @GET("user/food-detail/for-rate/{Order_id}")
+    Call<FooddetailRateRepo> FooddetailRate(
+            @Path("Order_id") String type
+    );
+
+    @POST("user/give/rate-review/{Order_id}")
+    Call<ResponseBody> OrderReviewReq(
+            @Path("Order_id") String Order_id,
+            @Body OrderReviewReq createOrderReq
+
+    );
+
+
     //review
     //  https://miraclesaba.xyz/restaurant/api/user/card/{card_id}
 }

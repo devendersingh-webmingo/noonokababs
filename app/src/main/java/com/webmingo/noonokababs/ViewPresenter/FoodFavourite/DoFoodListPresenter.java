@@ -72,8 +72,8 @@ public class DoFoodListPresenter {
     }
 
 
-    public void DoFoodList(Context context, String Page) {
-        Call<FoodItemRepo> loginCall = ApiManager.getApi(context).GetFoodItem(Page);
+    public void DoFoodList(Context context, String Page, String rating_hight_to_low, String latest,String search) {
+        Call<FoodItemRepo> loginCall = ApiManager.getApi(context).GetFoodItem(Page, rating_hight_to_low, latest, search);
         view.showHideProgress(true);
         loginCall.enqueue(new Callback<FoodItemRepo>() {
             @Override

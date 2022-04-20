@@ -31,6 +31,7 @@ import com.webmingo.noonokababs.Adapters.cart.CheckOut.ItemOnCheckOutAdapter;
 import com.webmingo.noonokababs.Adapters.cart.RequriedItemCartAdapter;
 import com.webmingo.noonokababs.MainActivity;
 import com.webmingo.noonokababs.ModelRepo.RequestRepo.ViewCartRequest;
+import com.webmingo.noonokababs.ModelRepo.Responsee.FoodFavourit.FoodDetailsOfferRepo;
 import com.webmingo.noonokababs.ModelRepo.cart.CouponRepo;
 import com.webmingo.noonokababs.ModelRepo.cart.FoodCartViewRepo;
 import com.webmingo.noonokababs.R;
@@ -141,6 +142,9 @@ public class CheckOutCartFragment extends Fragment implements FoodCartPresenter.
             }
         });
 
+
+
+
         SharedPreferences mPrefs = getActivity().getPreferences(MODE_PRIVATE);
         Gson gson = new Gson();
         String json = mPrefs.getString("viewCartRequest", "");
@@ -201,25 +205,17 @@ public class CheckOutCartFragment extends Fragment implements FoodCartPresenter.
     @Override
     public void onFoodCartSuccess(FoodCartViewRepo response, String message) {
 
-        Snacky.builder()
-                .setActivity(getActivity())
-                .setText(message)
-                .setTextColor(getResources().getColor(R.color.white))
-                .warning()
-                .show();
+
         Log.e("tax_percent", response.getData().getTaxPercent());
-
-
         if (message.equalsIgnoreCase("ok")) {
+            presenter.DoFoodoffer(getContext(),"");
             binding.mrp.setText("$ " + response.getData().getMrpTotalAmount());
             binding.prediscount.setText("$ " + response.getData().getPreDiscountAmount());
-
             binding.subtotal.setText("$ " + response.getData().getSubTotalAmount());
             binding.taxname.setText(response.getData().getTaxName() + "(" + response.getData().getTaxPercent() + "%):");
             binding.txt.setText("$ " + response.getData().getTaxAmount());
             binding.total.setText("$ " + response.getData().getBillingAmount());
-         //   offer_price = response.getData().getBillingAmount();
-
+            //   offer_price = response.getData().getBillingAmount();
             offer_price = response.getData().getSubTotalAmount();
 
             CheckAmount checkAmount = new CheckAmount(response.getData().getMrpTotalAmount(),
@@ -261,6 +257,35 @@ public class CheckOutCartFragment extends Fragment implements FoodCartPresenter.
     }
 
     @Override
+    public void onDoFoodOfferSuccess(FoodDetailsOfferRepo response, String message) {
+
+        if (message.equalsIgnoreCase("ok")) {
+
+            if (response.getData().getCoupons().get(0).getCode() != null) {
+
+                binding.AvailableCoupons.setVisibility(View.VISIBLE);
+                binding.coupondetails.setVisibility(View.VISIBLE);
+                binding.coupondetails.setText("GRAB " + response.getData().getCoupons().get(0).getDiscount() +
+                        "% Off! Use coupon " + response.getData().getCoupons().get(0).getCode() + " for your first "
+                        + response.getData().getCoupons().get(0).getUsages() + " order"
+                );
+
+                binding.coupondetails.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        binding.etPromo.setText( response.getData().getCoupons().get(0).getCode());
+
+                    }
+                });
+
+            }
+
+        }
+
+
+    }
+
+    @Override
     public void onCouponApplySuccess(CouponRepo response, String message) {
        /* Snacky.builder()
                 .setActivity(getActivity())
@@ -287,7 +312,7 @@ public class CheckOutCartFragment extends Fragment implements FoodCartPresenter.
                     .setTitle(response.getMessage())
                     .setMessage("")
                     .sneakSuccess();
-            ViewCartRequest viewCartRequest2=new ViewCartRequest(viewCartRequest1.cart,coupon_discount);
+            ViewCartRequest viewCartRequest2 = new ViewCartRequest(viewCartRequest1.cart, coupon_discount);
             presenter.FoodAddToCart(getContext(), viewCartRequest2);
             //presenter.FoodAddToCart(getContext(), viewCartRequest1);
             Log.e("onCouponApplySuccess", viewCartRequest1.cart.toString());

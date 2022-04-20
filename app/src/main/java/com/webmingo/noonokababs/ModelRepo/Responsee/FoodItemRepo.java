@@ -119,6 +119,24 @@ public class FoodItemRepo {
                 return data;
             }
 
+            @Override
+            public String toString() {
+                return "FoodItems{" +
+                        "currentPage=" + currentPage +
+                        ", data=" + data +
+                        ", firstPageUrl='" + firstPageUrl + '\'' +
+                        ", from=" + from +
+                        ", lastPage=" + lastPage +
+                        ", lastPageUrl='" + lastPageUrl + '\'' +
+                        ", nextPageUrl='" + nextPageUrl + '\'' +
+                        ", path='" + path + '\'' +
+                        ", perPage=" + perPage +
+                        ", prevPageUrl='" + prevPageUrl + '\'' +
+                        ", to=" + to +
+                        ", total=" + total +
+                        '}';
+            }
+
             public void setData(List<Datum> data) {
                 this.data = data;
             }
@@ -206,6 +224,43 @@ public class FoodItemRepo {
 
 
             public static class Datum {
+                @Override
+                public String toString() {
+                    return "Datum{" +
+                            "id=" + id +
+                            ", typeId=" + typeId +
+                            ", categoryId=" + categoryId +
+                            ", subCategoryId=" + subCategoryId +
+                            ", name='" + name + '\'' +
+                            ", slug='" + slug + '\'' +
+                            ", remark='" + remark + '\'' +
+                            ", metaTitle='" + metaTitle + '\'' +
+                            ", in_stock='" + in_stock + '\'' +
+                            ", keyword='" + keyword + '\'' +
+                            ", description='" + description + '\'' +
+                            ", stock='" + stock + '\'' +
+                            ", inventory='" + inventory + '\'' +
+                            ", cod='" + cod + '\'' +
+                            ", homeDelivery='" + homeDelivery + '\'' +
+                            ", takeaway='" + takeaway + '\'' +
+                            ", status='" + status + '\'' +
+                            ", favourite=" + favourite +
+                            ", deliveryTime='" + deliveryTime + '\'' +
+                            ", promotional='" + promotional + '\'' +
+                            ", levels=" + levels +
+                            ", ingredients='" + ingredients + '\'' +
+                            ", addons=" + addons +
+                            ", mandatory='" + mandatory + '\'' +
+                            ", createdAt='" + createdAt + '\'' +
+                            ", updatedAt='" + updatedAt + '\'' +
+                            ", avg_rating='" + avg_rating + '\'' +
+                            ", total_rating='" + total_rating + '\'' +
+                            ", rating='" + rating + '\'' +
+                            ", deletedAt=" + deletedAt +
+                            ", getGallery=" + getGallery +
+                            ", getSinglePrice=" + getSinglePrice +
+                            '}';
+                }
 
                 @SerializedName("id")
                 @Expose

@@ -893,7 +893,7 @@ public class DashboardRepo {
             private String userStatus;
             @SerializedName("wallet_amount")
             @Expose
-            private Integer walletAmount;
+            private String walletAmount;
             @SerializedName("sender_amount")
             @Expose
             private Integer senderAmount;
@@ -1162,11 +1162,11 @@ public class DashboardRepo {
                 this.userStatus = userStatus;
             }
 
-            public Integer getWalletAmount() {
+            public String getWalletAmount() {
                 return walletAmount;
             }
 
-            public void setWalletAmount(Integer walletAmount) {
+            public void setWalletAmount(String walletAmount) {
                 this.walletAmount = walletAmount;
             }
 

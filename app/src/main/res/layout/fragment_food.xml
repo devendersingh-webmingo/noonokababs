@@ -45,6 +45,7 @@
 
 
                         <TextView
+                            android:background="@null"
                             android:id="@+id/serchFoodTv"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -53,15 +54,15 @@
                             android:gravity="center_vertical"
                             android:paddingStart="10dp"
                             android:paddingLeft="10dp"
-                            android:text="Search Food..." />
+                            android:hint="Search Food..." />
                     </androidx.cardview.widget.CardView>
 
 
                     <ImageView
-                        android:layout_toRightOf="@id/serachCV"
                         android:id="@+id/microphone"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
+                        android:layout_toRightOf="@id/serachCV"
                         android:src="@drawable/searchmore" />
 
                 </RelativeLayout>

@@ -368,7 +368,13 @@ public class AddtoCartDetailsFragment extends Fragment implements AddtocartitemD
             varientId = String.valueOf(response.getData().getVarient().getId());
             binding.nameTV.setText(Html.fromHtml(response.getData().getFood().getName()));
 
-            binding.RemarkTv.setText(Html.fromHtml(response.getData().getFood().getRemark()));
+            if (response.getData().getFood().getRemark()!=null)
+            {
+                binding.RemarkTv.setText(Html.fromHtml(response.getData().getFood().getRemark()));
+
+
+            }
+
 
             binding.price.setText(response.getData().getVarient().getFinalPrice());
             binding.cartdetaillayout.TotalPrice.setText("$ " + response.getData().getVarient().getFinalPrice());

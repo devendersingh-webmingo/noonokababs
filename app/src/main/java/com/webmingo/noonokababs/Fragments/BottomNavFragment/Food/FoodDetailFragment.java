@@ -10,6 +10,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,6 +70,8 @@ public class FoodDetailFragment extends Fragment implements DoFoodDetailsPresent
             id = getArguments().getString("id");
             presenter.DoFoodDetails(getContext(), id);
 
+           Toast.makeText(getContext(), id + "", Toast.LENGTH_SHORT).show();
+
 
         }
         binding.AddFavTV.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +92,7 @@ public class FoodDetailFragment extends Fragment implements DoFoodDetailsPresent
                 navController.navigate(R.id.addtoCartDetailsFragment, bundle);
 
 
-                Toast.makeText(getContext(), id + "", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(), id + "", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -144,49 +147,62 @@ public class FoodDetailFragment extends Fragment implements DoFoodDetailsPresent
 
         if (message.equalsIgnoreCase("ok")) {
             binding.Categoris.setText("Categories: " + response.getData().getFoodDetail().getGetCategory().getName());
-            binding.Name.setText("Categories: " + response.getData().getFoodDetail().getName());
-            binding.remark.setText(Html.fromHtml(response.getData().getFoodDetail().getRemark()));
+            binding.Name.setText("" + response.getData().getFoodDetail().getName());
+            if (response.getData().getFoodDetail().getRemark()!=null)
+            {
+
+                binding.remark.setText(Html.fromHtml(response.getData().getFoodDetail().getRemark()));
+            }
             binding.timimg.setText(response.getData().getFoodDetail().getDeliveryTime());
             binding.tvPrice.setText("$" + response.getData().getFoodDetail().getGetVarients().get(0).getPrice());
-            binding.Avergeratingtv.setText( response.getData().getFoodDetail().getTotal_rating());
-            binding.TotalRatingTV.setText(response.getData().getFoodDetail().getRating()+"+ Rating");
+            //binding.Avergeratingtv.setText( response.getData().getFoodDetail().getTotal_rating());
+            // binding.TotalRatingTV.setText(response.getData().getFoodDetail().getAvg_rating()+"+ Rating");
+         /*   Toast.makeText(getContext(), response.getData().getFoodDetail().getAvg_rating()+"", Toast.LENGTH_SHORT).show();
 
-            binding.textRating.setRating(Float.parseFloat(String.valueOf(response.getData().getFoodDetail().getRating())));
+            if (response.getData().getFoodDetail().getAvg_rating()!=null){
+                binding.textRating.setRating(Float.parseFloat(String.valueOf(response.getData().getFoodDetail().getAvg_rating())));
+
+            }*/
+
+            if (response.getData().getFoodDetail().getGetGallery().get(0).getImage() != null) {
+                Glide.with(getContext())
+                        .load(response.getData().getImageBaseUrl() + response.getData().getFoodDetail().getGetGallery().get(0).getImage())
+                        .into(binding.foodIV);
+            }
 
 
-            Glide.with(getContext())
-                    .load(response.getData().getImageBaseUrl() + response.getData().getFoodDetail().getGetGallery().get(0).getImage())
-                    .into(binding.foodIV);
-            presenter.DoFoodoffer(getContext(), id);
-
-
-
-
-            Toast.makeText(getContext(), response.getData().getFoodDetail().getIn_stock()+" ", Toast.LENGTH_SHORT).show();
-            if (response.getData().getFoodDetail().getIn_stock().equalsIgnoreCase("Yes")) {
+           // Toast.makeText(getContext(), response.getData().getFoodDetail().getInStock() + " ", Toast.LENGTH_SHORT).show();
+            if (response.getData().getFoodDetail().getInStock().equalsIgnoreCase("Yes")) {
 
 
                 binding.nextproduced.setVisibility(View.VISIBLE);
                 binding.outofstockTV.setVisibility(View.GONE);
             }
 
+            presenter.DoFoodoffer(getContext(), id);
+
+         //   Log.e("avg_rating ",response.getData().getFoodDetail().getAvgRating());
+            binding.TotalRatingTV.setText(response.getData().getFoodDetail().getAvgRating() + "+ Rating");
+            if (response.getData().getFoodDetail().getAvgRating() != null) {
+                binding.textRating.setRating(Float.parseFloat(response.getData().getFoodDetail().getAvgRating()));
+
+            }
+
+            binding.FoodDetailsLL.setVisibility(View.VISIBLE);
+
 
         }
+
 
     }
 
     @Override
     public void onDoFoodDetailsOfferSuccess(FoodDetailsOfferRepo response, String message) {
-        Snacky.builder()
-                .setActivity(getActivity())
-                .setText(message)
-                .setTextColor(getResources().getColor(R.color.white))
-                .warning()
-                .show();
+
         if (message.equalsIgnoreCase("ok")) {
 
-            binding.offername.setText("20% off up to ₹300 on orders above ₹1000 | Use Name  " + response.getData().getCoupons().get(0).getName().toUpperCase());
-            binding.cuponname.setText("15% off upto ₹100 with SBI credit cards, once per week | Use code " + response.getData().getCoupons().get(0).getCode().toUpperCase());
+            binding.offername.setText("20% off up to $300 on orders above $1000 | Use Name  " + response.getData().getCoupons().get(0).getName().toUpperCase());
+            binding.cuponname.setText("15% off upto $100 with SBI credit cards, once per week | Use code " + response.getData().getCoupons().get(0).getCode().toUpperCase());
 
         }
     }
@@ -195,6 +211,7 @@ public class FoodDetailFragment extends Fragment implements DoFoodDetailsPresent
     public void showHideProgress(boolean isShow) {
         if (isShow) {
             AppTools.showRequestDialog(getActivity());
+            binding.FoodDetailsLL.setVisibility(View.GONE);
 
         } else {
             AppTools.hideDialog();

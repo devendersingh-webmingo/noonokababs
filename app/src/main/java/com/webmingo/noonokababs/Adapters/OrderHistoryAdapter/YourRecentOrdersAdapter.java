@@ -61,6 +61,8 @@ public class YourRecentOrdersAdapter extends RecyclerView.Adapter<YourRecentOrde
         }
 
 
+        //holder.PaymentTV.setText(""+ modelArrayList.getData().getOrders().get(position).get());
+
         holder.OrderidTV.setText("Order:-" + modelArrayList.getData().getOrders().get(position).getOrderId());
 
         holder.DateTV.setText(modelArrayList.getData().getOrders().get(position).getOrderDatetime());
@@ -77,6 +79,11 @@ public class YourRecentOrdersAdapter extends RecyclerView.Adapter<YourRecentOrde
         holder.amounTV.setText("Quantity: " + modelArrayList.getData().getOrders().get(position).getOrderFoodDetail().get(0).getQuantity());
 
         holder.totalamounttv.setText("Grand Total: $" + modelArrayList.getData().getOrders().get(position).getOfferAmount());
+
+
+        holder.PaymentMethodTV.setText("Payment Status:- " + modelArrayList.getData().getOrders().get(position).getPayment_status());
+        holder.payment_mode.setText("Payment Mode:- " + modelArrayList.getData().getOrders().get(position).getPayment_method());
+
 
         if (modelArrayList.getData().getOrders().get(position).getRated().equalsIgnoreCase("No")) {
             holder.ratingLL.setVisibility(View.VISIBLE);
@@ -122,7 +129,9 @@ public class YourRecentOrdersAdapter extends RecyclerView.Adapter<YourRecentOrde
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
-        TextView OrderidTV, DateTV, nameTV, RemarkTv, amounTV, quentityTv, totalamounttv, statustv, tvcancelOrder;
+        TextView OrderidTV, DateTV, nameTV, RemarkTv, amounTV, quentityTv, totalamounttv, statustv, tvcancelOrder, PaymentMethodTV, payment_mode;
+
+
         ImageView productIV;
         LinearLayout moredetailsLL, ratingLL;
 
@@ -130,6 +139,8 @@ public class YourRecentOrdersAdapter extends RecyclerView.Adapter<YourRecentOrde
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             OrderidTV = itemView.findViewById(R.id.OrderidTV);
+            PaymentMethodTV = itemView.findViewById(R.id.PaymentMethodTV);
+            payment_mode = itemView.findViewById(R.id.payment_mode);
             tvcancelOrder = itemView.findViewById(R.id.tvcancelOrder);
             DateTV = itemView.findViewById(R.id.DateTV);
             nameTV = itemView.findViewById(R.id.nameTV);

@@ -11,7 +11,7 @@ public class UserProfileinfo {
     private Boolean status;
     @SerializedName("code")
     @Expose
-    private Integer code;
+    private String code;
     @SerializedName("message")
     @Expose
     private String message;
@@ -27,11 +27,11 @@ public class UserProfileinfo {
         this.status = status;
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -82,7 +82,7 @@ public class UserProfileinfo {
 
             @SerializedName("id")
             @Expose
-            private Integer id;
+            private String id;
 
 
 
@@ -128,7 +128,7 @@ public class UserProfileinfo {
             private String email;
             @SerializedName("country_code")
             @Expose
-            private Integer countryCode;
+            private String countryCode;
             @SerializedName("mobile_number")
             @Expose
             private String mobileNumber;
@@ -152,7 +152,7 @@ public class UserProfileinfo {
             private String managerName;
             @SerializedName("country_id")
             @Expose
-            private Integer countryId;
+            private String countryId;
             @SerializedName("state_id")
             @Expose
             private String stateId;
@@ -191,13 +191,13 @@ public class UserProfileinfo {
             private String userStatus;
             @SerializedName("wallet_amount")
             @Expose
-            private Integer walletAmount;
+            private String walletAmount;
             @SerializedName("sender_amount")
             @Expose
-            private Integer senderAmount;
+            private String senderAmount;
             @SerializedName("receiver_amount")
             @Expose
-            private Integer receiverAmount;
+            private String receiverAmount;
             @SerializedName("sender_referral_status")
             @Expose
             private String senderReferralStatus;
@@ -235,11 +235,11 @@ public class UserProfileinfo {
             @Expose
             private String getCity;
 
-            public Integer getId() {
+            public String getId() {
                 return id;
             }
 
-            public void setId(Integer id) {
+            public void setId(String id) {
                 this.id = id;
             }
 
@@ -315,11 +315,11 @@ public class UserProfileinfo {
                 this.email = email;
             }
 
-            public Integer getCountryCode() {
+            public String getCountryCode() {
                 return countryCode;
             }
 
-            public void setCountryCode(Integer countryCode) {
+            public void setCountryCode(String countryCode) {
                 this.countryCode = countryCode;
             }
 
@@ -379,11 +379,11 @@ public class UserProfileinfo {
                 this.managerName = managerName;
             }
 
-            public Integer getCountryId() {
+            public String getCountryId() {
                 return countryId;
             }
 
-            public void setCountryId(Integer countryId) {
+            public void setCountryId(String countryId) {
                 this.countryId = countryId;
             }
 
@@ -483,27 +483,27 @@ public class UserProfileinfo {
                 this.userStatus = userStatus;
             }
 
-            public Integer getWalletAmount() {
+            public String getWalletAmount() {
                 return walletAmount;
             }
 
-            public void setWalletAmount(Integer walletAmount) {
+            public void setWalletAmount(String walletAmount) {
                 this.walletAmount = walletAmount;
             }
 
-            public Integer getSenderAmount() {
+            public String getSenderAmount() {
                 return senderAmount;
             }
 
-            public void setSenderAmount(Integer senderAmount) {
+            public void setSenderAmount(String senderAmount) {
                 this.senderAmount = senderAmount;
             }
 
-            public Integer getReceiverAmount() {
+            public String getReceiverAmount() {
                 return receiverAmount;
             }
 
-            public void setReceiverAmount(Integer receiverAmount) {
+            public void setReceiverAmount(String receiverAmount) {
                 this.receiverAmount = receiverAmount;
             }
 
@@ -608,7 +608,7 @@ public class UserProfileinfo {
 
                 @SerializedName("id")
                 @Expose
-                private Integer id;
+                private String id;
                 @SerializedName("code")
                 @Expose
                 private String code;
@@ -617,7 +617,7 @@ public class UserProfileinfo {
                 private String name;
                 @SerializedName("phonecode")
                 @Expose
-                private Integer phonecode;
+                private String phonecode;
                 @SerializedName("created_at")
                 @Expose
                 private String createdAt;
@@ -625,11 +625,11 @@ public class UserProfileinfo {
                 @Expose
                 private String updatedAt;
 
-                public Integer getId() {
+                public String getId() {
                     return id;
                 }
 
-                public void setId(Integer id) {
+                public void setId(String id) {
                     this.id = id;
                 }
 
@@ -649,11 +649,11 @@ public class UserProfileinfo {
                     this.name = name;
                 }
 
-                public Integer getPhonecode() {
+                public String getPhonecode() {
                     return phonecode;
                 }
 
-                public void setPhonecode(Integer phonecode) {
+                public void setPhonecode(String phonecode) {
                     this.phonecode = phonecode;
                 }
 

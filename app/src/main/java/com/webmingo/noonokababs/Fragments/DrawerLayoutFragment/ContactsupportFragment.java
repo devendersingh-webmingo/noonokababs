@@ -111,7 +111,7 @@ public class ContactsupportFragment extends Fragment implements ReferredPresente
             binding.headingtv.setText(Html.fromHtml(response.getData().getHeading()));
             binding.titletv.setText(Html.fromHtml(response.getData().getTitle()));
                 binding.refferalcodeTV.setText(response.getData().getReferralCode());
-            binding.AmountTv.setText("\u20B9"+response.getData().getTotalEarn());
+            binding.AmountTv.setText("$"+response.getData().getTotalEarn());
 
 
             Glide.with(getContext())

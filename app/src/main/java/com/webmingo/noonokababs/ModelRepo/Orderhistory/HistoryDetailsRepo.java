@@ -181,6 +181,21 @@ public class HistoryDetailsRepo {
             @SerializedName("remark_payment_status")
             @Expose
             private String remarkPaymentStatus;
+
+
+
+            @SerializedName("delivery_datetime")
+            @Expose
+            private String delivery_datetime;
+
+            public String getDelivery_datetime() {
+                return delivery_datetime;
+            }
+
+            public void setDelivery_datetime(String delivery_datetime) {
+                this.delivery_datetime = delivery_datetime;
+            }
+
             @SerializedName("tip_percent")
             @Expose
             private String tipPercent;
@@ -189,6 +204,14 @@ public class HistoryDetailsRepo {
             @SerializedName("get_branch_info")
             @Expose
             private GetBranchInfo getBranchInfo;
+
+            public GetBranchInfo getGetBranchInfo() {
+                return getBranchInfo;
+            }
+
+            public void setGetBranchInfo(GetBranchInfo getBranchInfo) {
+                this.getBranchInfo = getBranchInfo;
+            }
 
             @SerializedName("tip_amount")
             @Expose
@@ -830,9 +853,9 @@ public class HistoryDetailsRepo {
                 public void setUpdatedAt(String updatedAt) {
                     this.updatedAt = updatedAt;
                 }
-                public GetBranchInfo getGetBranchInfo() {
+               /* public GetBranchInfo getGetBranchInfo() {
                     return getBranchInfo;
-                }
+                }*/
 
                /* public void setGetBranchInfo(GetBranchInfo getBranchInfo) {
                     this.getBranchInfo = getBranchInfo;

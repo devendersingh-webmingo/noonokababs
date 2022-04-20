@@ -72,7 +72,7 @@ public class ReferralRepo {
         private String referralCode;
         @SerializedName("total_earn")
         @Expose
-        private Integer totalEarn;
+        private String  totalEarn;
         @SerializedName("how_work")
         @Expose
         private List<HowWork> howWork = null;
@@ -109,11 +109,11 @@ public class ReferralRepo {
             this.referralCode = referralCode;
         }
 
-        public Integer getTotalEarn() {
+        public String getTotalEarn() {
             return totalEarn;
         }
 
-        public void setTotalEarn(Integer totalEarn) {
+        public void setTotalEarn(String totalEarn) {
             this.totalEarn = totalEarn;
         }
 
@@ -131,7 +131,7 @@ public class ReferralRepo {
 
             @SerializedName("id")
             @Expose
-            private Integer id;
+            private String id;
             @SerializedName("slug")
             @Expose
             private String slug;
@@ -172,11 +172,11 @@ public class ReferralRepo {
             @Expose
             private String updatedAt;
 
-            public Integer getId() {
+            public String getId() {
                 return id;
             }
 
-            public void setId(Integer id) {
+            public void setId(String id) {
                 this.id = id;
             }
 

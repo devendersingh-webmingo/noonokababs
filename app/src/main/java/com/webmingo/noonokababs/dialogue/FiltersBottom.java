@@ -60,9 +60,9 @@ public class FiltersBottom extends BottomSheetDialogFragment implements Filterbo
         bottomSheet.setCanceledOnTouchOutside(false);
         arrayList.add(new Filtermodel("rating_hight_to_low", "Rating High to Low"));
 
-        arrayList.add(new Filtermodel("price_low_to_high", "Pricing Low to High"));
+        // arrayList.add(new Filtermodel("price_low_to_high", "Pricing Low to High"));
         arrayList.add(new Filtermodel("popular", "Popular Dishes"));
-        arrayList.add(new Filtermodel("new", "New Dishes"));
+        arrayList.add(new Filtermodel("latest ", "latest  Dishes"));
 
 
         apply.setOnClickListener(new View.OnClickListener() {
@@ -116,17 +116,72 @@ public class FiltersBottom extends BottomSheetDialogFragment implements Filterbo
 
             if (position == 0) {
                 rating_hight_to_low = id;
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Fragment safeHealthFragment = new FoodFragment();
+
+                Bundle args = new Bundle();
+
+                args.putString("rating_hight_to_low", "Yes");
+                args.putString("sort_by", "");
+
+                args.putString("id", "no");
+
+                safeHealthFragment.setArguments(args);
+                fragmentTransaction.replace(R.id.main, safeHealthFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+                bottomSheet.dismiss();
 
 
             } else if (position == 1) {
                 price_low_to_high = id;
 
 
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Fragment safeHealthFragment = new FoodFragment();
+
+                Bundle args = new Bundle();
+
+                args.putString("rating_hight_to_low", "");
+                args.putString("sort_by", "popular");
+
+                args.putString("id", "no");
+
+                safeHealthFragment.setArguments(args);
+                fragmentTransaction.replace(R.id.main, safeHealthFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+                bottomSheet.dismiss();
+
+
             } else if (position == 2) {
+
+
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Fragment safeHealthFragment = new FoodFragment();
+
+                Bundle args = new Bundle();
+
+                args.putString("rating_hight_to_low", "");
+                args.putString("sort_by", "latest");
+                args.putString("id", "no");
+                safeHealthFragment.setArguments(args);
+                fragmentTransaction.replace(R.id.main, safeHealthFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+                bottomSheet.dismiss();
+
                 popular = id;
             } else if (position == 3) {
                 neww = id;
             }
+
 
         } else {
 
