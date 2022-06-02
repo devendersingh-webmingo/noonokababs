@@ -130,13 +130,14 @@
                                 <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-
                                     android:layout_gravity="center"
-                                    android:layout_weight="0.25"
 
+                                    android:layout_weight="0.25"
                                     android:gravity="center"
+
                                     android:orientation="vertical"
-                                    android:padding="5dp">
+                                    android:padding="5dp"
+                                    android:visibility="gone">
 
                                     <Spinner
                                         android:id="@+id/allvarientsSpinner"
@@ -162,7 +163,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="40dp"
                                         android:layout_gravity="center"
-                                        android:gravity="center"
+                                        android:gravity="left"
                                         android:orientation="horizontal"
                                         android:padding="8dp">
 
@@ -240,6 +241,7 @@
                                     tools:itemCount="5"
                                     tools:listitem="@layout/requiredadapter_cart" />
                             </LinearLayout>
+
                             <LinearLayout
                                 android:id="@+id/CookingLL"
 
@@ -256,7 +258,7 @@
                                     android:layout_marginLeft="3dp"
                                     android:layout_marginTop="6dp"
                                     android:fontFamily="@font/latomedium"
-                                    android:text="COOKING LEVEL (MEAT) (required)"
+                                    android:text="FLAVOURS(required)"
                                     android:textColor="#99170101"
                                     android:textSize="17dp"
                                     android:textStyle="bold" />
@@ -288,7 +290,7 @@
                                     android:layout_marginLeft="3dp"
                                     android:layout_marginTop="6dp"
                                     android:fontFamily="@font/latomedium"
-                                    android:text="EXTRA INGREDIENTS"
+                                    android:text="SIDE ORDERS"
                                     android:textColor="#99170101"
                                     android:textSize="17dp"
                                     android:textStyle="bold" />

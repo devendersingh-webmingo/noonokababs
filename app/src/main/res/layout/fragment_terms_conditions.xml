@@ -79,12 +79,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
+            android:layout_margin="4dp"
             android:text="04/08/1998 By William Rice"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />
         <TextView
+            android:layout_margin="4dp"
+
             android:id="@+id/titletv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

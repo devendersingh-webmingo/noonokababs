@@ -12,6 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/backgroundspleshscreen"
 
         android:layout_gravity="center"
         android:gravity="center"
@@ -20,80 +21,105 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/initiTv"
-
-                android:visibility="gone"
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center"
-                android:text="Initializing..."
-                android:textStyle="bold"
-                android:textColor="@color/orange"
-                android:textSize="20dp" />
 
 
-            <TextView
-                android:id="@+id/pleasewaitTv"
-                android:visibility="gone"
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/robotoregular"
-                android:gravity="center"
-                android:text="Please wait a moment"
-                android:textColor="@color/fontcolor"
-                android:textSize="18dp" />
+
 
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/logo">
-
-            </ImageView>
-
-            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/arciform"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="@string/app_name"
-                android:textColor="@color/fontcolor"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:layout_height="300dp"
+                android:src="@mipmap/logotransparent"/>
 
-            <TextView
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/arciform"
-                android:gravity="center"
-                android:text="@string/chicago_persian_restaurant"
-                android:textColor="@color/fontcolor"
-                android:textSize="18dp" />
 
-            <com.github.ybq.android.spinkit.SpinKitView
-                android:layout_margin="40dp"
-                android:id="@+id/spin_kit"
-                style="@style/SpinKitView.Large.Circle"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                app:SpinKit_Color="@color/orange" />
+
+
+
+
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/bottomlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="161dp"
+            android:layout_above="@+id/bottomwaveiv"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/awesome"
+                android:gravity="center"
+                android:textSize="12dp"
+                android:text="@string/Policysrvice"
+                android:textColor="@color/white"
+                />
+
+            <LinearLayout
+                android:layout_margin="3dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/horizontallayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/TermsofService"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/awesome"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    android:text="@string/TermsofService"
+                    android:textColor="#2f363c"
+                    />
+                <TextView
+                    android:id="@+id/PrivacyPolicy"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/awesome"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    android:text="@string/PrivacyPolicy"
+                    android:textColor="#2f363c"
+                    />
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/bottomwaveiv"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/bottomwave">
+
+        </ImageView>
 
     </RelativeLayout>
 </layout>

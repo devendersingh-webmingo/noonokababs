@@ -12,16 +12,51 @@
             android:id="@+id/simpleCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:text="Simple CheckBox"
+            android:text="Box"
             android:textColor="@color/black"
             android:background="@color/white"
             android:theme="@style/checkBoxStyle"
             tools:ignore="RtlHardcoded" />
 
+    <LinearLayout
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/latomedium"
+            android:text="$ "
+            android:textColor="@color/black"
+            android:textSize="13dp"
+
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/latomedium"
+            android:text=" 0.00"
+            android:textColor="@color/black"
+            android:textSize="13dp"
+
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
 
 
+   <!-- <View
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/tab_indicator_gray"/>
 
-
+-->
 
     </LinearLayout>

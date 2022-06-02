@@ -3,34 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@id/home_Fragment"
+        android:id="@id/legalFragment"
         android:icon="@drawable/ic_discover"
-        android:title="DISCOVER"
+        android:title="Home"
         android:menuCategory="secondary"/>
     <item
+        android:id="@id/home_Fragment"
+        android:icon="@drawable/ic_menuu"
+        android:title="Menu"
+        android:menuCategory="secondary"/>
+
+
+    <item
+        android:id="@id/checkOutCartFragment"
+        android:icon="@drawable/ic_cart"
+        android:title="Cart"
+        android:menuCategory="secondary"/>
+
+    <item
+        android:id="@id/orderhistoryFragment"
+        android:icon="@drawable/ic_myorderr"
+        android:title="My Orders"
+        android:menuCategory="secondary"/>
+
+
+    <item
+        android:iconTint="@color/black"
         android:id="@id/supportFragment"
-        android:icon="@drawable/ic_support"
-        android:title="SUPPORT"
+        android:icon="@drawable/ic_help_24"
+        android:title="Help"
         android:menuCategory="secondary"/>
-
-    <item
-        android:id="@id/foodFragment"
-        android:icon="@drawable/ic_food"
-        android:title="FOOD"
-        android:menuCategory="secondary"/>
-
-<!--
-    <item
-        android:id="@id/menuFragment"
-        android:icon="@drawable/ic_menu"
-        android:title="MENU"
-        android:menuCategory="secondary"/>-->
-    <item
-        android:id="@id/profileFragment"
-        android:icon="@drawable/ic_profil"
-        android:title="PROFILE"
-        android:menuCategory="secondary"/>
-
-
 
 </menu>

@@ -31,16 +31,59 @@
                 android:layout_margin="5dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/ordernumbertv"
+
+                <RelativeLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:fontFamily="@font/latomedium"
-                    android:justificationMode="inter_word"
-                    android:text="Your  Orders"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    >
+
+                    <TextView
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:id="@+id/ordernumbertv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/latomedium"
+                        android:justificationMode="inter_word"
+                        android:text="Your  Orders"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:id="@+id/ViewInvoicesLL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="right"
+
+                        android:background="@drawable/allsideborder"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="3dp"
+
+                            android:text=" View Invoice"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="end"
+                            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+                            app:tint="@color/orange"
+                            tools:ignore="RtlHardcoded" />
+                    </LinearLayout>
+                </RelativeLayout>
+
 
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -382,7 +425,7 @@
 
                     <TextView
                         android:id="@+id/mrp"
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
 
@@ -414,7 +457,7 @@
                     <TextView
 
                         android:id="@+id/prediscount"
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
 
@@ -446,7 +489,7 @@
                     <TextView
                         android:id="@+id/coupondiscount"
 
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
 
@@ -478,7 +521,7 @@
                     <TextView
                         android:id="@+id/subtotal"
 
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
 
@@ -511,7 +554,7 @@
                     <TextView
                         android:id="@+id/txt"
 
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
 
@@ -521,7 +564,8 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-
+                    android:visibility="gone"
+                    android:id="@+id/GratuityRL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -542,12 +586,12 @@
                     <TextView
                         android:id="@+id/Gratuitytv"
 
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
 
                         android:fontFamily="@font/latomedium"
-                        android:text="$ "
+                        android:text="$0"
                         android:textColor="@color/black" />
                 </RelativeLayout>
 
@@ -575,7 +619,41 @@
                     <TextView
                         android:id="@+id/tip_amount"
 
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+
+                        android:fontFamily="@font/latomedium"
+                        android:text="$ "
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/ingredients_RL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+
+                    >
+
+                    <TextView
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/latomedium"
+                        android:text="ingredients :"
+
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/ingredients_Tv"
+
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
 
@@ -607,7 +685,7 @@
                     <TextView
                         android:id="@+id/tip_percent"
 
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
 
@@ -640,7 +718,7 @@
                     <TextView
                         android:id="@+id/total"
 
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
 

@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:text="One skewer of choice rib eye and a....more"
+                android:text=" "
                 android:textColor="@color/black"
                 android:textSize="12dp" />
 
@@ -225,7 +225,7 @@
             android:id="@+id/EXTRATv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Extra Ingredients"
+            android:text="Side Orders"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="16dp" />

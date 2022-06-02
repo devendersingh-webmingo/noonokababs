@@ -63,7 +63,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_horizontal"
                 android:lineSpacingExtra="3.5sp"
-                android:text="Noon O Kabab will send an Email Verification Link to verify your emal id:"
+                android:text="Old Jerusalem Restaurant will send an Email Verification Link to verify your emal id:"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 

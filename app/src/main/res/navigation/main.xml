@@ -8,8 +8,8 @@
 
     <fragment
         android:id="@+id/home_Fragment"
-        android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.HomeFragment"
-        android:label="Home"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.BottomNavFragment.HomeFragment"
+        android:label="Menu"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_home_Fragment_to_searchFragment"
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/foodFragment"
-        android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.Food.FoodFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.BottomNavFragment.Food.FoodFragment"
         android:label="Food"
         tools:layout="@layout/fragment_food" >
         <action
@@ -35,12 +35,12 @@
         </fragment>
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.MenuFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.BottomNavFragment.MenuFragment"
         android:label="Menu"
         tools:layout="@layout/fragment_menu" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.ProfileFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.BottomNavFragment.ProfileFragment"
         android:label="Account Setting"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -49,18 +49,18 @@
     </fragment>
     <fragment
         android:id="@+id/supportFragment"
-        android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.SupportFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.BottomNavFragment.SupportFragment"
         android:label="Support"
         tools:layout="@layout/fragment_support" />
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.NotificationsFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.NotificationsFragment"
         android:label="Notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/orderhistoryFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.OrderHistory.OrderhistoryFragment"
-        android:label="Order History"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.OrderHistory.OrderhistoryFragment"
+        android:label="My Order"
         tools:layout="@layout/fragment_orderhistory" >
         <action
             android:id="@+id/action_orderhistoryFragment_to_orderHistoryDetailsFragment"
@@ -68,7 +68,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.Food.FavoritesFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.BottomNavFragment.Food.FavoritesFragment"
         android:label="Favorite Food"
         tools:layout="@layout/fragment_favorites" >
         <action
@@ -77,12 +77,12 @@
     </fragment>
     <fragment
         android:id="@+id/DashboardFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.DashboardFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.DashboardFragment"
         android:label="Dashboard "
         tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/addressBookFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Address.AddressBookFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.Address.AddressBookFragment"
         android:label="Address Book"
         tools:layout="@layout/fragment_address_book" >
         <action
@@ -91,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/paymentsFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Payment.PaymentsFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.Payment.PaymentsFragment"
         android:label="Payment"
         tools:layout="@layout/fragment_payments" >
 
@@ -102,32 +102,32 @@
     </fragment>
     <fragment
         android:id="@+id/howitworkFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.HowitworkFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.HowitworkFragment"
         android:label="How it work "
         tools:layout="@layout/fragment_howitwork" />
     <fragment
         android:id="@+id/contactsupportFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.ContactsupportFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.ContactsupportFragment"
         android:label="Invite Friends"
         tools:layout="@layout/fragment_contactsupport" />
     <fragment
         android:id="@+id/sendfeedbackFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.SendfeedbackFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.SendfeedbackFragment"
         android:label="Privacy Policy"
         tools:layout="@layout/fragment_sendfeedback" />
     <fragment
         android:id="@+id/legalFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.LegalFragment"
-        android:label="Legal"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.NewHomeFragment"
+        android:label="Home"
         tools:layout="@layout/fragment_legal" />
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.webmingo.noonokababs.Fragments.EditProfileFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.EditProfileFragment"
         android:label="Edit Profile"
         tools:layout="@layout/fragment_edit_profile" />
     <fragment
         android:id="@+id/reviewsFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Review.ReviewsFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.Review.ReviewsFragment"
         android:label="Reviews"
         tools:layout="@layout/fragment_reviews" >
         <action
@@ -136,12 +136,12 @@
     </fragment>
     <fragment
         android:id="@+id/writeReviewFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.OrderHistory.OrderReviewFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.OrderHistory.OrderReviewFragment"
         android:label="Write Your Review"
         tools:layout="@layout/fragment_write_review" />
     <fragment
         android:id="@+id/addCartFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Payment.AddCartFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.Payment.AddCartFragment"
         android:label="Add Card"
         tools:layout="@layout/fragment_add_cart" >
         <action
@@ -150,17 +150,17 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.webmingo.noonokababs.Fragments.SearchFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.SearchFragment"
         android:label="Search"
         tools:layout="@layout/fragment_search"/>
     <fragment
         android:id="@+id/mapsFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Address.MapsFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.Address.MapsFragment"
         android:label=" "
         tools:layout="@layout/fragment_maps" />
     <fragment
         android:id="@+id/foodDetailFragment"
-        android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.Food.FoodDetailFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.BottomNavFragment.Food.FoodDetailFragment"
 
         android:label="Food Detail"
         tools:layout="@layout/fragment_food_detail"
@@ -172,23 +172,23 @@
     </fragment>
     <fragment
         android:id="@+id/addtoCartDetailsFragment"
-        android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.Cart.AddtoCartDetailsFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.BottomNavFragment.Cart.AddtoCartDetailsFragment"
         android:label=" "
         tools:layout="@layout/fragment_addto_cart_details"
         >
         <action
             android:id="@+id/action_addtoCartDetailsFragment_to_chackoutFragment"
             app:destination="@id/chackoutFragment" />
-    </fragment>
+       </fragment>
     <fragment
         android:id="@+id/checkOutCartFragment"
-        android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.Cart.CheckOutCartFragment"
-        android:label="Checkout"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.BottomNavFragment.Cart.CheckOutCartFragment"
+        android:label="Cart"
         tools:layout="@layout/fragment_check_out_cart"
         />
     <fragment
         android:id="@+id/chackoutFragment"
-        android:name="com.webmingo.noonokababs.Fragments.BottomNavFragment.Cart.ChackoutFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.BottomNavFragment.Cart.ChackoutFragment"
         android:label="Checkout"
         tools:layout="@layout/fragment_chackout"
         >
@@ -200,30 +200,41 @@
         tools:layout="@layout/fragment_order_history_details"
 
         android:id="@+id/orderHistoryDetailsFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.OrderHistory.OrderHistoryDetailsFragment"
-        android:label="Order History Details" />
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.OrderHistory.OrderHistoryDetailsFragment"
+        android:label="Order History Details" >
+        <action
+            android:id="@+id/action_orderHistoryDetailsFragment_to_invoiceWebFragment"
+            app:destination="@id/invoiceWebFragment" />
+    </fragment>
 
     <activity
         tools:layout="@layout/activity_check_out"
         android:id="@+id/StripePyamentGetway"
-        android:name="com.webmingo.noonokababs.Activity.StripePaymentGetway"
+        android:name="com.webmingo.oldjerusalemrestaurant.Activity.StripePaymentGetway"
         android:label="Payment" />
     <activity
         tools:layout="@layout/activity_login"
         android:id="@+id/activitylogin"
-        android:name="com.webmingo.noonokababs.Activity.Authentication.LoginActivity"
+        android:name="com.webmingo.oldjerusalemrestaurant.Activity.Authentication.LoginActivity"
         />
     <fragment
         tools:layout="@layout/fragment_terms_conditions"
 
         android:id="@+id/termsConditionsFragment"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Policy.TermsConditionsFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.Policy.TermsConditionsFragment"
         android:label="Terms &amp; Conditions" />
     <fragment
         tools:layout="@layout/fragment_refund_policy"
         android:id="@+id/RefundPolicy"
-        android:name="com.webmingo.noonokababs.Fragments.DrawerLayoutFragment.Policy.RefundPolicyFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.Policy.RefundPolicyFragment"
         android:label="Refund Policy" />
+    <fragment
+        tools:layout="@layout/fragment_invoice_web"
+
+        android:id="@+id/invoiceWebFragment"
+        android:name="com.webmingo.oldjerusalemrestaurant.Fragments.DrawerLayoutFragment.OrderHistory.InvoiceWebFragment"
+        android:label="Invoice " />
+
 
 
 </navigation>

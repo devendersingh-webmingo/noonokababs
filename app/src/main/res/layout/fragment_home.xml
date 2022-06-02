@@ -34,7 +34,8 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:visibility="invisible"
+
+                        android:visibility="gone"
                         android:id="@+id/nameTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -48,69 +49,66 @@
                         />
 
                     <TextView
+                        android:id="@+id/PickupanddropTV"
+                        android:gravity="right"
+                        android:layout_gravity="right"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
                         android:fontFamily="@font/awesome"
-                        android:paddingLeft="5dp"
-                        android:text="Grab your delicious meal !"
-                        android:textColor="@color/black"
+                        android:text="Grab "
+                        android:textColor="@color/orange"
                         android:textSize="16dp"
-                        android:textStyle="bold" />
+                      />
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
 
                         android:layout_height="wrap_content"
-                        android:layout_margin="15dp"
                         android:orientation="horizontal">
 
 
                         <RelativeLayout
+                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="50dp"
                             android:layout_gravity="center"
                             android:gravity="center">
 
                             <androidx.cardview.widget.CardView
+                                android:layout_margin="5dp"
                                 android:id="@+id/serachCV"
-                                android:layout_width="250dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="50dp"
 
                                 android:layout_alignParentLeft="true"
                                 android:layout_marginTop="10dp"
                                 app:cardBackgroundColor="@color/white"
-                                app:cardCornerRadius="15dp">
+                                app:cardCornerRadius="7dp">
 
 
                                 <TextView
+                                    android:padding="3dp"
                                     android:id="@+id/serachTv"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:drawableLeft="@drawable/ic_searchicon"
-                                    android:drawablePadding="10dp"
+                                    android:drawableRight="@drawable/ic_searchicon"
                                     android:gravity="center_vertical"
                                     android:paddingStart="10dp"
                                     android:paddingLeft="10dp"
-                                    android:text="Search Food..." />
+                                    android:text="Search Here" />
                             </androidx.cardview.widget.CardView>
 
 
-                            <ImageView
-                                android:id="@+id/microphone"
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
-                                android:layout_toRightOf="@id/serachCV"
-                                android:src="@drawable/searchmore" />
 
                         </RelativeLayout>
 
                     </LinearLayout>
 
                     <RelativeLayout
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -158,8 +156,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="6dp"
-                                android:layout_marginRight="15dp"
-                                android:orientation="horizontal"
                                 android:paddingBottom="3dp"
                                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                                 tools:itemCount="20"
@@ -171,6 +167,7 @@
 
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"

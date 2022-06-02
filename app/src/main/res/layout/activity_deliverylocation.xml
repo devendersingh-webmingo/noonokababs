@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/background"
+        tools:context=".Fragments.DeliverylocationFragment"
+        app:cardElevation="5dp">
+        <ImageView
+            android:layout_margin="15dp"
+            android:id="@+id/IVimage"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_backarrow" />
+
+
+        <TextView
+            android:layout_margin="15dp"
+
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/toalamont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/latomedium"
+            android:text="Please select the Delivery options to
+proceed to the Food Menu"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="10dp"
+            android:id="@+id/deleveryRV"
+            android:layout_width="match_parent"
+            tools:itemCount="2"
+            tools:listitem="@layout/deliverylocationadapter"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+</layout>

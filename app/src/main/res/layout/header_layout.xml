@@ -70,7 +70,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/awesome"
             android:gravity="center"
-            android:text="RAJ CHAUHAN"
+            android:text=" "
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/white"

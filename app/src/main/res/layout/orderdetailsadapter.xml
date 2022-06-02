@@ -114,7 +114,7 @@
                 android:id="@+id/EXTRATv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Extra Ingredients"
+                android:text="Side orders"
                 android:textColor="@color/black"
                 android:textSize="14dp"
                 android:textStyle="bold" />

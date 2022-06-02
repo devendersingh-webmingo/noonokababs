@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.webmingo.noonokababs">
+    package="com.webmingo.oldjerusalemrestaurant">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -21,14 +21,17 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.NoonOKababs"
+        android:theme="@style/Theme.oldjerusalemrestaurant"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activity.DeliverylocationActivity"
+            android:theme="@style/Theme.oldjerusalemrestaurant.NoActionBar" />
+        <activity
             android:name=".Activity.Authentication.PrivacyPolicyActivity"
-            android:theme="@style/Theme.NoonOKababs.NoActionBar" />
+            android:theme="@style/Theme.oldjerusalemrestaurant.NoActionBar" />
         <activity
             android:name=".Activity.StripePaymentGetway"
-            android:theme="@style/Theme.NoonOKababs.NoActionBar" />
+            android:theme="@style/Theme.oldjerusalemrestaurant.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -43,26 +46,27 @@
 
         <activity
             android:name=".Activity.Authentication.ProfileInfoActivity"
-            android:theme="@style/Theme.NoonOKababs.NoActionBar" />
+            android:theme="@style/Theme.oldjerusalemrestaurant.NoActionBar" />
         <activity
             android:name=".Activity.Authentication.WelcomeActivity"
-            android:theme="@style/Theme.NoonOKababs.NoActionBar" />
+            android:theme="@style/Theme.oldjerusalemrestaurant.NoActionBar" />
         <activity
             android:name=".Activity.Authentication.LoginActivity"
-            android:theme="@style/Theme.NoonOKababs.NoActionBar" />
+            android:theme="@style/Theme.oldjerusalemrestaurant.NoActionBar" />
         <activity
             android:name=".Activity.Authentication.Succes"
-            android:theme="@style/Theme.NoonOKababs.NoActionBar" />
+            android:theme="@style/Theme.oldjerusalemrestaurant.NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.NoonOKababs.NoActionBar" />
+            android:theme="@style/Theme.oldjerusalemrestaurant.NoActionBar" />
         <activity
             android:name=".Activity.Authentication.VerifiyOTPActivity"
-            android:theme="@style/Theme.NoonOKababs.NoActionBar" />
+            android:theme="@style/Theme.oldjerusalemrestaurant.NoActionBar" />
+
         <activity
             android:name=".Activity.SpleshScreen"
             android:exported="true"
-            android:theme="@style/Theme.NoonOKababs.NoActionBar">
+            android:theme="@style/Theme.oldjerusalemrestaurant.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
